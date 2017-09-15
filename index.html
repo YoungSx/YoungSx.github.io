@@ -74,7 +74,7 @@
 						<li>Links</li>
 						
 						
-						<li>About</li>
+						<li>Über</li>
 						
 					</ul>
 				</div>
@@ -111,7 +111,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/Vue-array/" style="font-size: 10px;">Vue, array</a> <a href="/tags/Vue-component/" style="font-size: 10px;">Vue, component</a> <a href="/tags/Vue-event/" style="font-size: 10px;">Vue, event</a> <a href="/tags/Vue-form/" style="font-size: 10px;">Vue, form</a> <a href="/tags/Vue-iView-grid/" style="font-size: 10px;">Vue, iView, grid</a> <a href="/tags/Vue-iView-layout/" style="font-size: 10px;">Vue, iView, layout</a> <a href="/tags/Vue-router/" style="font-size: 10px;">Vue, router</a> <a href="/tags/javascript-timestamp/" style="font-size: 10px;">javascript, timestamp</a>
+						<a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/Vue-array/" style="font-size: 10px;">Vue, array</a> <a href="/tags/Vue-component/" style="font-size: 10px;">Vue, component</a> <a href="/tags/Vue-event/" style="font-size: 10px;">Vue, event</a> <a href="/tags/Vue-form/" style="font-size: 10px;">Vue, form</a> <a href="/tags/Vue-iView-grid/" style="font-size: 10px;">Vue, iView, grid</a> <a href="/tags/Vue-iView-layout/" style="font-size: 10px;">Vue, iView, layout</a> <a href="/tags/Vue-router/" style="font-size: 10px;">Vue, router</a> <a href="/tags/Vue-virtual-scroll-list/" style="font-size: 10px;">Vue, virtual-scroll-list</a> <a href="/tags/javascript-timestamp/" style="font-size: 10px;">javascript, timestamp</a>
 					</div>
 				</section>
 				
@@ -232,6 +232,65 @@
       
 	<div class="article-tag tagcloud">
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript-timestamp/">javascript, timestamp</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-Vue-js-学习笔记-虚拟列表-Virtual-Scroll-List-心得" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/07/12/Vue-js-学习笔记-虚拟列表-Virtual-Scroll-List-心得/" class="article-date">
+  	<time datetime="2017-07-12T09:36:14.000Z" itemprop="datePublished">2017-07-12</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/07/12/Vue-js-学习笔记-虚拟列表-Virtual-Scroll-List-心得/">Vue.js 学习笔记 - 虚拟列表(Virtual-Scroll-List)心得</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#虚拟列表</p>
+<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>手上有个字幕编辑器的项目，因为长视频也许会有几千条字幕，所以字幕编辑器的列表中就会有几千条列表项。<br>但是如果将这几千条列表项全部渲染在 DOM 中，就会造成浏览器轻则卡顿，重则卡死，根本无法正常使用。<br>针对这种情况，我通过 Google 了解到可以通过虚拟列表技术来解决。<br>虚拟列表做的事情，就是按需渲染。只需要渲染当前视图需要显示的几个条目和即将滚动到的几个条目。在开发者工具中可以发现，DOM 中只存在这么几条列表项，当滚动的时候会替换这几项。所以大大节省了系统资源，提升了用户体验。<br>我在 GitHub 上找了几个基于Vue.js 的虚拟列表实现，最终找到了一个最合适的 <a href="https://github.com/tangbc/vue-virtual-scroll-list" target="_blank" rel="external">vue-virtual-scroll-list</a> ，并在项目中进行了使用。<br>我在闲暇之余研读了一下此项目的代码，发现实现方式比想象中还要简单。</p>
+<h2 id="核心实现"><a href="#核心实现" class="headerlink" title="核心实现"></a>核心实现</h2><p><strong>this.$slots.default</strong>类型为数组，存储的是此组件两标签中的内容，在此特指大量的列表项。<br>通过 Vue 数组的 filter 方法，筛选出处于当前视图中的几个项，选择性的只渲染出这几个在 DOM 中。渲染是依据 Vue 的 render 函数来动态定义组件。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</div><div class="line">  name: <span class="string">'item'</span>,</div><div class="line">  props: [</div><div class="line">    <span class="string">'item'</span>,</div><div class="line">    <span class="string">'k'</span></div><div class="line">  ],</div><div class="line">  render: <span class="function"><span class="keyword">function</span> (<span class="params">createElement</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> createElement(</div><div class="line">        <span class="string">'div'</span>,</div><div class="line">        <span class="keyword">this</span>.$slots.default.filter(<span class="function"><span class="keyword">function</span> (<span class="params">slot, index</span>) </span>&#123;</div><div class="line">          <span class="keyword">return</span> index &gt; <span class="number">5</span> &amp;&amp; index &lt; <span class="number">10</span></div><div class="line">        &#125;)</div><div class="line">    )</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue-virtual-scroll-list/">Vue, virtual-scroll-list</a></li></ul>
 	</div>
 
       
@@ -924,65 +983,6 @@
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue/">Vue</a></li></ul>
 	</div>
 
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-淘Surface小记" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/02/10/淘Surface小记/" class="article-date">
-  	<time datetime="2017-02-10T14:39:13.000Z" itemprop="datePublished">2017-02-10</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/10/淘Surface小记/">淘Surface小记</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>老早就被Onenote的魔力所吸引，综合考量想入一台苏菲3记笔记用。</p>
-<p>年前在闲鱼找了一个特便宜的官换机，因为快递不营业，付款后等了十天快递才开门。结果卖家说微软黑化，官换机质保全体崩了。</p>
-<p>遂放弃，又找到一家二手但带键盘特便宜的，同时又从朋友那另入了一支笔。到手后感觉萌萌哒，就想着去官网绑定序列号。结果竟然显示“此为企业设备。”几个红字，心情一下落到了谷底——莫非我翻车了？</p>
-<p>联系卖家，却说不知道。打微软客服，本来说可以解绑，我提供了设备照片和序列号后，却说要纸质发票，我表示没有，客服也表示没办法，只能让我联系巨硬企业部门试试了。时间不早了，客服也下班了，我就决定第二天再打。</p>
-<p>第二天，我想这个“企业设备”是不是指的京东企业从巨硬采购的，售后由狗东负责联系。于是我先打狗东客服问问情况，结果狗东客服一脸懵逼，表示不了解苏菲序列号的事情。我就再打巨硬个人客服，他们也不知道关于狗东自营苏菲序列号的问题。</p>
-<p>我只能打巨硬企业热线试试了，接通后，他们表示我的设备确实被企业绑定了，但是具体哪家企业他们说不能透露给我，让我直接转接解绑热线。逗的是转接后，解绑热线上来就问我的设备是不是绑定的“武汉京东<em>*</em>”企业，证明我之前的推测是正确的。我描述完情况后，他立马就给我解绑了，我在官网就成功把设备绑定在了我个人账户之下。</p>
-<p>设备绑定成功，悬着的心终于落了地，重要的是我！没！翻！车！</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
       
 
       

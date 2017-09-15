@@ -4,18 +4,19 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>Hello World | YoungSx</title>
+  <title>Vue.js 学习笔记 - 虚拟列表(Virtual-Scroll-List)心得 | YoungSx</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+  <meta name="description" content="#虚拟列表 背景手上有个字幕编辑器的项目，因为长视频也许会有几千条字幕，所以字幕编辑器的列表中就会有几千条列表项。但是如果将这几千条列表项全部渲染在 DOM 中，就会造成浏览器轻则卡顿，重则卡死，根本无法正常使用。针对这种情况，我通过 Google 了解到可以通过虚拟列表技术来解决。虚拟列表做的事情，就是按需渲染。只需要渲染当前视图需要显示的几个条目和即将滚动到的几个条目。在开发者工具中可以发现，">
+<meta name="keywords" content="Vue, virtual-scroll-list">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://yoursite.com/2016/06/17/hello-world/index.html">
+<meta property="og:title" content="Vue.js 学习笔记 - 虚拟列表(Virtual-Scroll-List)心得">
+<meta property="og:url" content="http://yoursite.com/2017/07/12/Vue-js-学习笔记-虚拟列表-Virtual-Scroll-List-心得/index.html">
 <meta property="og:site_name" content="YoungSx">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
-<meta property="og:updated_time" content="2016-06-16T16:57:45.077Z">
+<meta property="og:description" content="#虚拟列表 背景手上有个字幕编辑器的项目，因为长视频也许会有几千条字幕，所以字幕编辑器的列表中就会有几千条列表项。但是如果将这几千条列表项全部渲染在 DOM 中，就会造成浏览器轻则卡顿，重则卡死，根本无法正常使用。针对这种情况，我通过 Google 了解到可以通过虚拟列表技术来解决。虚拟列表做的事情，就是按需渲染。只需要渲染当前视图需要显示的几个条目和即将滚动到的几个条目。在开发者工具中可以发现，">
+<meta property="og:updated_time" content="2017-09-15T16:58:06.791Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="twitter:title" content="Vue.js 学习笔记 - 虚拟列表(Virtual-Scroll-List)心得">
+<meta name="twitter:description" content="#虚拟列表 背景手上有个字幕编辑器的项目，因为长视频也许会有几千条字幕，所以字幕编辑器的列表中就会有几千条列表项。但是如果将这几千条列表项全部渲染在 DOM 中，就会造成浏览器轻则卡顿，重则卡死，根本无法正常使用。针对这种情况，我通过 Google 了解到可以通过虚拟列表技术来解决。虚拟列表做的事情，就是按需渲染。只需要渲染当前视图需要显示的几个条目和即将滚动到的几个条目。在开发者工具中可以发现，">
   
     <link rel="alternative" href="/atom.xml" title="YoungSx" type="application/atom+xml">
   
@@ -197,11 +198,11 @@
 	</div>
 </nav>
 
-      <div class="body-wrap"><article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Vue-js-学习笔记-虚拟列表-Virtual-Scroll-List-心得" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/06/17/hello-world/" class="article-date">
-  	<time datetime="2016-06-16T16:57:45.077Z" itemprop="datePublished">2016-06-17</time>
+      <a href="/2017/07/12/Vue-js-学习笔记-虚拟列表-Virtual-Scroll-List-心得/" class="article-date">
+  	<time datetime="2017-07-12T09:36:14.000Z" itemprop="datePublished">2017-07-12</time>
 </a>
     </div>
   
@@ -214,7 +215,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Hello World
+      Vue.js 学习笔记 - 虚拟列表(Virtual-Scroll-List)心得
     </h1>
   
 
@@ -222,6 +223,10 @@
       
       <div class="article-info article-info-post">
         
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue-virtual-scroll-list/">Vue, virtual-scroll-list</a></li></ul>
+	</div>
+
         
 
         <div class="clearfix"></div>
@@ -230,15 +235,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+        <p>#虚拟列表</p>
+<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>手上有个字幕编辑器的项目，因为长视频也许会有几千条字幕，所以字幕编辑器的列表中就会有几千条列表项。<br>但是如果将这几千条列表项全部渲染在 DOM 中，就会造成浏览器轻则卡顿，重则卡死，根本无法正常使用。<br>针对这种情况，我通过 Google 了解到可以通过虚拟列表技术来解决。<br>虚拟列表做的事情，就是按需渲染。只需要渲染当前视图需要显示的几个条目和即将滚动到的几个条目。在开发者工具中可以发现，DOM 中只存在这么几条列表项，当滚动的时候会替换这几项。所以大大节省了系统资源，提升了用户体验。<br>我在 GitHub 上找了几个基于Vue.js 的虚拟列表实现，最终找到了一个最合适的 <a href="https://github.com/tangbc/vue-virtual-scroll-list" target="_blank" rel="external">vue-virtual-scroll-list</a> ，并在项目中进行了使用。<br>我在闲暇之余研读了一下此项目的代码，发现实现方式比想象中还要简单。</p>
+<h2 id="核心实现"><a href="#核心实现" class="headerlink" title="核心实现"></a>核心实现</h2><p><strong>this.$slots.default</strong>类型为数组，存储的是此组件两标签中的内容，在此特指大量的列表项。<br>通过 Vue 数组的 filter 方法，筛选出处于当前视图中的几个项，选择性的只渲染出这几个在 DOM 中。渲染是依据 Vue 的 render 函数来动态定义组件。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</div><div class="line">  name: <span class="string">'item'</span>,</div><div class="line">  props: [</div><div class="line">    <span class="string">'item'</span>,</div><div class="line">    <span class="string">'k'</span></div><div class="line">  ],</div><div class="line">  render: <span class="function"><span class="keyword">function</span> (<span class="params">createElement</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> createElement(</div><div class="line">        <span class="string">'div'</span>,</div><div class="line">        <span class="keyword">this</span>.$slots.default.filter(<span class="function"><span class="keyword">function</span> (<span class="params">slot, index</span>) </span>&#123;</div><div class="line">          <span class="keyword">return</span> index &gt; <span class="number">5</span> &amp;&amp; index &lt; <span class="number">10</span></div><div class="line">        &#125;)</div><div class="line">    )</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -248,15 +247,20 @@
     
 <nav id="article-nav">
   
-    <a href="/2016/07/31/SS-Panel-SS-Manyuser安装部署/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/08/21/Javascript-取时间戳/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          SS-Panel+SS-Manyuser安装部署
+          Javascript 取时间戳
         
       </div>
     </a>
   
+  
+    <a href="/2017/06/19/iView-学习笔记-布局/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">iView 学习笔记 - 布局</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
   
 </nav>
 
@@ -289,7 +293,7 @@
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="hello-world" data-title="Hello World" data-url="http://yoursite.com/2016/06/17/hello-world/"></div>
+	<div class="ds-thread" data-thread-key="Vue-js-学习笔记-虚拟列表-Virtual-Scroll-List-心得" data-title="Vue.js 学习笔记 - 虚拟列表(Virtual-Scroll-List)心得" data-url="http://yoursite.com/2017/07/12/Vue-js-学习笔记-虚拟列表-Virtual-Scroll-List-心得/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
