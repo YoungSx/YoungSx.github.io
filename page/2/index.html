@@ -74,7 +74,7 @@
 						<li>Links</li>
 						
 						
-						<li>Über</li>
+						<li>About</li>
 						
 					</ul>
 				</div>
@@ -111,7 +111,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/Vue-array/" style="font-size: 10px;">Vue, array</a> <a href="/tags/Vue-component/" style="font-size: 10px;">Vue, component</a> <a href="/tags/Vue-event/" style="font-size: 10px;">Vue, event</a> <a href="/tags/Vue-form/" style="font-size: 10px;">Vue, form</a> <a href="/tags/Vue-iView-grid/" style="font-size: 10px;">Vue, iView, grid</a> <a href="/tags/Vue-iView-layout/" style="font-size: 10px;">Vue, iView, layout</a> <a href="/tags/Vue-router/" style="font-size: 10px;">Vue, router</a> <a href="/tags/Vue-virtual-scroll-list/" style="font-size: 10px;">Vue, virtual-scroll-list</a> <a href="/tags/javascript-timestamp/" style="font-size: 10px;">javascript, timestamp</a>
+						<a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/Vue-array/" style="font-size: 10px;">Vue, array</a> <a href="/tags/Vue-component/" style="font-size: 10px;">Vue, component</a> <a href="/tags/Vue-event/" style="font-size: 10px;">Vue, event</a> <a href="/tags/Vue-form/" style="font-size: 10px;">Vue, form</a> <a href="/tags/Vue-iView-grid/" style="font-size: 10px;">Vue, iView, grid</a> <a href="/tags/Vue-iView-layout/" style="font-size: 10px;">Vue, iView, layout</a> <a href="/tags/Vue-iView-table-render/" style="font-size: 10px;">Vue, iView, table, render</a> <a href="/tags/Vue-router/" style="font-size: 10px;">Vue, router</a> <a href="/tags/Vue-virtual-scroll-list/" style="font-size: 10px;">Vue, virtual-scroll-list</a> <a href="/tags/javascript-timestamp/" style="font-size: 10px;">javascript, timestamp</a>
 					</div>
 				</section>
 				
@@ -194,6 +194,64 @@
 </nav>
 
       <div class="body-wrap">
+  
+    <article id="post-Vue.js 学习笔记-条件和列表渲染" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/06/09/Vue.js 学习笔记-条件和列表渲染/" class="article-date">
+  	<time datetime="2017-06-09T09:08:29.000Z" itemprop="datePublished">2017-06-09</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/09/Vue.js 学习笔记-条件和列表渲染/">Vue.js 学习笔记 - 条件和列表渲染</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="条件渲染"><a href="#条件渲染" class="headerlink" title="条件渲染"></a>条件渲染</h1><p>v-if 和 v-show<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-if</span>=<span class="string">"type === 'A'"</span>&gt;</span>A<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-else-if</span>=<span class="string">"type === 'B'"</span>&gt;</span>B<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-else-if</span>=<span class="string">"type === 'C'"</span>&gt;</span>C<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-else</span>&gt;</span>Not A/B/C<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="comment">&lt;!-- if的元素可复用，禁止复用就加一个唯一的key属性 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-show</span>=<span class="string">"ok"</span>&gt;</span>Hello!<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="comment">&lt;!-- v-show的元素相比if始终渲染，不显示时为display:none; --&gt;</span></div></pre></td></tr></table></figure></p>
+<h1 id="列表渲染"><a href="#列表渲染" class="headerlink" title="列表渲染"></a>列表渲染</h1><p>v-for<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">"example-1"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">v-for</span>=<span class="string">"item in items"</span>&gt;</span><span class="comment">&lt;!-- in 可以用 of 替换 --&gt;</span></div><div class="line">    &#123;&#123; item.message &#125;&#125;</div><div class="line">  <span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></div><div class="line"><span class="javascript">  <span class="keyword">var</span> example1 = <span class="keyword">new</span> Vue(&#123;</span></div><div class="line"><span class="javascript">    el: <span class="string">'#example-1'</span>,</span></div><div class="line"><span class="undefined">    data: &#123;</span></div><div class="line"><span class="undefined">      items: [</span></div><div class="line"><span class="javascript">        &#123;<span class="attr">message</span>: <span class="string">'Foo'</span> &#125;,</span></div><div class="line"><span class="javascript">        &#123;<span class="attr">message</span>: <span class="string">'Bar'</span> &#125;</span></div><div class="line"><span class="undefined">      ]</span></div><div class="line"><span class="undefined">    &#125;</span></div><div class="line"><span class="undefined">  &#125;)</span></div><div class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">对象迭代：</div><div class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">"repeat-object"</span> <span class="attr">class</span>=<span class="string">"demo"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">v-for</span>=<span class="string">"(value, key, index) in object"</span>&gt;</span></div><div class="line">    &#123;&#123; index &#125;&#125;. &#123;&#123; key &#125;&#125; : &#123;&#123; value &#125;&#125;</div><div class="line">  <span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></div><div class="line"><span class="javascript">  <span class="keyword">new</span> Vue(&#123;</span></div><div class="line"><span class="javascript">    el: <span class="string">'#repeat-object'</span>,</span></div><div class="line"><span class="undefined">    data: &#123;</span></div><div class="line"><span class="undefined">      object: &#123;</span></div><div class="line"><span class="javascript">        FirstName: <span class="string">'John'</span>,</span></div><div class="line"><span class="javascript">        LastName: <span class="string">'Doe'</span>,</span></div><div class="line"><span class="undefined">        Age: 30</span></div><div class="line"><span class="undefined">      &#125;</span></div><div class="line"><span class="undefined">    &#125;</span></div><div class="line"><span class="undefined">  &#125;)</span></div><div class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">整数迭代：</div><div class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">v-for</span>=<span class="string">"n in 10"</span>&gt;</span>&#123;&#123; n &#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line"><span class="comment">&lt;!-- 输出 1..10 --&gt;</span></div><div class="line">用 for 提供 key</div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-for</span>=<span class="string">"item in items"</span> <span class="attr">:key</span>=<span class="string">"item.id"</span>&gt;</span></div><div class="line">  <span class="comment">&lt;!-- 内容 --&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h1 id="优先级"><a href="#优先级" class="headerlink" title="优先级"></a>优先级</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">v-for &gt; v-if</div></pre></td></tr></table></figure>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue/">Vue</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-淘Surface小记" class="article article-type-post" itemscope itemprop="blogPost">
   

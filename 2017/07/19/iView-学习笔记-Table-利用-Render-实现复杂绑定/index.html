@@ -4,19 +4,19 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>Javascript 取时间戳 | YoungSx</title>
+  <title>iView 学习笔记 - Table 利用 Render 实现复杂绑定 | YoungSx</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Javascript 取时间戳一直以来只知道var now = new Date()取到的是时间格式的当前时间，但是却不知道怎么取时间戳。直到我在别人的一份代码中看到了以下代码，才知道还有这种操作，可以很方便的得到时间戳。12var now = +new Date()// + 的意思是整数型 也就是取毫秒 也就是时间戳 再后来，看到了这么一种取时间戳的方法，更加一目了然了。1var now = n">
-<meta name="keywords" content="javascript, timestamp">
+  <meta name="description" content="Table 利用 Render 实现复杂绑定背景做 Sina_ip 库的项目，用的 iView 组件库。在详细信息展示时，用到了 iView 的 Table 组件。我发现列绑定在数组中的数据时，一维数组的数据可以直接用 key 指向，可是遇到二维数组时，无法指向二维数组下的某个键。这时用到了 Vue 的 render 函数，直接构造一个  ，把数据放在其中就可以了。 实现iView Table 组">
+<meta name="keywords" content="Vue, iView, table, render">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Javascript 取时间戳">
-<meta property="og:url" content="http://yoursite.com/2017/08/21/Javascript-取时间戳/index.html">
+<meta property="og:title" content="iView 学习笔记 - Table 利用 Render 实现复杂绑定">
+<meta property="og:url" content="http://yoursite.com/2017/07/19/iView-学习笔记-Table-利用-Render-实现复杂绑定/index.html">
 <meta property="og:site_name" content="YoungSx">
-<meta property="og:description" content="Javascript 取时间戳一直以来只知道var now = new Date()取到的是时间格式的当前时间，但是却不知道怎么取时间戳。直到我在别人的一份代码中看到了以下代码，才知道还有这种操作，可以很方便的得到时间戳。12var now = +new Date()// + 的意思是整数型 也就是取毫秒 也就是时间戳 再后来，看到了这么一种取时间戳的方法，更加一目了然了。1var now = n">
-<meta property="og:updated_time" content="2017-09-15T16:38:21.724Z">
+<meta property="og:description" content="Table 利用 Render 实现复杂绑定背景做 Sina_ip 库的项目，用的 iView 组件库。在详细信息展示时，用到了 iView 的 Table 组件。我发现列绑定在数组中的数据时，一维数组的数据可以直接用 key 指向，可是遇到二维数组时，无法指向二维数组下的某个键。这时用到了 Vue 的 render 函数，直接构造一个  ，把数据放在其中就可以了。 实现iView Table 组">
+<meta property="og:updated_time" content="2017-09-15T17:07:33.920Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Javascript 取时间戳">
-<meta name="twitter:description" content="Javascript 取时间戳一直以来只知道var now = new Date()取到的是时间格式的当前时间，但是却不知道怎么取时间戳。直到我在别人的一份代码中看到了以下代码，才知道还有这种操作，可以很方便的得到时间戳。12var now = +new Date()// + 的意思是整数型 也就是取毫秒 也就是时间戳 再后来，看到了这么一种取时间戳的方法，更加一目了然了。1var now = n">
+<meta name="twitter:title" content="iView 学习笔记 - Table 利用 Render 实现复杂绑定">
+<meta name="twitter:description" content="Table 利用 Render 实现复杂绑定背景做 Sina_ip 库的项目，用的 iView 组件库。在详细信息展示时，用到了 iView 的 Table 组件。我发现列绑定在数组中的数据时，一维数组的数据可以直接用 key 指向，可是遇到二维数组时，无法指向二维数组下的某个键。这时用到了 Vue 的 render 函数，直接构造一个  ，把数据放在其中就可以了。 实现iView Table 组">
   
     <link rel="alternative" href="/atom.xml" title="YoungSx" type="application/atom+xml">
   
@@ -198,11 +198,11 @@
 	</div>
 </nav>
 
-      <div class="body-wrap"><article id="post-Javascript-取时间戳" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-iView-学习笔记-Table-利用-Render-实现复杂绑定" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/08/21/Javascript-取时间戳/" class="article-date">
-  	<time datetime="2017-08-21T03:02:08.000Z" itemprop="datePublished">2017-08-21</time>
+      <a href="/2017/07/19/iView-学习笔记-Table-利用-Render-实现复杂绑定/" class="article-date">
+  	<time datetime="2017-07-19T08:19:34.000Z" itemprop="datePublished">2017-07-19</time>
 </a>
     </div>
   
@@ -215,7 +215,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Javascript 取时间戳
+      iView 学习笔记 - Table 利用 Render 实现复杂绑定
     </h1>
   
 
@@ -224,7 +224,7 @@
       <div class="article-info article-info-post">
         
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript-timestamp/">javascript, timestamp</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue-iView-table-render/">Vue, iView, table, render</a></li></ul>
 	</div>
 
         
@@ -235,9 +235,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Javascript-取时间戳"><a href="#Javascript-取时间戳" class="headerlink" title="Javascript 取时间戳"></a>Javascript 取时间戳</h1><p>一直以来只知道<strong>var now = new Date()</strong>取到的是时间格式的当前时间，但是却不知道怎么取时间戳。<br>直到我在别人的一份代码中看到了以下代码，才知道还有这种操作，可以很方便的得到时间戳。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> now = +<span class="keyword">new</span> <span class="built_in">Date</span>()</div><div class="line"><span class="comment">// + 的意思是整数型 也就是取毫秒 也就是时间戳</span></div></pre></td></tr></table></figure></p>
-<p>再后来，看到了这么一种取时间戳的方法，更加一目了然了。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> now = <span class="keyword">new</span> <span class="built_in">Date</span>().getTime()</div></pre></td></tr></table></figure></p>
-
+        <h1 id="Table-利用-Render-实现复杂绑定"><a href="#Table-利用-Render-实现复杂绑定" class="headerlink" title="Table 利用 Render 实现复杂绑定"></a>Table 利用 Render 实现复杂绑定</h1><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>做 Sina_ip 库的项目，用的 iView 组件库。<br>在详细信息展示时，用到了 iView 的 Table 组件。我发现列绑定在数组中的数据时，一维数组的数据可以直接用 key 指向，可是遇到二维数组时，无法指向二维数组下的某个键。<br>这时用到了 Vue 的 render 函数，直接构造一个 <span> ，把数据放在其中就可以了。</span></p>
+<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><p>iView Table 组件利用 Render 实现 Columns 绑定二维数组键<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">iView Table 组件利用 Render 实现 Columns 绑定二维数组键</div></pre></td></tr></table></figure></p>
+<p><template><br>  <div><br>    <input><br>    <button @click="toQuery">Query</button><br>    <table border="" :columns="columns" :data="ipResultList"></table><br>  </div><br></template></p>
+<p><script><br>export default {<br>  name: ‘Query’,<br>  data () {<br>    return {<br>      ipResultList: [],<br>      columns: [<br>        {<br>          title: ‘ip’,<br>          key: ‘ip’<br>        },<br>        {<br>          title: ‘iplong’,<br>          key: ‘iplong’<br>        },<br>        {<br>          title: ‘start_ip’,<br>          key: ‘ipdb_info’,<br>          render: (createElement, params) =&gt; {<br>            return createElement(<br>              ‘span’, params.row.ipdb_info.start_ip<br>            )<br>          }<br>        }<br>      ]<br>    }<br>  }<br>}</p>
+<pre><code>
+</code></pre></script></p>
       
     </div>
     
@@ -246,9 +249,18 @@
     
 <nav id="article-nav">
   
+    <a href="/2017/08/21/Javascript-取时间戳/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Javascript 取时间戳
+        
+      </div>
+    </a>
   
-    <a href="/2017/07/19/iView-学习笔记-Table-利用-Render-实现复杂绑定/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">iView 学习笔记 - Table 利用 Render 实现复杂绑定</div>
+  
+    <a href="/2017/07/12/Vue-js-学习笔记-虚拟列表-Virtual-Scroll-List-心得/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Vue.js 学习笔记 - 虚拟列表(Virtual-Scroll-List)心得</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -283,7 +295,7 @@
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="Javascript-取时间戳" data-title="Javascript 取时间戳" data-url="http://yoursite.com/2017/08/21/Javascript-取时间戳/"></div>
+	<div class="ds-thread" data-thread-key="iView-学习笔记-Table-利用-Render-实现复杂绑定" data-title="iView 学习笔记 - Table 利用 Render 实现复杂绑定" data-url="http://yoursite.com/2017/07/19/iView-学习笔记-Table-利用-Render-实现复杂绑定/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
