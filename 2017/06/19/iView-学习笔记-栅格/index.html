@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>iView 学习笔记 - 栅格 | YoungSx</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="引入在 main.js 中加入123import iView from &amp;apos;iview&amp;apos;;import &amp;apos;iview/dist/styles/iview.css&amp;apos;;    // 使用 CSSVue.use(iView); 事件绑定@如1&amp;lt;Input v-model=&amp;quot;value&amp;quot; @on-change=&amp;quot;tishi&amp;quot">
+<meta name="keywords" content="Vue, iView, grid">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iView 学习笔记 - 栅格">
+<meta property="og:url" content="http://yoursite.com/2017/06/19/iView-学习笔记-栅格/index.html">
+<meta property="og:site_name" content="YoungSx">
+<meta property="og:description" content="引入在 main.js 中加入123import iView from &amp;apos;iview&amp;apos;;import &amp;apos;iview/dist/styles/iview.css&amp;apos;;    // 使用 CSSVue.use(iView); 事件绑定@如1&amp;lt;Input v-model=&amp;quot;value&amp;quot; @on-change=&amp;quot;tishi&amp;quot">
+<meta property="og:updated_time" content="2017-09-15T16:22:51.982Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iView 学习笔记 - 栅格">
+<meta name="twitter:description" content="引入在 main.js 中加入123import iView from &amp;apos;iview&amp;apos;;import &amp;apos;iview/dist/styles/iview.css&amp;apos;;    // 使用 CSSVue.use(iView); 事件绑定@如1&amp;lt;Input v-model=&amp;quot;value&amp;quot; @on-change=&amp;quot;tishi&amp;quot">
+  
+    <link rel="alternative" href="/atom.xml" title="YoungSx" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="//favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="0" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">YoungSx</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>Menu</li>
+						<li>Tags</li>
+						
+						<li>Links</li>
+						
+						
+						<li>Über</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="#" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+					        
+								<a class="rss" target="_blank" href="#" title="rss">rss</a>
+					        
+								<a class="zhihu" target="_blank" href="#" title="zhihu">zhihu</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/Vue-array/" style="font-size: 10px;">Vue, array</a> <a href="/tags/Vue-component/" style="font-size: 10px;">Vue, component</a> <a href="/tags/Vue-event/" style="font-size: 10px;">Vue, event</a> <a href="/tags/Vue-form/" style="font-size: 10px;">Vue, form</a> <a href="/tags/Vue-iView-grid/" style="font-size: 10px;">Vue, iView, grid</a> <a href="/tags/Vue-iView-layout/" style="font-size: 10px;">Vue, iView, layout</a> <a href="/tags/Vue-router/" style="font-size: 10px;">Vue, router</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">奥巴马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">卡卡的美丽传说</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">本泽马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">吉格斯的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">习大大大不同</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">托蒂的博客</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">我是谁，我从哪里来，我到哪里去？我就是我，是颜色不一样的吃货…</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">YoungSx</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img lazy-src="0" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">YoungSx</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="#" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="#" title="rss">rss</a>
+			        
+						<a class="zhihu" target="_blank" href="#" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-iView-学习笔记-栅格" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/06/19/iView-学习笔记-栅格/" class="article-date">
+  	<time datetime="2017-06-19T07:12:50.000Z" itemprop="datePublished">2017-06-19</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      iView 学习笔记 - 栅格
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue-iView-grid/">Vue, iView, grid</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h1><p>在 main.js 中加入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">import iView from &apos;iview&apos;;</div><div class="line">import &apos;iview/dist/styles/iview.css&apos;;    // 使用 CSS</div><div class="line">Vue.use(iView);</div></pre></td></tr></table></figure></p>
+<h1 id="事件绑定"><a href="#事件绑定" class="headerlink" title="事件绑定"></a>事件绑定</h1><p>@<br>如<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;Input v-model=&quot;value&quot; @on-change=&quot;tishi&quot; placeholder=&quot;请输入...&quot; style=&quot;width: 300px&quot;&gt;&lt;/Input&gt;</div></pre></td></tr></table></figure></p>
+<h1 id="Grid栅栏"><a href="#Grid栅栏" class="headerlink" title="Grid栅栏"></a>Grid栅栏</h1><h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;Row&gt;</div><div class="line">  &lt;Col span=&quot;12&quot;&gt;col-12&lt;/Col&gt;</div><div class="line">  &lt;Col span=&quot;12&quot;&gt;col-12&lt;/Col&gt;</div><div class="line">&lt;/Row&gt;</div></pre></td></tr></table></figure>
+<h2 id="区块间隔"><a href="#区块间隔" class="headerlink" title="区块间隔"></a>区块间隔</h2><p>给 row 添加 gutter 属性 (16+8n)px<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;Row :gutter=&quot;16&quot;&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="栅格顺序"><a href="#栅格顺序" class="headerlink" title="栅格顺序"></a>栅格顺序</h2><p>Flex<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;Row type=&quot;flex&quot;&gt;</div><div class="line">  &lt;Col span=&quot;6&quot; order=&quot;4&quot;&gt;1 | order-4&lt;/Col&gt;</div><div class="line">  &lt;Col span=&quot;6&quot; order=&quot;3&quot;&gt;2 | order-3&lt;/Col&gt;</div><div class="line">  &lt;Col span=&quot;6&quot; order=&quot;2&quot;&gt;3 | order-2&lt;/Col&gt;</div><div class="line">  &lt;Col span=&quot;6&quot; order=&quot;1&quot;&gt;4 | order-1&lt;/Col&gt;</div><div class="line">&lt;/Row&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="栅格排序"><a href="#栅格排序" class="headerlink" title="栅格排序"></a>栅格排序</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">push=&quot;6&quot; // 右推6</div><div class="line">pull=&quot;18&quot; // 左拉18</div></pre></td></tr></table></figure>
+<h2 id="左右偏移"><a href="#左右偏移" class="headerlink" title="左右偏移"></a>左右偏移</h2><p>offset=”8”</p>
+<h2 id="Flex布局"><a href="#Flex布局" class="headerlink" title="Flex布局"></a>Flex布局</h2><p>justify可以为</p>
+<ol>
+<li>start 左</li>
+<li>end 右</li>
+<li>center 居中</li>
+<li>space-between 子元素等宽排列</li>
+<li>space-around 子元素分散排列<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;Row type=&quot;flex&quot; justify=&quot;start&quot; class=&quot;code-row-bg&quot;&gt;</div><div class="line">  &lt;Col span=&quot;4&quot;&gt;col-4&lt;/Col&gt;</div><div class="line">  &lt;Col span=&quot;4&quot;&gt;col-4&lt;/Col&gt;</div><div class="line">  &lt;Col span=&quot;4&quot;&gt;col-4&lt;/Col&gt;</div><div class="line">  &lt;Col span=&quot;4&quot;&gt;col-4&lt;/Col&gt;</div><div class="line">&lt;/Row&gt;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="Flex对齐"><a href="#Flex对齐" class="headerlink" title="Flex对齐"></a>Flex对齐</h2><p>align:</p>
+<pre><code>1. top
+2. bottom
+3. middle
+</code></pre><h2 id="响应式布局"><a href="#响应式布局" class="headerlink" title="响应式布局"></a>响应式布局</h2><p>xs sm md lg 四个响应尺寸<br>span pull push offset order 属性可以通过内嵌到 xs sm md lg 属性中来使用</p>
+<h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><h3 id="Row-props"><a href="#Row-props" class="headerlink" title="Row props"></a>Row props</h3><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>说明</th>
+<th>类型</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gutter</td>
+<td>栅格间距，单位 px，左右平分</td>
+<td>Number</td>
+<td>0</td>
+</tr>
+<tr>
+<td>type</td>
+<td>布局模式，可选值为<code>flex</code>或不选，在现代浏览器下有效</td>
+<td>String</td>
+<td>-</td>
+</tr>
+<tr>
+<td>align</td>
+<td>flex 布局下的垂直对齐方式，可选值为<code>top</code>、<code>middle</code>、<code>bottom</code></td>
+<td>String</td>
+<td>-</td>
+</tr>
+<tr>
+<td>justify</td>
+<td>flex 布局下的水平排列方式，可选值为<code>start</code>、<code>end</code>、<code>center</code>、<code>space-around</code>、<code>space-between</code></td>
+<td>String</td>
+<td>-</td>
+</tr>
+<tr>
+<td>class-name</td>
+<td>自定义的class名称</td>
+<td>String</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Col-props"><a href="#Col-props" class="headerlink" title="Col props"></a>Col props</h3><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>说明</th>
+<th>类型</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>span</td>
+<td>栅格的占位格数，可选值为0~24的整数，为 0 时，相当于<code>display:none</code></td>
+<td>Number \</td>
+<td>String</td>
+<td>-</td>
+</tr>
+<tr>
+<td>order</td>
+<td>栅格的顺序，在<code>flex</code>布局模式下有效</td>
+<td>Number \</td>
+<td>String</td>
+<td>-</td>
+</tr>
+<tr>
+<td>offset</td>
+<td>栅格左侧的间隔格数，间隔内不可以有栅格</td>
+<td>Number \</td>
+<td>String</td>
+<td>-</td>
+</tr>
+<tr>
+<td>push</td>
+<td>栅格向右移动格数</td>
+<td>Number \</td>
+<td>String</td>
+<td>-</td>
+</tr>
+<tr>
+<td>pull</td>
+<td>栅格向左移动格数</td>
+<td>Number \</td>
+<td>String</td>
+<td>-</td>
+</tr>
+<tr>
+<td>class-name</td>
+<td>自定义的class名称</td>
+<td>String</td>
+<td>-</td>
+</tr>
+<tr>
+<td>xs</td>
+<td><code>&lt;768px</code> 响应式栅格，可为栅格数或一个包含其他属性的对象</td>
+<td>Number \</td>
+<td>Object</td>
+<td>-</td>
+</tr>
+<tr>
+<td>sm</td>
+<td><code>≥768px</code> 响应式栅格，可为栅格数或一个包含其他属性的对象</td>
+<td>Number \</td>
+<td>Object</td>
+<td>-</td>
+</tr>
+<tr>
+<td>md</td>
+<td><code>≥992px</code> 响应式栅格，可为栅格数或一个包含其他属性的对象</td>
+<td>Number \</td>
+<td>Object</td>
+<td>-</td>
+</tr>
+<tr>
+<td>lg</td>
+<td><code>≥1200px</code> 响应式栅格，可为栅格数或一个包含其他属性的对象</td>
+<td>Number \</td>
+<td>Object</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/06/19/iView-学习笔记-布局/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          iView 学习笔记 - 布局
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/06/15/Vue-js-学习笔记-路由-Router/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Vue.js 学习笔记 - 路由(Router)</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="iView-学习笔记-栅格" data-title="iView 学习笔记 - 栅格" data-url="http://yoursite.com/2017/06/19/iView-学习笔记-栅格/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2017 YoungSx
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: /
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

@@ -4,19 +4,19 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>Vue.js 学习笔记 - 数组操作 | YoungSx</title>
+  <title>iView 学习笔记 - 布局 | YoungSx</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="数组操作变异方法  push()  pop()  shift()  unshift()  splice()  sort()  reverse() 重塑数组filter(), concat(), slice() 其他操作利用索引修改某一项数据：1Vue.set(example1.items, indexOfItem, newValue) 更改数组长度1example1.items.splice(in">
-<meta name="keywords" content="Vue, array">
+  <meta name="description" content="伸缩左栏绑定事件12@click=&amp;quot;toggleclick&amp;quot;// toggleclick中把左栏和右栏的span修改">
+<meta name="keywords" content="Vue, iView, layout">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Vue.js 学习笔记 - 数组操作">
-<meta property="og:url" content="http://yoursite.com/2017/06/09/Vue-js-学习笔记-数组操作/index.html">
+<meta property="og:title" content="iView 学习笔记 - 布局">
+<meta property="og:url" content="http://yoursite.com/2017/06/19/iView-学习笔记-布局/index.html">
 <meta property="og:site_name" content="YoungSx">
-<meta property="og:description" content="数组操作变异方法  push()  pop()  shift()  unshift()  splice()  sort()  reverse() 重塑数组filter(), concat(), slice() 其他操作利用索引修改某一项数据：1Vue.set(example1.items, indexOfItem, newValue) 更改数组长度1example1.items.splice(in">
-<meta property="og:updated_time" content="2017-09-15T15:56:20.290Z">
+<meta property="og:description" content="伸缩左栏绑定事件12@click=&amp;quot;toggleclick&amp;quot;// toggleclick中把左栏和右栏的span修改">
+<meta property="og:updated_time" content="2017-09-15T16:24:52.710Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Vue.js 学习笔记 - 数组操作">
-<meta name="twitter:description" content="数组操作变异方法  push()  pop()  shift()  unshift()  splice()  sort()  reverse() 重塑数组filter(), concat(), slice() 其他操作利用索引修改某一项数据：1Vue.set(example1.items, indexOfItem, newValue) 更改数组长度1example1.items.splice(in">
+<meta name="twitter:title" content="iView 学习笔记 - 布局">
+<meta name="twitter:description" content="伸缩左栏绑定事件12@click=&amp;quot;toggleclick&amp;quot;// toggleclick中把左栏和右栏的span修改">
   
     <link rel="alternative" href="/atom.xml" title="YoungSx" type="application/atom+xml">
   
@@ -198,11 +198,11 @@
 	</div>
 </nav>
 
-      <div class="body-wrap"><article id="post-Vue-js-学习笔记-数组操作" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-iView-学习笔记-布局" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/06/09/Vue-js-学习笔记-数组操作/" class="article-date">
-  	<time datetime="2017-06-09T09:09:29.000Z" itemprop="datePublished">2017-06-09</time>
+      <a href="/2017/06/19/iView-学习笔记-布局/" class="article-date">
+  	<time datetime="2017-06-19T10:10:14.000Z" itemprop="datePublished">2017-06-19</time>
 </a>
     </div>
   
@@ -215,7 +215,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Vue.js 学习笔记 - 数组操作
+      iView 学习笔记 - 布局
     </h1>
   
 
@@ -224,7 +224,7 @@
       <div class="article-info article-info-post">
         
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue-array/">Vue, array</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue-iView-layout/">Vue, iView, layout</a></li></ul>
 	</div>
 
         
@@ -235,10 +235,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="数组操作"><a href="#数组操作" class="headerlink" title="数组操作"></a>数组操作</h1><h2 id="变异方法"><a href="#变异方法" class="headerlink" title="变异方法"></a>变异方法</h2><p>  push()<br>  pop()<br>  shift()<br>  unshift()<br>  splice()<br>  sort()<br>  reverse()</p>
-<h2 id="重塑数组"><a href="#重塑数组" class="headerlink" title="重塑数组"></a>重塑数组</h2><pre><code>filter(), concat(), slice()
-</code></pre><h2 id="其他操作"><a href="#其他操作" class="headerlink" title="其他操作"></a>其他操作</h2><h3 id="利用索引修改某一项数据："><a href="#利用索引修改某一项数据：" class="headerlink" title="利用索引修改某一项数据："></a>利用索引修改某一项数据：</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Vue.set(example1.items, indexOfItem, newValue)</div></pre></td></tr></table></figure>
-<h3 id="更改数组长度"><a href="#更改数组长度" class="headerlink" title="更改数组长度"></a>更改数组长度</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">example1.items.splice(indexOfItem, <span class="number">1</span>, newValue)</div></pre></td></tr></table></figure>
+        <p>伸缩左栏绑定事件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">@click=&quot;toggleclick&quot;</div><div class="line">// toggleclick中把左栏和右栏的span修改</div></pre></td></tr></table></figure></p>
+
       
     </div>
     
@@ -247,18 +245,9 @@
     
 <nav id="article-nav">
   
-    <a href="/2017/06/11/Vue-js-学习笔记-组件-Components/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          Vue.js 学习笔记 - 组件(Components)
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/06/09/Vue-js-学习笔记-表单控件绑定/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Vue.js 学习笔记 - 表单控件绑定</div>
+    <a href="/2017/06/19/iView-学习笔记-栅格/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">iView 学习笔记 - 栅格</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -293,7 +282,7 @@
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="Vue-js-学习笔记-数组操作" data-title="Vue.js 学习笔记 - 数组操作" data-url="http://yoursite.com/2017/06/09/Vue-js-学习笔记-数组操作/"></div>
+	<div class="ds-thread" data-thread-key="iView-学习笔记-布局" data-title="iView 学习笔记 - 布局" data-url="http://yoursite.com/2017/06/19/iView-学习笔记-布局/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">

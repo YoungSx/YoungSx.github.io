@@ -111,7 +111,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/Vue-array/" style="font-size: 10px;">Vue, array</a> <a href="/tags/Vue-component/" style="font-size: 10px;">Vue, component</a> <a href="/tags/Vue-event/" style="font-size: 10px;">Vue, event</a> <a href="/tags/Vue-form/" style="font-size: 10px;">Vue, form</a> <a href="/tags/Vue-router/" style="font-size: 10px;">Vue, router</a>
+						<a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/Vue-array/" style="font-size: 10px;">Vue, array</a> <a href="/tags/Vue-component/" style="font-size: 10px;">Vue, component</a> <a href="/tags/Vue-event/" style="font-size: 10px;">Vue, event</a> <a href="/tags/Vue-form/" style="font-size: 10px;">Vue, form</a> <a href="/tags/Vue-iView-grid/" style="font-size: 10px;">Vue, iView, grid</a> <a href="/tags/Vue-iView-layout/" style="font-size: 10px;">Vue, iView, layout</a> <a href="/tags/Vue-router/" style="font-size: 10px;">Vue, router</a>
 					</div>
 				</section>
 				
@@ -194,6 +194,263 @@
 </nav>
 
       <div class="body-wrap">
+  
+    <article id="post-iView-学习笔记-布局" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/06/19/iView-学习笔记-布局/" class="article-date">
+  	<time datetime="2017-06-19T10:10:14.000Z" itemprop="datePublished">2017-06-19</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/19/iView-学习笔记-布局/">iView 学习笔记 - 布局</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>伸缩左栏绑定事件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">@click=&quot;toggleclick&quot;</div><div class="line">// toggleclick中把左栏和右栏的span修改</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue-iView-layout/">Vue, iView, layout</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-iView-学习笔记-栅格" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/06/19/iView-学习笔记-栅格/" class="article-date">
+  	<time datetime="2017-06-19T07:12:50.000Z" itemprop="datePublished">2017-06-19</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/19/iView-学习笔记-栅格/">iView 学习笔记 - 栅格</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h1><p>在 main.js 中加入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">import iView from &apos;iview&apos;;</div><div class="line">import &apos;iview/dist/styles/iview.css&apos;;    // 使用 CSS</div><div class="line">Vue.use(iView);</div></pre></td></tr></table></figure></p>
+<h1 id="事件绑定"><a href="#事件绑定" class="headerlink" title="事件绑定"></a>事件绑定</h1><p>@<br>如<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;Input v-model=&quot;value&quot; @on-change=&quot;tishi&quot; placeholder=&quot;请输入...&quot; style=&quot;width: 300px&quot;&gt;&lt;/Input&gt;</div></pre></td></tr></table></figure></p>
+<h1 id="Grid栅栏"><a href="#Grid栅栏" class="headerlink" title="Grid栅栏"></a>Grid栅栏</h1><h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;Row&gt;</div><div class="line">  &lt;Col span=&quot;12&quot;&gt;col-12&lt;/Col&gt;</div><div class="line">  &lt;Col span=&quot;12&quot;&gt;col-12&lt;/Col&gt;</div><div class="line">&lt;/Row&gt;</div></pre></td></tr></table></figure>
+<h2 id="区块间隔"><a href="#区块间隔" class="headerlink" title="区块间隔"></a>区块间隔</h2><p>给 row 添加 gutter 属性 (16+8n)px<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;Row :gutter=&quot;16&quot;&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="栅格顺序"><a href="#栅格顺序" class="headerlink" title="栅格顺序"></a>栅格顺序</h2><p>Flex<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;Row type=&quot;flex&quot;&gt;</div><div class="line">  &lt;Col span=&quot;6&quot; order=&quot;4&quot;&gt;1 | order-4&lt;/Col&gt;</div><div class="line">  &lt;Col span=&quot;6&quot; order=&quot;3&quot;&gt;2 | order-3&lt;/Col&gt;</div><div class="line">  &lt;Col span=&quot;6&quot; order=&quot;2&quot;&gt;3 | order-2&lt;/Col&gt;</div><div class="line">  &lt;Col span=&quot;6&quot; order=&quot;1&quot;&gt;4 | order-1&lt;/Col&gt;</div><div class="line">&lt;/Row&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="栅格排序"><a href="#栅格排序" class="headerlink" title="栅格排序"></a>栅格排序</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">push=&quot;6&quot; // 右推6</div><div class="line">pull=&quot;18&quot; // 左拉18</div></pre></td></tr></table></figure>
+<h2 id="左右偏移"><a href="#左右偏移" class="headerlink" title="左右偏移"></a>左右偏移</h2><p>offset=”8”</p>
+<h2 id="Flex布局"><a href="#Flex布局" class="headerlink" title="Flex布局"></a>Flex布局</h2><p>justify可以为</p>
+<ol>
+<li>start 左</li>
+<li>end 右</li>
+<li>center 居中</li>
+<li>space-between 子元素等宽排列</li>
+<li>space-around 子元素分散排列<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;Row type=&quot;flex&quot; justify=&quot;start&quot; class=&quot;code-row-bg&quot;&gt;</div><div class="line">  &lt;Col span=&quot;4&quot;&gt;col-4&lt;/Col&gt;</div><div class="line">  &lt;Col span=&quot;4&quot;&gt;col-4&lt;/Col&gt;</div><div class="line">  &lt;Col span=&quot;4&quot;&gt;col-4&lt;/Col&gt;</div><div class="line">  &lt;Col span=&quot;4&quot;&gt;col-4&lt;/Col&gt;</div><div class="line">&lt;/Row&gt;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="Flex对齐"><a href="#Flex对齐" class="headerlink" title="Flex对齐"></a>Flex对齐</h2><p>align:</p>
+<pre><code>1. top
+2. bottom
+3. middle
+</code></pre><h2 id="响应式布局"><a href="#响应式布局" class="headerlink" title="响应式布局"></a>响应式布局</h2><p>xs sm md lg 四个响应尺寸<br>span pull push offset order 属性可以通过内嵌到 xs sm md lg 属性中来使用</p>
+<h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><h3 id="Row-props"><a href="#Row-props" class="headerlink" title="Row props"></a>Row props</h3><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>说明</th>
+<th>类型</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gutter</td>
+<td>栅格间距，单位 px，左右平分</td>
+<td>Number</td>
+<td>0</td>
+</tr>
+<tr>
+<td>type</td>
+<td>布局模式，可选值为<code>flex</code>或不选，在现代浏览器下有效</td>
+<td>String</td>
+<td>-</td>
+</tr>
+<tr>
+<td>align</td>
+<td>flex 布局下的垂直对齐方式，可选值为<code>top</code>、<code>middle</code>、<code>bottom</code></td>
+<td>String</td>
+<td>-</td>
+</tr>
+<tr>
+<td>justify</td>
+<td>flex 布局下的水平排列方式，可选值为<code>start</code>、<code>end</code>、<code>center</code>、<code>space-around</code>、<code>space-between</code></td>
+<td>String</td>
+<td>-</td>
+</tr>
+<tr>
+<td>class-name</td>
+<td>自定义的class名称</td>
+<td>String</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Col-props"><a href="#Col-props" class="headerlink" title="Col props"></a>Col props</h3><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>说明</th>
+<th>类型</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>span</td>
+<td>栅格的占位格数，可选值为0~24的整数，为 0 时，相当于<code>display:none</code></td>
+<td>Number \</td>
+<td>String</td>
+<td>-</td>
+</tr>
+<tr>
+<td>order</td>
+<td>栅格的顺序，在<code>flex</code>布局模式下有效</td>
+<td>Number \</td>
+<td>String</td>
+<td>-</td>
+</tr>
+<tr>
+<td>offset</td>
+<td>栅格左侧的间隔格数，间隔内不可以有栅格</td>
+<td>Number \</td>
+<td>String</td>
+<td>-</td>
+</tr>
+<tr>
+<td>push</td>
+<td>栅格向右移动格数</td>
+<td>Number \</td>
+<td>String</td>
+<td>-</td>
+</tr>
+<tr>
+<td>pull</td>
+<td>栅格向左移动格数</td>
+<td>Number \</td>
+<td>String</td>
+<td>-</td>
+</tr>
+<tr>
+<td>class-name</td>
+<td>自定义的class名称</td>
+<td>String</td>
+<td>-</td>
+</tr>
+<tr>
+<td>xs</td>
+<td><code>&lt;768px</code> 响应式栅格，可为栅格数或一个包含其他属性的对象</td>
+<td>Number \</td>
+<td>Object</td>
+<td>-</td>
+</tr>
+<tr>
+<td>sm</td>
+<td><code>≥768px</code> 响应式栅格，可为栅格数或一个包含其他属性的对象</td>
+<td>Number \</td>
+<td>Object</td>
+<td>-</td>
+</tr>
+<tr>
+<td>md</td>
+<td><code>≥992px</code> 响应式栅格，可为栅格数或一个包含其他属性的对象</td>
+<td>Number \</td>
+<td>Object</td>
+<td>-</td>
+</tr>
+<tr>
+<td>lg</td>
+<td><code>≥1200px</code> 响应式栅格，可为栅格数或一个包含其他属性的对象</td>
+<td>Number \</td>
+<td>Object</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue-iView-grid/">Vue, iView, grid</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-Vue-js-学习笔记-路由-Router" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -732,156 +989,6 @@
 <p>又是很久过去，在人群的注视中，一对夫妇从远处走来，回到这个西西里小镇，那是玛莱娜和她独臂的丈夫。经历了那么多事情，玛莱娜除了眼神有些闪躲，身上的气质并没有被磨去多少。只是路人的眼光由渴望和嫉妒，变成了惊讶。当她走进市场时，没有人再会刁难她。因为这些年过去，西西里的女人们心里也对她有了些许愧疚。她再次遇到了当初带头虐待她的两个女人，那两个女人的眼神里，却并没有什么愧疚，就像什么也没发生过一样，和一个许久不见的女人说一声早安。故事的最后，男主回头望着玛莱娜，在自行车上忘相反的地方骑，越骑越远。是想把这一段记忆，永远地埋在心里，不去打扰。</p>
 <p>整部电影看下来，震撼颇深，甚至都让我忘记了这是一部情色电影。一个优秀的女人，唯一的错误，就是太过美丽，这美丽让她失去了生活失去了一切。网友解读这是一个深层次的谍战片，这一点我并没有看出。我只是感觉到，这是一部反映人性的电影，人性的丑恶在这部电影中被扒开，放在你的眼前，让你不忍心却又不得不去接受人性。</p>
 <p>将近十年前的一段记忆，今天也算画上了一个句号。</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-我与Python爬虫的初次邂逅" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/08/21/我与Python爬虫的初次邂逅/" class="article-date">
-  	<time datetime="2016-08-20T18:27:20.000Z" itemprop="datePublished">2016-08-21</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/08/21/我与Python爬虫的初次邂逅/">我与Python爬虫的初次邂逅</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>自己一直喊着要学爬虫，但是总是因为各种各样的事情耽误了。最近感觉不能再颓废了，于是乎重新拾起来这个小小的目标，开始学习。</p>
-<h2 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h2><p>先是在知乎上<a href="https://www.zhihu.com/question/20899988" target="_blank" rel="external">如何入门 Python 爬虫？</a>这个问题下看了看爬虫的基本概念和原理，发现原理和我之前的理解并没有什么出入，只是集群那一块是我之前没有关注到的。</p>
-<p>然后，我找到了一个技术博客，看着那位程序媛写的一系列教程，基于Python3开始了我爬取单页面图片的尝试。</p>
-<p>HTTP库用的是Urllib，HTML的解析工具，选用的是BeautifulSoup这个库。</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</div><div class="line"><span class="keyword">import</span> urllib.request</div><div class="line"><span class="comment">#用做解析</span></div><div class="line"><span class="keyword">import</span> urllib.parse</div><div class="line"><span class="comment">#文件读写</span></div><div class="line"><span class="keyword">import</span> os</div><div class="line"></div><div class="line"><span class="comment">#返回请求到的内容</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">url_open</span><span class="params">(url)</span>:</span></div><div class="line">    req = urllib.request.Request(url)</div><div class="line"></div><div class="line">    response = urllib.request.urlopen(req)</div><div class="line">    html = response.read()</div><div class="line">    <span class="keyword">return</span> html</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_links</span><span class="params">(url)</span>:</span></div><div class="line">    <span class="comment"># 获取HTML源码</span></div><div class="line">    html = url_open(url)</div><div class="line">    <span class="comment">#解析HTML</span></div><div class="line">    soup = BeautifulSoup(html, <span class="string">'html.parser'</span>)</div><div class="line">    <span class="comment">#定位父div</span></div><div class="line">    divs = soup(<span class="string">'div'</span>, &#123;<span class="string">'class'</span>: <span class="string">'pic'</span>&#125;)</div><div class="line">    <span class="comment">#存储img的列表</span></div><div class="line">    img_addrs = []</div><div class="line"></div><div class="line">    <span class="comment">#拿到每一个div中的img及其的src</span></div><div class="line">    <span class="keyword">for</span> div <span class="keyword">in</span> divs:</div><div class="line">        img_urls = div.find(<span class="string">'img'</span>)[<span class="string">'src'</span>]</div><div class="line">        img_addrs.append(img_urls)</div><div class="line">    <span class="keyword">return</span> img_addrs</div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">save_imgs</span><span class="params">(folder,img_addrs)</span>:</span></div><div class="line">    <span class="keyword">for</span> each <span class="keyword">in</span> img_addrs:</div><div class="line">        filename = each.split(<span class="string">'/'</span>)[<span class="number">-1</span>]</div><div class="line">        <span class="keyword">with</span> open(filename, <span class="string">'wb'</span>) <span class="keyword">as</span> f:</div><div class="line">            <span class="comment">#读取网络图片</span></div><div class="line">            img = url_open(each)</div><div class="line">            f.write(img)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">download_pic</span><span class="params">(folder = <span class="string">'pic'</span>)</span>:</span></div><div class="line">    url = <span class="string">'http://jcss.shangxin.link/spiderTest.html'</span></div><div class="line">    img_addrs = get_links(url)</div><div class="line"></div><div class="line">    os.mkdir(folder)</div><div class="line">    os.chdir(folder)</div><div class="line"></div><div class="line">    save_imgs(<span class="string">'pic'</span>, img_addrs)</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    download_pic()</div></pre></td></tr></table></figure>
-<p>这段代码的功能只是在一个单页面上爬取一些照片，由于初学，自己挂了个结构简单的测试页面以供爬虫爬取测试…</p>
-<h2 id="踩的坑"><a href="#踩的坑" class="headerlink" title="踩的坑"></a>踩的坑</h2><ul>
-<li>在这里，我特别注意到了网上很多代码中用的是Urllib2这个库，到了Python3中无法运行，这是因为Urllib和Urllib2出现在python2中，在3中，统一整合Urllib ，而没有了Urllib2。</li>
-<li>urllib.request.urlopen()的参数中输入的是一个页面地址，有一次忘记加上协议（<a href="http://），导致报错（这不算坑，逃" target="_blank" rel="external">http://），导致报错（这不算坑，逃</a>…</li>
-</ul>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-SS-Panel-SS-Manyuser安装部署" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/07/31/SS-Panel-SS-Manyuser安装部署/" class="article-date">
-  	<time datetime="2016-07-31T15:49:23.000Z" itemprop="datePublished">2016-07-31</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/07/31/SS-Panel-SS-Manyuser安装部署/">SS-Panel+SS-Manyuser安装部署</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="安装相关程序环境"><a href="#安装相关程序环境" class="headerlink" title="安装相关程序环境"></a>安装相关程序环境</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install php5</div><div class="line">sudo apt-get install curl</div><div class="line">sudo apt-get install php5-curl</div><div class="line">sudo apt-get install apache2</div><div class="line">sudo apt-get install mysql-server</div><div class="line">sudo apt-get install mysql-client</div><div class="line">sudo apt-get install libmysqlclient-dev</div><div class="line">sudo apt-get install python</div><div class="line">sudo apt-get install python-pip git python-m2crypto</div><div class="line">pip install cymysql</div></pre></td></tr></table></figure>
-<h3 id="Clone位于GitHub上的manyuser项目的Repo"><a href="#Clone位于GitHub上的manyuser项目的Repo" class="headerlink" title="Clone位于GitHub上的manyuser项目的Repo"></a>Clone位于GitHub上的manyuser项目的Repo</h3><p>cd /home/shangxin<br>mkdir www<br>git clone <a href="https://github.com/YoungSx/shadowsocks-manyuser.git" target="_blank" rel="external">https://github.com/YoungSx/shadowsocks-manyuser.git</a> backen<br>在<a href="https://github.com/orvice/ss-panel/releases下载Latest" target="_blank" rel="external">https://github.com/orvice/ss-panel/releases下载Latest</a> release的包，解压到www</p>
-<h3 id="数据库操作"><a href="#数据库操作" class="headerlink" title="数据库操作"></a>数据库操作</h3><p>登陆mysql<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysql -u root -p</div></pre></td></tr></table></figure></p>
-<p>执行以下两条SQL语句，1是创建shadowsocks数据库，2是创建一个ss用户密码为22222，并赋予权限</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">CREATE DATABASE IF NOT EXISTS shadowsocks DEFAULT CHARSET utf8 COLLATE utf8_general_ci;</div><div class="line">GRANT ALL PRIVILEGES ON shadowsocks.* TO &apos;ss&apos;@&apos;localhost&apos; IDENTIFIED BY &apos;22222&apos;; #Table:shadowsocks   UserName:ss  UserPassword:22222  AllowedHost:localhost (如果允许别的主机连接此数据库的话，localhost改成%)</div></pre></td></tr></table></figure>
-<p>导入数据库</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">USE shadowsocks</div><div class="line">SOURCE /home/shangxin/www/sql/*.sql（数个.sql文件）</div></pre></td></tr></table></figure>
-<p>配置数据库信息<br>将 lib/config-sample.php 重命名为 config.php，并编辑数据库信息.<br>加密方式改为2<br>当使用新的加密方式「带salt的sha256」加密，由于每个站点的$salt值都不同，所以初始密码「1993」是没有用的，安装完成后，访问/pwd.php?pwd=密码<br>得到的字符串是encode后的密码，需要插入到数据库中</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">update user set pass=&quot;加密后的密码字符串&quot;,email=&quot;你的邮箱&quot; where email=&quot;first@blood.com&quot;;</div></pre></td></tr></table></figure>
-<h3 id="安装各种依赖"><a href="#安装各种依赖" class="headerlink" title="安装各种依赖"></a>安装各种依赖</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">cd /home/shangxin/www</div><div class="line">curl -sS https://getcomposer.org/installer | php</div><div class="line">php composer.phar install</div></pre></td></tr></table></figure>
-<h3 id="ManyUser配置"><a href="#ManyUser配置" class="headerlink" title="ManyUser配置"></a>ManyUser配置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">gedit /home/shangxin/www/backend/shadowsocks/Config.py</div><div class="line">python server.py</div></pre></td></tr></table></figure>
-<p>使用supervisor进程守护<br>安装supervisor</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apt-get install python-pip python-m2crypto supervisor</div></pre></td></tr></table></figure>
-<p>编辑文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gedit /etc/supervisor/conf.d/shadowsocks.conf</div></pre></td></tr></table></figure>
-<p>输入(dir路径记得修改，路径千万不要多空格！！！)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[program:shadowsocks]</div><div class="line">command=python /home/shangxin/www/backend/shadowsocks/server.py -c /home/shangxin/www/backend/shadowsocks/config.json</div><div class="line">autorestart=true</div><div class="line">user=root</div></pre></td></tr></table></figure>
-<p>启动</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">service supervisor start</div><div class="line">supervisorctl reload</div></pre></td></tr></table></figure>
-<p>修改以下文件<br>/etc/profile<br>/etc/default/supervisor</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">结尾各添加3行</div><div class="line">ulimit -n 51200</div><div class="line">ulimit -Sn 4096</div><div class="line">ulimit -Hn 8192</div></pre></td></tr></table></figure>
-<p>debug查看日志</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">supervisorctl tail -f shadowsocks stderr</div></pre></td></tr></table></figure>
-<p>启动/重启/停止</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">supervisorctl start shadowsocks</div><div class="line">supervisorctl restart shadowsocks</div><div class="line">supervisorctl stop shadowsocks</div></pre></td></tr></table></figure>
-<h3 id="Apache2的配置"><a href="#Apache2的配置" class="headerlink" title="Apache2的配置"></a>Apache2的配置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo gedit /etc/apache2/sites-available/000-default.conf</div><div class="line">sudo gedit /etc/apache2/apache2.conf</div></pre></td></tr></table></figure>
-<p>加入Include httpd.conf</p>
-<p>根目录改成 /home/shangxin/www/<br>/etc/apache2/目录下新建httpd.conf，文件内容“ServerName localhost”</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install libapache2-mod-auth-mysql</div><div class="line">sudo apt-get install php5-mysql</div></pre></td></tr></table></figure>
-<p>重启Apache2</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo /etc/init.d/apache2 restart</div></pre></td></tr></table></figure>
-<p>Mysql远程访问解决方案：<br>1 在目标服务器上（192.168.1.11），修改mysql的my.cnf文件：<br>sudo vi /etc/mysql/my.cnf<br>2 注释掉bind-address，屏蔽其只对本地监听</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#bind-address = 127.0.0.1</div></pre></td></tr></table></figure>
-<p>3 启动MySQL服务，使其修改的配置生效</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo restart mysql</div></pre></td></tr></table></figure>
-<p>参考：<br><a href="https://github.com/orvice/ss-panel" target="_blank" rel="external">https://github.com/orvice/ss-panel</a><br><a href="https://github.com/mengskysama/shadowsocks/tree/manyuser" target="_blank" rel="external">https://github.com/mengskysama/shadowsocks/tree/manyuser</a><br>踩过的坑：<br><a href="http://stackoverflow.com/questions/32264309/errors-while-using-a-laravel-5-boilerplate" target="_blank" rel="external">http://stackoverflow.com/questions/32264309/errors-while-using-a-laravel-5-boilerplate</a><br><a href="http://www.2cto.com/os/201308/238996.html" target="_blank" rel="external">http://www.2cto.com/os/201308/238996.html</a><br><a href="http://blogsit.iteye.com/blog/1944415" target="_blank" rel="external">http://blogsit.iteye.com/blog/1944415</a><br><a href="https://www.zmrbk.com/post-2583.html" target="_blank" rel="external">https://www.zmrbk.com/post-2583.html</a><br><a href="http://www.111cn.net/sys/202/47318.htm" target="_blank" rel="external">http://www.111cn.net/sys/202/47318.htm</a></p>
 
       
     </div>
