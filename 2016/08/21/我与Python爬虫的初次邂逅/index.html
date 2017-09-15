@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>我与Python爬虫的初次邂逅 | YoungSx</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="背景自己一直喊着要学爬虫，但是总是因为各种各样的事情耽误了。最近感觉不能再颓废了，于是乎重新拾起来这个小小的目标，开始学习。 开始先是在知乎上如何入门 Python 爬虫？这个问题下看了看爬虫的基本概念和原理，发现原理和我之前的理解并没有什么出入，只是集群那一块是我之前没有关注到的。 然后，我找到了一个技术博客，看着那位程序媛写的一系列教程，基于Python3开始了我爬取单页面图片的尝试。 HTT">
+<meta property="og:type" content="article">
+<meta property="og:title" content="我与Python爬虫的初次邂逅">
+<meta property="og:url" content="http://yoursite.com/2016/08/21/我与Python爬虫的初次邂逅/index.html">
+<meta property="og:site_name" content="YoungSx">
+<meta property="og:description" content="背景自己一直喊着要学爬虫，但是总是因为各种各样的事情耽误了。最近感觉不能再颓废了，于是乎重新拾起来这个小小的目标，开始学习。 开始先是在知乎上如何入门 Python 爬虫？这个问题下看了看爬虫的基本概念和原理，发现原理和我之前的理解并没有什么出入，只是集群那一块是我之前没有关注到的。 然后，我找到了一个技术博客，看着那位程序媛写的一系列教程，基于Python3开始了我爬取单页面图片的尝试。 HTT">
+<meta property="og:updated_time" content="2016-08-20T18:28:20.246Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="我与Python爬虫的初次邂逅">
+<meta name="twitter:description" content="背景自己一直喊着要学爬虫，但是总是因为各种各样的事情耽误了。最近感觉不能再颓废了，于是乎重新拾起来这个小小的目标，开始学习。 开始先是在知乎上如何入门 Python 爬虫？这个问题下看了看爬虫的基本概念和原理，发现原理和我之前的理解并没有什么出入，只是集群那一块是我之前没有关注到的。 然后，我找到了一个技术博客，看着那位程序媛写的一系列教程，基于Python3开始了我爬取单页面图片的尝试。 HTT">
+  
+    <link rel="alternative" href="/atom.xml" title="YoungSx" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="//favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="0" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">YoungSx</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>Menu</li>
+						<li>Tags</li>
+						
+						<li>Links</li>
+						
+						
+						<li>About</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="#" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+					        
+								<a class="rss" target="_blank" href="#" title="rss">rss</a>
+					        
+								<a class="zhihu" target="_blank" href="#" title="zhihu">zhihu</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/Vue-array/" style="font-size: 10px;">Vue, array</a> <a href="/tags/Vue-component/" style="font-size: 10px;">Vue, component</a> <a href="/tags/Vue-event/" style="font-size: 10px;">Vue, event</a> <a href="/tags/Vue-form/" style="font-size: 10px;">Vue, form</a> <a href="/tags/Vue-router/" style="font-size: 10px;">Vue, router</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">奥巴马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">卡卡的美丽传说</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">本泽马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">吉格斯的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">习大大大不同</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">托蒂的博客</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">我是谁，我从哪里来，我到哪里去？我就是我，是颜色不一样的吃货…</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">YoungSx</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img lazy-src="0" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">YoungSx</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="#" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="#" title="rss">rss</a>
+			        
+						<a class="zhihu" target="_blank" href="#" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-我与Python爬虫的初次邂逅" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/08/21/我与Python爬虫的初次邂逅/" class="article-date">
+  	<time datetime="2016-08-20T18:27:20.000Z" itemprop="datePublished">2016-08-21</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      我与Python爬虫的初次邂逅
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>自己一直喊着要学爬虫，但是总是因为各种各样的事情耽误了。最近感觉不能再颓废了，于是乎重新拾起来这个小小的目标，开始学习。</p>
+<h2 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h2><p>先是在知乎上<a href="https://www.zhihu.com/question/20899988" target="_blank" rel="external">如何入门 Python 爬虫？</a>这个问题下看了看爬虫的基本概念和原理，发现原理和我之前的理解并没有什么出入，只是集群那一块是我之前没有关注到的。</p>
+<p>然后，我找到了一个技术博客，看着那位程序媛写的一系列教程，基于Python3开始了我爬取单页面图片的尝试。</p>
+<p>HTTP库用的是Urllib，HTML的解析工具，选用的是BeautifulSoup这个库。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</div><div class="line"><span class="keyword">import</span> urllib.request</div><div class="line"><span class="comment">#用做解析</span></div><div class="line"><span class="keyword">import</span> urllib.parse</div><div class="line"><span class="comment">#文件读写</span></div><div class="line"><span class="keyword">import</span> os</div><div class="line"></div><div class="line"><span class="comment">#返回请求到的内容</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">url_open</span><span class="params">(url)</span>:</span></div><div class="line">    req = urllib.request.Request(url)</div><div class="line"></div><div class="line">    response = urllib.request.urlopen(req)</div><div class="line">    html = response.read()</div><div class="line">    <span class="keyword">return</span> html</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_links</span><span class="params">(url)</span>:</span></div><div class="line">    <span class="comment"># 获取HTML源码</span></div><div class="line">    html = url_open(url)</div><div class="line">    <span class="comment">#解析HTML</span></div><div class="line">    soup = BeautifulSoup(html, <span class="string">'html.parser'</span>)</div><div class="line">    <span class="comment">#定位父div</span></div><div class="line">    divs = soup(<span class="string">'div'</span>, &#123;<span class="string">'class'</span>: <span class="string">'pic'</span>&#125;)</div><div class="line">    <span class="comment">#存储img的列表</span></div><div class="line">    img_addrs = []</div><div class="line"></div><div class="line">    <span class="comment">#拿到每一个div中的img及其的src</span></div><div class="line">    <span class="keyword">for</span> div <span class="keyword">in</span> divs:</div><div class="line">        img_urls = div.find(<span class="string">'img'</span>)[<span class="string">'src'</span>]</div><div class="line">        img_addrs.append(img_urls)</div><div class="line">    <span class="keyword">return</span> img_addrs</div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">save_imgs</span><span class="params">(folder,img_addrs)</span>:</span></div><div class="line">    <span class="keyword">for</span> each <span class="keyword">in</span> img_addrs:</div><div class="line">        filename = each.split(<span class="string">'/'</span>)[<span class="number">-1</span>]</div><div class="line">        <span class="keyword">with</span> open(filename, <span class="string">'wb'</span>) <span class="keyword">as</span> f:</div><div class="line">            <span class="comment">#读取网络图片</span></div><div class="line">            img = url_open(each)</div><div class="line">            f.write(img)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">download_pic</span><span class="params">(folder = <span class="string">'pic'</span>)</span>:</span></div><div class="line">    url = <span class="string">'http://jcss.shangxin.link/spiderTest.html'</span></div><div class="line">    img_addrs = get_links(url)</div><div class="line"></div><div class="line">    os.mkdir(folder)</div><div class="line">    os.chdir(folder)</div><div class="line"></div><div class="line">    save_imgs(<span class="string">'pic'</span>, img_addrs)</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    download_pic()</div></pre></td></tr></table></figure>
+<p>这段代码的功能只是在一个单页面上爬取一些照片，由于初学，自己挂了个结构简单的测试页面以供爬虫爬取测试…</p>
+<h2 id="踩的坑"><a href="#踩的坑" class="headerlink" title="踩的坑"></a>踩的坑</h2><ul>
+<li>在这里，我特别注意到了网上很多代码中用的是Urllib2这个库，到了Python3中无法运行，这是因为Urllib和Urllib2出现在python2中，在3中，统一整合Urllib ，而没有了Urllib2。</li>
+<li>urllib.request.urlopen()的参数中输入的是一个页面地址，有一次忘记加上协议（<a href="http://），导致报错（这不算坑，逃" target="_blank" rel="external">http://），导致报错（这不算坑，逃</a>…</li>
+</ul>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/01/16/美丽有罪？/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          美丽有罪？
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/07/31/SS-Panel-SS-Manyuser安装部署/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">SS-Panel+SS-Manyuser安装部署</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="我与Python爬虫的初次邂逅" data-title="我与Python爬虫的初次邂逅" data-url="http://yoursite.com/2016/08/21/我与Python爬虫的初次邂逅/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2017 YoungSx
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: /
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>
