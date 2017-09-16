@@ -74,7 +74,7 @@
 						<li>Links</li>
 						
 						
-						<li>About</li>
+						<li>Über</li>
 						
 					</ul>
 				</div>
@@ -111,7 +111,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/Vue-array/" style="font-size: 10px;">Vue, array</a> <a href="/tags/Vue-component/" style="font-size: 10px;">Vue, component</a> <a href="/tags/Vue-event/" style="font-size: 10px;">Vue, event</a> <a href="/tags/Vue-form/" style="font-size: 10px;">Vue, form</a> <a href="/tags/Vue-iView-grid/" style="font-size: 10px;">Vue, iView, grid</a> <a href="/tags/Vue-iView-layout/" style="font-size: 10px;">Vue, iView, layout</a> <a href="/tags/Vue-iView-table-render/" style="font-size: 10px;">Vue, iView, table, render</a> <a href="/tags/Vue-router/" style="font-size: 10px;">Vue, router</a> <a href="/tags/Vue-virtual-scroll-list/" style="font-size: 10px;">Vue, virtual-scroll-list</a> <a href="/tags/javascript-timestamp/" style="font-size: 10px;">javascript, timestamp</a>
+						<a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/Vue-array/" style="font-size: 10px;">Vue, array</a> <a href="/tags/Vue-component/" style="font-size: 10px;">Vue, component</a> <a href="/tags/Vue-event/" style="font-size: 10px;">Vue, event</a> <a href="/tags/Vue-form/" style="font-size: 10px;">Vue, form</a> <a href="/tags/Vue-iView-grid/" style="font-size: 10px;">Vue, iView, grid</a> <a href="/tags/Vue-iView-layout/" style="font-size: 10px;">Vue, iView, layout</a> <a href="/tags/Vue-iView-table-render/" style="font-size: 10px;">Vue, iView, table, render</a> <a href="/tags/Vue-router/" style="font-size: 10px;">Vue, router</a> <a href="/tags/Vue-virtual-scroll-list/" style="font-size: 10px;">Vue, virtual-scroll-list</a> <a href="/tags/javascript-ES6/" style="font-size: 10px;">javascript, ES6</a> <a href="/tags/javascript-timestamp/" style="font-size: 10px;">javascript, timestamp</a>
 					</div>
 				</section>
 				
@@ -194,6 +194,83 @@
 </nav>
 
       <div class="body-wrap">
+  
+    <article id="post-Vue-js-学习笔记-事件处理器" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/06/09/Vue-js-学习笔记-事件处理器/" class="article-date">
+  	<time datetime="2017-06-09T09:09:29.000Z" itemprop="datePublished">2017-06-09</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/09/Vue-js-学习笔记-事件处理器/">Vue.js 学习笔记 - 事件处理器</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="事件处理器"><a href="#事件处理器" class="headerlink" title="事件处理器"></a>事件处理器</h1><h2 id="绑定"><a href="#绑定" class="headerlink" title="绑定"></a>绑定</h2><p>在 HTML 标签中添加<strong>v-on</strong>属性<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">v-on:click</span>=<span class="string">"greet"</span>&gt;</span>Greet<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></div><div class="line"><span class="undefined">	methods: &#123;</span></div><div class="line"><span class="javascript">		greet: <span class="function"><span class="keyword">function</span> (<span class="params">event</span>) </span>&#123;</span></div><div class="line"><span class="undefined">    	&#125;</span></div><div class="line"><span class="undefined">    &#125;</span></div><div class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h2 id="事件修饰符"><a href="#事件修饰符" class="headerlink" title="事件修饰符"></a>事件修饰符</h2><ul>
+<li>.stop</li>
+<li>.prevent</li>
+<li>.capture</li>
+<li>.self</li>
+<li>.once<h2 id="按键修饰符"><a href="#按键修饰符" class="headerlink" title="按键修饰符"></a>按键修饰符</h2></li>
+<li>.enter</li>
+<li>.tab</li>
+<li>.delete (捕获 “删除” 和 “退格” 键)</li>
+<li>.esc</li>
+<li>.space</li>
+<li>.up</li>
+<li>.down</li>
+<li>.left</li>
+<li>.right</li>
+<li>.ctrl</li>
+<li>.alt</li>
+<li>.shift</li>
+<li>.meta</li>
+</ul>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue-event/">Vue, event</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-Vue.js 学习笔记-条件和列表渲染" class="article article-type-post" itemscope itemprop="blogPost">
   
