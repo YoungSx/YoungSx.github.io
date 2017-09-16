@@ -4,14 +4,19 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>Tag: javascript, ES6 | YoungSx</title>
+  <title>fragment mp4 转换 | YoungSx</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="YoungSx">
-<meta property="og:url" content="http://yoursite.com/tags/javascript-ES6/index.html">
+  <meta name="description" content="一个在线检测 mp4 文件是否已经 fragmented 的工具 http://nickdesaulniers.github.io/mp4info/ 把一个 non-fragment MP4 转换成 fragment MP4，可以使用 FFmpeg 的 -movflags 来转换。 对于原始文件为非 MP4 文件 ffmpeg -i trailer_1080p.mov -c:v copy -c:a">
+<meta name="keywords" content="mp4, fmp4, fragment mp4, ffmpeg">
+<meta property="og:type" content="article">
+<meta property="og:title" content="fragment mp4 转换">
+<meta property="og:url" content="http://yoursite.com/2017/08/11/fragment-mp4-转换/index.html">
 <meta property="og:site_name" content="YoungSx">
+<meta property="og:description" content="一个在线检测 mp4 文件是否已经 fragmented 的工具 http://nickdesaulniers.github.io/mp4info/ 把一个 non-fragment MP4 转换成 fragment MP4，可以使用 FFmpeg 的 -movflags 来转换。 对于原始文件为非 MP4 文件 ffmpeg -i trailer_1080p.mov -c:v copy -c:a">
+<meta property="og:updated_time" content="2017-09-16T01:33:31.550Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="YoungSx">
+<meta name="twitter:title" content="fragment mp4 转换">
+<meta name="twitter:description" content="一个在线检测 mp4 文件是否已经 fragmented 的工具 http://nickdesaulniers.github.io/mp4info/ 把一个 non-fragment MP4 转换成 fragment MP4，可以使用 FFmpeg 的 -movflags 来转换。 对于原始文件为非 MP4 文件 ffmpeg -i trailer_1080p.mov -c:v copy -c:a">
   
     <link rel="alternative" href="/atom.xml" title="YoungSx" type="application/atom+xml">
   
@@ -193,53 +198,128 @@
 	</div>
 </nav>
 
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-fragment-mp4-转换" class="article article-type-post" itemscope itemprop="blogPost">
   
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/21/ES6-箭头函数解决-this-作用域问题/" class="archive-article-date">
-  	<time datetime="2017-07-21T08:37:30.000Z" itemprop="datePublished">Jul 21</time>
+    <div class="article-meta">
+      <a href="/2017/08/11/fragment-mp4-转换/" class="article-date">
+  	<time datetime="2017-08-11T12:19:49.000Z" itemprop="datePublished">2017-08-11</time>
 </a>
-        </div>
-    	 
+    </div>
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/21/ES6-箭头函数解决-this-作用域问题/">ES6 箭头函数解决 this 作用域问题</a>
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      fragment mp4 转换
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+      </header>
+      
+      <div class="article-info article-info-post">
+        
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript-ES6/">javascript, ES6</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mp4-fmp4-fragment-mp4-ffmpeg/">mp4, fmp4, fragment mp4, ffmpeg</a></li></ul>
 	</div>
 
-          
+        
 
-        </div>
         <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
+      </div>
+      
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>一个在线检测 mp4 文件是否已经 fragmented 的工具 <a href="http://nickdesaulniers.github.io/mp4info/" target="_blank" rel="external">http://nickdesaulniers.github.io/mp4info/</a></p>
+<p>把一个 non-fragment MP4 转换成 fragment MP4，可以使用 FFmpeg 的 -movflags 来转换。</p>
+<p>对于原始文件为非 MP4 文件</p>
+<pre><code>ffmpeg -i trailer_1080p.mov -c:v copy -c:a copy -movflags frag_keyframe+empty_moov bunny_fragmented.mp4
+</code></pre><p>对于原始文件已经是 MP4 文件</p>
+<pre><code>ffmpeg -i non_fragmented.mp4 -movflags frag_keyframe+empty_moov fragmented.mp4
+修正：
+    ffmpeg -i non_fragmented.mp4 -strict -2 -movflags frag_keyframe+empty_moov fragmented.mp4
+</code></pre><p>要强制输出文件的帧速率为24 fps（会丢失fragment）：<br>    ffmpeg -i input.avi -r 24 output.avi</p>
+<p>参考资料：<br>    <a href="https://zhuanlan.zhihu.com/p/27248188" target="_blank" rel="external">https://zhuanlan.zhihu.com/p/27248188</a><br>    <a href="https://stackoverflow.com/questions/32931685/the-encoder-aac-is-experimental-but-experimental-codecs-are-not-enabled" target="_blank" rel="external">https://stackoverflow.com/questions/32931685/the-encoder-aac-is-experimental-but-experimental-codecs-are-not-enabled</a><br>    <a href="http://ffmpeg.org/ffmpeg.html" target="_blank" rel="external">http://ffmpeg.org/ffmpeg.html</a></p>
+<p>示例视频：<br>    <a href="http://nickdesaulniers.github.io/netfix/demo/frag_bunny.mp4" target="_blank" rel="external">http://nickdesaulniers.github.io/netfix/demo/frag_bunny.mp4</a></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/08/21/Javascript-取时间戳/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Javascript 取时间戳
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/07/21/ES6-箭头函数解决-this-作用域问题/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">ES6 箭头函数解决 this 作用域问题</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="fragment-mp4-转换" data-title="fragment mp4 转换" data-url="http://yoursite.com/2017/08/11/fragment-mp4-转换/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
 
 </div>
       <footer id="footer">
@@ -265,9 +345,9 @@
 		mathjax: true,
 		animate: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		root: /
