@@ -74,7 +74,7 @@
 						<li>Links</li>
 						
 						
-						<li>Über</li>
+						<li>About</li>
 						
 					</ul>
 				</div>
@@ -865,10 +865,10 @@
 
 
   
-    <article id="post-Vue-js-学习笔记-表单控件绑定" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Vue-js-学习笔记-事件处理器" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/06/09/Vue-js-学习笔记-表单控件绑定/" class="article-date">
+      <a href="/2017/06/09/Vue-js-学习笔记-事件处理器/" class="article-date">
   	<time datetime="2017-06-09T09:09:29.000Z" itemprop="datePublished">2017-06-09</time>
 </a>
     </div>
@@ -882,7 +882,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/09/Vue-js-学习笔记-表单控件绑定/">Vue.js 学习笔记 - 表单控件绑定</a>
+      <a class="article-title" href="/2017/06/09/Vue-js-学习笔记-事件处理器/">Vue.js 学习笔记 - 事件处理器</a>
     </h1>
   
 
@@ -891,11 +891,26 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="表单控件绑定"><a href="#表单控件绑定" class="headerlink" title="表单控件绑定"></a>表单控件绑定</h1><h2 id="绑定"><a href="#绑定" class="headerlink" title="绑定"></a>绑定</h2><p>v-model<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">v-model.lazy</span>=<span class="string">"message"</span> <span class="attr">placeholder</span>=<span class="string">"edit me"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>Message is: &#123;&#123; message &#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></div><div class="line"><span class="javascript">  <span class="keyword">var</span> app = <span class="keyword">new</span> Vue(&#123;</span></div><div class="line"><span class="javascript">    el: <span class="string">'#app'</span>,</span></div><div class="line"><span class="undefined">    data: &#123;</span></div><div class="line"><span class="javascript">      message: <span class="string">''</span></span></div><div class="line"><span class="undefined">    &#125;</span></div><div class="line"><span class="undefined">  &#125;)</span></div><div class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<h2 id="修饰符"><a href="#修饰符" class="headerlink" title="修饰符"></a>修饰符</h2><ul>
-<li>.lazy</li>
-<li>.number</li>
-<li>.trim</li>
+        <h1 id="事件处理器"><a href="#事件处理器" class="headerlink" title="事件处理器"></a>事件处理器</h1><h2 id="绑定"><a href="#绑定" class="headerlink" title="绑定"></a>绑定</h2><p>在 HTML 标签中添加<strong>v-on</strong>属性<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">v-on:click</span>=<span class="string">"greet"</span>&gt;</span>Greet<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></div><div class="line"><span class="undefined">	methods: &#123;</span></div><div class="line"><span class="javascript">		greet: <span class="function"><span class="keyword">function</span> (<span class="params">event</span>) </span>&#123;</span></div><div class="line"><span class="undefined">    	&#125;</span></div><div class="line"><span class="undefined">    &#125;</span></div><div class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h2 id="事件修饰符"><a href="#事件修饰符" class="headerlink" title="事件修饰符"></a>事件修饰符</h2><ul>
+<li>.stop</li>
+<li>.prevent</li>
+<li>.capture</li>
+<li>.self</li>
+<li>.once<h2 id="按键修饰符"><a href="#按键修饰符" class="headerlink" title="按键修饰符"></a>按键修饰符</h2></li>
+<li>.enter</li>
+<li>.tab</li>
+<li>.delete (捕获 “删除” 和 “退格” 键)</li>
+<li>.esc</li>
+<li>.space</li>
+<li>.up</li>
+<li>.down</li>
+<li>.left</li>
+<li>.right</li>
+<li>.ctrl</li>
+<li>.alt</li>
+<li>.shift</li>
+<li>.meta</li>
 </ul>
 
       
@@ -905,7 +920,7 @@
       
       
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue-form/">Vue, form</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue-event/">Vue, event</a></li></ul>
 	</div>
 
       
