@@ -1,8 +1,983 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta name="generator" content="Hexo 3.9.0"><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author" content="Shangxin"><title>不懂鸟语的人</title><meta name="description" content="Shangxin 的个人学习笔记。精力原因，也许只为自己方便翻阅。"><meta name="keywords"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="short icon" href="/images/favicon.png" type="image/x-icon"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"></head><body><div class="sidebar animated fadeInDown"><div class="logo-title"><div class="title"><img src="/images/logo@2x.png" style="width:127px;"><h3 title><a href="/">不懂鸟语的人</a></h3><div class="description"><p>Shangxin 的个人学习笔记。精力原因，也许只为自己方便翻阅。</p></div></div></div><ul class="social-links"><li><a href="https://twitter.com/YangShangxin"><i class="fa fa-twitter"></i></a></li><li><a href="http://github.com/YoungSx"><i class="fa fa-github"></i></a></li></ul><div class="footer"><a target="_blank" href="/"><span>Theme by </span></a><a href="https://www.caicai.me"> CaiCai </a><span>&</span><a href="https://github.com/Ben02/hexo-theme-Anatole"> Ben</a><div class="by_farbox"><a href="https://hexo.io/zh-cn/" target="_blank">Proudly published with Hexo&#65281;</a></div></div></div><div class="main"><div class="page-top animated fadeInDown"><div class="nav"><li><a class="current" href="/">首页</a></li><li><a href="/about">关于</a></li><li><a href="/archives">归档</a></li><li><a href="/links">友链</a></li></div><div class="information"><div class="back_btn"><li><a class="fa fa-chevron-left" onclick="window.history.go(-1)" style="display:none;"> </a></li></div><div class="avatar"><img src="/images/fbb.png"></div></div></div><div class="autopagerize_page_element"><div class="content"><div class="post animated fadeInDown"><div class="post-title"><h3><a href="/2017/07/19/iView-学习笔记-Table-利用-Render-实现复杂绑定/">iView 学习笔记 - Table 利用 Render 实现复杂绑定</a></h3></div><div class="post-content"><p>Table 利用 Render 实现复杂绑定背景做 Sina_ip 库的项目，用的 iView 组件库。在详细信息展示时，用到了 iView 的 Table 组件。我发现列绑定在数组中的数据时，一维数组的数据可以直接用 key 指向，可是遇到二维数组时，无法指向二维数组下的某个键。这时用到了 Vue 的 rend...</p></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2017-07-19</span><i class="fa fa-tag"></i><a class="tag" href="/tags/Vue/" title="Vue">Vue </a><a class="tag" href="/tags/iView/" title="iView">iView </a><a class="tag" href="/tags/table/" title="table">table </a><a class="tag" href="/tags/render/" title="render">render </a></div></div></div></div><div class="post animated fadeInDown"><div class="post-title"><h3><a href="/2017/07/12/Vue-js-学习笔记-虚拟列表-Virtual-Scroll-List-心得/">Vue.js 学习笔记 - 虚拟列表(Virtual-Scroll-List)心得</a></h3></div><div class="post-content"><p>#虚拟列表
-背景手上有个字幕编辑器的项目，因为长视频也许会有几千条字幕，所以字幕编辑器的列表中就会有几千条列表项。但是如果将这几千条列表项全部渲染在 DOM 中，就会造成浏览器轻则卡顿，重则卡死，根本无法正常使用。针对这种情况，我通过 Google 了解到可以通过虚拟列表技术来解决。虚拟列表做的事情，就是按需渲染...</p></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2017-07-12</span><i class="fa fa-tag"></i><a class="tag" href="/tags/Vue/" title="Vue">Vue </a><a class="tag" href="/tags/virtual-scroll-list/" title="virtual-scroll-list">virtual-scroll-list </a></div></div></div></div><div class="post animated fadeInDown"><div class="post-title"><h3><a href="/2017/07/10/Javascript-取时间戳/">Javascript 取时间戳</a></h3></div><div class="post-content"><p>Javascript 取时间戳一直以来只知道var now = new Date()取到的是时间格式的当前时间，但是却不知道怎么取时间戳。直到我在别人的一份代码中看到了以下代码，才知道还有这种操作，可以很方便的得到时间戳。12var now = +new Date()// + 的意思是整数型 也就是取毫秒 也就是...</p></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2017-07-10</span><i class="fa fa-tag"></i><a class="tag" href="/tags/javascript/" title="javascript">javascript </a><a class="tag" href="/tags/timestamp/" title="timestamp">timestamp </a></div></div></div></div><div class="post animated fadeInDown"><div class="post-title"><h3><a href="/2017/06/19/iView-学习笔记-布局/">iView 学习笔记 - 布局</a></h3></div><div class="post-content"><p>伸缩左栏绑定事件12@click=&quot;toggleclick&quot;// toggleclick中把左栏和右栏的span修改
-</p></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2017-06-19</span><i class="fa fa-tag"></i><a class="tag" href="/tags/Vue/" title="Vue">Vue </a><a class="tag" href="/tags/iView/" title="iView">iView </a><a class="tag" href="/tags/layout/" title="layout">layout </a></div></div></div></div><div class="post animated fadeInDown"><div class="post-title"><h3><a href="/2017/06/19/iView-学习笔记-栅格/">iView 学习笔记 - 栅格</a></h3></div><div class="post-content"><p>引入在 main.js 中加入123import iView from &apos;iview&apos;;import &apos;iview/dist/styles/iview.css&apos;;    // 使用 CSSVue.use(iView);
-事件绑定@如1&lt;Input v-model=&q...</p></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2017-06-19</span><i class="fa fa-tag"></i><a class="tag" href="/tags/Vue/" title="Vue">Vue </a><a class="tag" href="/tags/iView/" title="iView">iView </a><a class="tag" href="/tags/grid/" title="grid">grid </a></div></div></div></div><div class="post animated fadeInDown"><div class="post-title"><h3><a href="/2017/06/15/Vue-js-学习笔记-路由-Router/">Vue.js 学习笔记 - 路由(Router)</a></h3></div><div class="post-content"><p>路由12&lt;router-link to="/foo"&gt;Go to Foo&lt;/router-link&gt;&lt;router-view&gt;&lt;/router-view&gt;
-1234const routes = [  &#123; path: '/foo', component: F...</p></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2017-06-15</span><i class="fa fa-tag"></i><a class="tag" href="/tags/Vue/" title="Vue">Vue </a><a class="tag" href="/tags/router/" title="router">router </a></div></div></div></div><div class="post animated fadeInDown"><div class="post-title"><h3><a href="/2017/06/11/Vue-js-学习笔记-组件-Components/">Vue.js 学习笔记 - 组件(Components)</a></h3></div><div class="post-content"><p>Vue 组件注册Components 要确保在初始化根实例 之前 注册了组件
-全局注册：1234567Vue.component('my-component', &#123;  template: '&lt;div&gt;A custom component!&lt;/div&gt;'&#125;)// 创建根实...</p></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2017-06-11</span><i class="fa fa-tag"></i><a class="tag" href="/tags/Vue/" title="Vue">Vue </a><a class="tag" href="/tags/component/" title="component">component </a></div></div></div></div><div class="post animated fadeInDown"><div class="post-title"><h3><a href="/2017/06/09/Vue-js-学习笔记-事件处理器/">Vue.js 学习笔记 - 事件处理器</a></h3></div><div class="post-content"><p>事件处理器绑定在 HTML 标签中添加v-on属性1234567&lt;button v-on:click="greet"&gt;Greet&lt;/button&gt;&lt;script&gt;	methods: &#123;		greet: function (event) &#123;    	&#125...</p></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2017-06-09</span><i class="fa fa-tag"></i><a class="tag" href="/tags/Vue/" title="Vue">Vue </a><a class="tag" href="/tags/event/" title="event">event </a></div></div></div></div><div class="post animated fadeInDown"><div class="post-title"><h3><a href="/2017/06/09/Vue-js-学习笔记-数组操作/">Vue.js 学习笔记 - 数组操作</a></h3></div><div class="post-content"><p>数组操作变异方法  push()  pop()  shift()  unshift()  splice()  sort()  reverse()
-重塑数组filter(), concat(), slice()
-其他操作利用索引修改某一项数据：1Vue.set(example1.items, indexOfItem...</p></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2017-06-09</span><i class="fa fa-tag"></i><a class="tag" href="/tags/Vue/" title="Vue">Vue </a><a class="tag" href="/tags/array/" title="array">array </a></div></div></div></div><div class="post animated fadeInDown"><div class="post-title"><h3><a href="/2017/06/09/Vue-js-学习笔记-表单控件绑定/">Vue.js 学习笔记 - 表单控件绑定</a></h3></div><div class="post-content"><p>表单控件绑定绑定v-model123456789101112&lt;div id="app"&gt;  &lt;input v-model.lazy="message" placeholder="edit me"&gt;  &lt;p&gt;Message is: &#123;&#123; message &#1...</p></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2017-06-09</span><i class="fa fa-tag"></i><a class="tag" href="/tags/Vue/" title="Vue">Vue </a><a class="tag" href="/tags/form/" title="form">form </a></div></div></div></div><div class="pagination"><ul class="clearfix"><li class="pre pagbuttons"><a class="btn" role="navigation" href="/">上一页</a></li><li class="next pagbuttons"><a class="btn" role="navigation" href="/page/3/">下一页</a></li></ul></div></div></div></div><script src="/js/jquery.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  
+  
+    <meta name="description" content="Shangxin 的个人学习笔记。精力原因，也许只为自己方便翻阅。">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+    
+    不懂鸟语的人</title>
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+  
+  <script src="/js/pace.min.js"></script>
+</head>
+</html>
+<body>
+<main class="content">
+  <section class="jumbotron">
+  <div class="video">
+    
+      <div class="video-frame">
+        <img src="/images/ocean/overlay-hero.png" alt="Decorative image frame">
+      </div>
+    
+    <div class="video-media">
+      <video playsinline="" autoplay="" loop="" muted="" data-autoplay=""
+             poster="/images/ocean/ocean.png" x5-video-player-type="h5">
+        <source src="/images/ocean/ocean.mp4" type="video/mp4">
+        <source src="/images/ocean/ocean.ogv" type="video/ogg">
+        <source src="/images/ocean/ocean.webm" type="video/webm">
+        <p>Your user agent does not support the HTML5 Video element.</p>
+      </video>
+      <div class="video-overlay"></div>
+    </div>
+    <div class="video-inner text-center text-white">
+      <h1><a href="/">不懂鸟语的人</a></h1>
+      <p>我的个人学习笔记</p>
+      <div><img src="/images/hexo-inverted.svg" class="brand" alt="不懂鸟语的人"></div>
+    </div>
+    <div class="video-learn-more">
+      <a class="anchor" href="#landingpage"><i class="fe fe-mouse"></i></a>
+    </div>
+  </div>
+</section>
+
+<div id="landingpage">
+  <section class="outer">
+    <article class="articles">
+      
+      <h1 class="page-type-title"></h1>
+      
+        
+          <article id="post-iView-学习笔记-Table-利用-Render-实现复杂绑定" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+  
+    <h2 itemprop="name">
+      <a class="article-title" href="/2017/07/19/iView-学习笔记-Table-利用-Render-实现复杂绑定/">iView 学习笔记 - Table 利用 Render 实现复杂绑定</a>
+    </h2>
+  
+  
+
+
+
+
+            </header>
+            
+
+                
+                    <div class="article-meta">
+                        <a href="/2017/07/19/iView-学习笔记-Table-利用-Render-实现复杂绑定/" class="article-date">
+  <time datetime="2017-07-19T08:19:34.000Z" itemprop="datePublished">2017-07-19</time>
+</a>
+                            
+                    </div>
+                    
+
+                        
+
+                                    <div class="article-entry" itemprop="articleBody">
+                                        
+
+
+                                            
+
+                                                
+                                                                    <h1 id="Table-利用-Render-实现复杂绑定"><a href="#Table-利用-Render-实现复杂绑定" class="headerlink" title="Table 利用 Render 实现复杂绑定"></a>Table 利用 Render 实现复杂绑定</h1><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>做 Sina_ip 库的项目，用的 iView 组件库。<br>在详细信息展示时，用到了 iView 的 Table 组件。我发现列绑定在数组中的数据时，一维数组的数据可以直接用 key 指向，可是遇到二维数组时，无法指向二维数组下的某个键。<br>这时用到了 Vue 的 render 函数，直接构造一个 <span> ，把数据放在其中就可以了。</span></p>
+<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><p>iView Table 组件利用 Render 实现 Columns 绑定二维数组键<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Input</span>&gt;</span><span class="tag">&lt;/<span class="name">Input</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Button</span> @<span class="attr">click</span>=<span class="string">"toQuery"</span>&gt;</span>Query<span class="tag">&lt;/<span class="name">Button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Table</span> <span class="attr">border</span> <span class="attr">:columns</span>=<span class="string">"columns"</span> <span class="attr">:data</span>=<span class="string">"ipResultList"</span>&gt;</span><span class="tag">&lt;/<span class="name">Table</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line"><span class="javascript">  name: <span class="string">'Query'</span>,</span></span><br><span class="line"><span class="undefined">  data () &#123;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">return</span> &#123;</span></span><br><span class="line"><span class="undefined">      ipResultList: [],</span></span><br><span class="line"><span class="undefined">      columns: [</span></span><br><span class="line"><span class="undefined">        &#123;</span></span><br><span class="line"><span class="javascript">          title: <span class="string">'ip'</span>,</span></span><br><span class="line"><span class="javascript">          key: <span class="string">'ip'</span></span></span><br><span class="line"><span class="undefined">        &#125;,</span></span><br><span class="line"><span class="undefined">        &#123;</span></span><br><span class="line"><span class="javascript">          title: <span class="string">'iplong'</span>,</span></span><br><span class="line"><span class="javascript">          key: <span class="string">'iplong'</span></span></span><br><span class="line"><span class="undefined">        &#125;,</span></span><br><span class="line"><span class="undefined">        &#123;</span></span><br><span class="line"><span class="javascript">          title: <span class="string">'start_ip'</span>,</span></span><br><span class="line"><span class="javascript">          key: <span class="string">'ipdb_info'</span>,</span></span><br><span class="line"><span class="undefined">          render: (createElement, params) =&gt; &#123;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">return</span> createElement(</span></span><br><span class="line"><span class="javascript">              <span class="string">'span'</span>, params.row.ipdb_info.start_ip</span></span><br><span class="line"><span class="undefined">            )</span></span><br><span class="line"><span class="undefined">          &#125;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">      ]</span></span><br><span class="line"><span class="undefined">    &#125; </span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="undefined">&#125;</span></span><br></pre></td></tr></table></figure></p>
+
+                                                                        
+                                    </div>
+                                    <footer class="article-footer">
+                                        <a data-url="http://yoursite.com/2017/07/19/iView-学习笔记-Table-利用-Render-实现复杂绑定/" data-id="ck6zcqu8b000jpg74vasbgflv" class="article-share-link">
+                                            Share
+                                        </a>
+                                        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue/">Vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iView/">iView</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/render/">render</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/table/">table</a></li></ul>
+
+                                    </footer>
+
+    </div>
+
+    
+
+                
+
+</article>
+        
+          <article id="post-Vue-js-学习笔记-虚拟列表-Virtual-Scroll-List-心得" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+  
+    <h2 itemprop="name">
+      <a class="article-title" href="/2017/07/12/Vue-js-学习笔记-虚拟列表-Virtual-Scroll-List-心得/">Vue.js 学习笔记 - 虚拟列表(Virtual-Scroll-List)心得</a>
+    </h2>
+  
+  
+
+
+
+
+            </header>
+            
+
+                
+                    <div class="article-meta">
+                        <a href="/2017/07/12/Vue-js-学习笔记-虚拟列表-Virtual-Scroll-List-心得/" class="article-date">
+  <time datetime="2017-07-12T09:36:14.000Z" itemprop="datePublished">2017-07-12</time>
+</a>
+                            
+                    </div>
+                    
+
+                        
+
+                                    <div class="article-entry" itemprop="articleBody">
+                                        
+
+
+                                            
+
+                                                
+                                                                    <p>#虚拟列表</p>
+<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>手上有个字幕编辑器的项目，因为长视频也许会有几千条字幕，所以字幕编辑器的列表中就会有几千条列表项。<br>但是如果将这几千条列表项全部渲染在 DOM 中，就会造成浏览器轻则卡顿，重则卡死，根本无法正常使用。<br>针对这种情况，我通过 Google 了解到可以通过虚拟列表技术来解决。<br>虚拟列表做的事情，就是按需渲染。只需要渲染当前视图需要显示的几个条目和即将滚动到的几个条目。在开发者工具中可以发现，DOM 中只存在这么几条列表项，当滚动的时候会替换这几项。所以大大节省了系统资源，提升了用户体验。<br>我在 GitHub 上找了几个基于Vue.js 的虚拟列表实现，最终找到了一个最合适的 <a href="https://github.com/tangbc/vue-virtual-scroll-list" target="_blank" rel="noopener">vue-virtual-scroll-list</a> ，并在项目中进行了使用。<br>我在闲暇之余研读了一下此项目的代码，发现实现方式比想象中还要简单。</p>
+<h2 id="核心实现"><a href="#核心实现" class="headerlink" title="核心实现"></a>核心实现</h2><p><strong>this.$slots.default</strong>类型为数组，存储的是此组件两标签中的内容，在此特指大量的列表项。<br>通过 Vue 数组的 filter 方法，筛选出处于当前视图中的几个项，选择性的只渲染出这几个在 DOM 中。渲染是依据 Vue 的 render 函数来动态定义组件。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  name: <span class="string">'item'</span>,</span><br><span class="line">  props: [</span><br><span class="line">    <span class="string">'item'</span>,</span><br><span class="line">    <span class="string">'k'</span></span><br><span class="line">  ],</span><br><span class="line">  render: <span class="function"><span class="keyword">function</span> (<span class="params">createElement</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> createElement(</span><br><span class="line">        <span class="string">'div'</span>,</span><br><span class="line">        <span class="keyword">this</span>.$slots.default.filter(<span class="function"><span class="keyword">function</span> (<span class="params">slot, index</span>) </span>&#123;</span><br><span class="line">          <span class="keyword">return</span> index &gt; <span class="number">5</span> &amp;&amp; index &lt; <span class="number">10</span></span><br><span class="line">        &#125;)</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+                                                                        
+                                    </div>
+                                    <footer class="article-footer">
+                                        <a data-url="http://yoursite.com/2017/07/12/Vue-js-学习笔记-虚拟列表-Virtual-Scroll-List-心得/" data-id="ck6zcqu7v000epg74oql40z8y" class="article-share-link">
+                                            Share
+                                        </a>
+                                        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue/">Vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/virtual-scroll-list/">virtual-scroll-list</a></li></ul>
+
+                                    </footer>
+
+    </div>
+
+    
+
+                
+
+</article>
+        
+          <article id="post-Javascript-取时间戳" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+  
+    <h2 itemprop="name">
+      <a class="article-title" href="/2017/07/10/Javascript-取时间戳/">Javascript 取时间戳</a>
+    </h2>
+  
+  
+
+
+
+
+            </header>
+            
+
+                
+                    <div class="article-meta">
+                        <a href="/2017/07/10/Javascript-取时间戳/" class="article-date">
+  <time datetime="2017-07-10T10:42:08.000Z" itemprop="datePublished">2017-07-10</time>
+</a>
+                            
+                    </div>
+                    
+
+                        
+
+                                    <div class="article-entry" itemprop="articleBody">
+                                        
+
+
+                                            
+
+                                                
+                                                                    <h1 id="Javascript-取时间戳"><a href="#Javascript-取时间戳" class="headerlink" title="Javascript 取时间戳"></a>Javascript 取时间戳</h1><p>一直以来只知道<strong>var now = new Date()</strong>取到的是时间格式的当前时间，但是却不知道怎么取时间戳。<br>直到我在别人的一份代码中看到了以下代码，才知道还有这种操作，可以很方便的得到时间戳。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> now = +<span class="keyword">new</span> <span class="built_in">Date</span>()</span><br><span class="line"><span class="comment">// + 的意思是整数型 也就是取毫秒 也就是时间戳</span></span><br></pre></td></tr></table></figure></p>
+<p>再后来，看到了这么一种取时间戳的方法，更加一目了然了。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> now = <span class="keyword">new</span> <span class="built_in">Date</span>().getTime()</span><br></pre></td></tr></table></figure></p>
+
+                                                                        
+                                    </div>
+                                    <footer class="article-footer">
+                                        <a data-url="http://yoursite.com/2017/07/10/Javascript-取时间戳/" data-id="ck6zcqu7c0005pg74kvz1sjfo" class="article-share-link">
+                                            Share
+                                        </a>
+                                        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/timestamp/">timestamp</a></li></ul>
+
+                                    </footer>
+
+    </div>
+
+    
+
+                
+
+</article>
+        
+          <article id="post-iView-学习笔记-布局" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+  
+    <h2 itemprop="name">
+      <a class="article-title" href="/2017/06/19/iView-学习笔记-布局/">iView 学习笔记 - 布局</a>
+    </h2>
+  
+  
+
+
+
+
+            </header>
+            
+
+                
+                    <div class="article-meta">
+                        <a href="/2017/06/19/iView-学习笔记-布局/" class="article-date">
+  <time datetime="2017-06-19T10:10:14.000Z" itemprop="datePublished">2017-06-19</time>
+</a>
+                            
+                    </div>
+                    
+
+                        
+
+                                    <div class="article-entry" itemprop="articleBody">
+                                        
+
+
+                                            
+
+                                                
+                                                                    <p>伸缩左栏绑定事件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@click=&quot;toggleclick&quot;</span><br><span class="line">// toggleclick中把左栏和右栏的span修改</span><br></pre></td></tr></table></figure></p>
+
+                                                                        
+                                    </div>
+                                    <footer class="article-footer">
+                                        <a data-url="http://yoursite.com/2017/06/19/iView-学习笔记-布局/" data-id="ck6zcqu8d000lpg74p6x53mr1" class="article-share-link">
+                                            Share
+                                        </a>
+                                        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue/">Vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iView/">iView</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/layout/">layout</a></li></ul>
+
+                                    </footer>
+
+    </div>
+
+    
+
+                
+
+</article>
+        
+          <article id="post-iView-学习笔记-栅格" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+  
+    <h2 itemprop="name">
+      <a class="article-title" href="/2017/06/19/iView-学习笔记-栅格/">iView 学习笔记 - 栅格</a>
+    </h2>
+  
+  
+
+
+
+
+            </header>
+            
+
+                
+                    <div class="article-meta">
+                        <a href="/2017/06/19/iView-学习笔记-栅格/" class="article-date">
+  <time datetime="2017-06-19T07:12:50.000Z" itemprop="datePublished">2017-06-19</time>
+</a>
+                            
+                    </div>
+                    
+
+                        
+
+                                    <div class="article-entry" itemprop="articleBody">
+                                        
+
+
+                                            
+
+                                                
+                                                                    <h1 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h1><p>在 main.js 中加入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import iView from &apos;iview&apos;;</span><br><span class="line">import &apos;iview/dist/styles/iview.css&apos;;    // 使用 CSS</span><br><span class="line">Vue.use(iView);</span><br></pre></td></tr></table></figure></p>
+<h1 id="事件绑定"><a href="#事件绑定" class="headerlink" title="事件绑定"></a>事件绑定</h1><p>@<br>如<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;Input v-model=&quot;value&quot; @on-change=&quot;tishi&quot; placeholder=&quot;请输入...&quot; style=&quot;width: 300px&quot;&gt;&lt;/Input&gt;</span><br></pre></td></tr></table></figure></p>
+<h1 id="Grid栅栏"><a href="#Grid栅栏" class="headerlink" title="Grid栅栏"></a>Grid栅栏</h1><h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;Row&gt;</span><br><span class="line">  &lt;Col span=&quot;12&quot;&gt;col-12&lt;/Col&gt;</span><br><span class="line">  &lt;Col span=&quot;12&quot;&gt;col-12&lt;/Col&gt;</span><br><span class="line">&lt;/Row&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="区块间隔"><a href="#区块间隔" class="headerlink" title="区块间隔"></a>区块间隔</h2><p>给 row 添加 gutter 属性 (16+8n)px<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;Row :gutter=&quot;16&quot;&gt;</span><br></pre></td></tr></table></figure></p>
+<h2 id="栅格顺序"><a href="#栅格顺序" class="headerlink" title="栅格顺序"></a>栅格顺序</h2><p>Flex<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;Row type=&quot;flex&quot;&gt;</span><br><span class="line">  &lt;Col span=&quot;6&quot; order=&quot;4&quot;&gt;1 | order-4&lt;/Col&gt;</span><br><span class="line">  &lt;Col span=&quot;6&quot; order=&quot;3&quot;&gt;2 | order-3&lt;/Col&gt;</span><br><span class="line">  &lt;Col span=&quot;6&quot; order=&quot;2&quot;&gt;3 | order-2&lt;/Col&gt;</span><br><span class="line">  &lt;Col span=&quot;6&quot; order=&quot;1&quot;&gt;4 | order-1&lt;/Col&gt;</span><br><span class="line">&lt;/Row&gt;</span><br></pre></td></tr></table></figure></p>
+<h2 id="栅格排序"><a href="#栅格排序" class="headerlink" title="栅格排序"></a>栅格排序</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">push=&quot;6&quot; // 右推6</span><br><span class="line">pull=&quot;18&quot; // 左拉18</span><br></pre></td></tr></table></figure>
+<h2 id="左右偏移"><a href="#左右偏移" class="headerlink" title="左右偏移"></a>左右偏移</h2><p>offset=”8”</p>
+<h2 id="Flex布局"><a href="#Flex布局" class="headerlink" title="Flex布局"></a>Flex布局</h2><p>justify可以为</p>
+<ol>
+<li>start 左</li>
+<li>end 右</li>
+<li>center 居中</li>
+<li>space-between 子元素等宽排列</li>
+<li>space-around 子元素分散排列<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;Row type=&quot;flex&quot; justify=&quot;start&quot; class=&quot;code-row-bg&quot;&gt;</span><br><span class="line">  &lt;Col span=&quot;4&quot;&gt;col-4&lt;/Col&gt;</span><br><span class="line">  &lt;Col span=&quot;4&quot;&gt;col-4&lt;/Col&gt;</span><br><span class="line">  &lt;Col span=&quot;4&quot;&gt;col-4&lt;/Col&gt;</span><br><span class="line">  &lt;Col span=&quot;4&quot;&gt;col-4&lt;/Col&gt;</span><br><span class="line">&lt;/Row&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="Flex对齐"><a href="#Flex对齐" class="headerlink" title="Flex对齐"></a>Flex对齐</h2><p>align:</p>
+<pre><code>1. top
+2. bottom
+3. middle
+</code></pre><h2 id="响应式布局"><a href="#响应式布局" class="headerlink" title="响应式布局"></a>响应式布局</h2><p>xs sm md lg 四个响应尺寸<br>span pull push offset order 属性可以通过内嵌到 xs sm md lg 属性中来使用</p>
+<h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><h3 id="Row-props"><a href="#Row-props" class="headerlink" title="Row props"></a>Row props</h3><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>说明</th>
+<th>类型</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gutter</td>
+<td>栅格间距，单位 px，左右平分</td>
+<td>Number</td>
+<td>0</td>
+</tr>
+<tr>
+<td>type</td>
+<td>布局模式，可选值为<code>flex</code>或不选，在现代浏览器下有效</td>
+<td>String</td>
+<td>-</td>
+</tr>
+<tr>
+<td>align</td>
+<td>flex 布局下的垂直对齐方式，可选值为<code>top</code>、<code>middle</code>、<code>bottom</code></td>
+<td>String</td>
+<td>-</td>
+</tr>
+<tr>
+<td>justify</td>
+<td>flex 布局下的水平排列方式，可选值为<code>start</code>、<code>end</code>、<code>center</code>、<code>space-around</code>、<code>space-between</code></td>
+<td>String</td>
+<td>-</td>
+</tr>
+<tr>
+<td>class-name</td>
+<td>自定义的class名称</td>
+<td>String</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Col-props"><a href="#Col-props" class="headerlink" title="Col props"></a>Col props</h3><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>说明</th>
+<th>类型</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>span</td>
+<td>栅格的占位格数，可选值为0~24的整数，为 0 时，相当于<code>display:none</code></td>
+<td>Number \</td>
+<td>String</td>
+<td>-</td>
+</tr>
+<tr>
+<td>order</td>
+<td>栅格的顺序，在<code>flex</code>布局模式下有效</td>
+<td>Number \</td>
+<td>String</td>
+<td>-</td>
+</tr>
+<tr>
+<td>offset</td>
+<td>栅格左侧的间隔格数，间隔内不可以有栅格</td>
+<td>Number \</td>
+<td>String</td>
+<td>-</td>
+</tr>
+<tr>
+<td>push</td>
+<td>栅格向右移动格数</td>
+<td>Number \</td>
+<td>String</td>
+<td>-</td>
+</tr>
+<tr>
+<td>pull</td>
+<td>栅格向左移动格数</td>
+<td>Number \</td>
+<td>String</td>
+<td>-</td>
+</tr>
+<tr>
+<td>class-name</td>
+<td>自定义的class名称</td>
+<td>String</td>
+<td>-</td>
+</tr>
+<tr>
+<td>xs</td>
+<td><code>&lt;768px</code> 响应式栅格，可为栅格数或一个包含其他属性的对象</td>
+<td>Number \</td>
+<td>Object</td>
+<td>-</td>
+</tr>
+<tr>
+<td>sm</td>
+<td><code>≥768px</code> 响应式栅格，可为栅格数或一个包含其他属性的对象</td>
+<td>Number \</td>
+<td>Object</td>
+<td>-</td>
+</tr>
+<tr>
+<td>md</td>
+<td><code>≥992px</code> 响应式栅格，可为栅格数或一个包含其他属性的对象</td>
+<td>Number \</td>
+<td>Object</td>
+<td>-</td>
+</tr>
+<tr>
+<td>lg</td>
+<td><code>≥1200px</code> 响应式栅格，可为栅格数或一个包含其他属性的对象</td>
+<td>Number \</td>
+<td>Object</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+
+                                                                        
+                                    </div>
+                                    <footer class="article-footer">
+                                        <a data-url="http://yoursite.com/2017/06/19/iView-学习笔记-栅格/" data-id="ck6zcqu8f000mpg74plkuvl1y" class="article-share-link">
+                                            Share
+                                        </a>
+                                        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue/">Vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/grid/">grid</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iView/">iView</a></li></ul>
+
+                                    </footer>
+
+    </div>
+
+    
+
+                
+
+</article>
+        
+          <article id="post-Vue-js-学习笔记-路由-Router" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+  
+    <h2 itemprop="name">
+      <a class="article-title" href="/2017/06/15/Vue-js-学习笔记-路由-Router/">Vue.js 学习笔记 - 路由(Router)</a>
+    </h2>
+  
+  
+
+
+
+
+            </header>
+            
+
+                
+                    <div class="article-meta">
+                        <a href="/2017/06/15/Vue-js-学习笔记-路由-Router/" class="article-date">
+  <time datetime="2017-06-15T04:43:48.000Z" itemprop="datePublished">2017-06-15</time>
+</a>
+                            
+                    </div>
+                    
+
+                        
+
+                                    <div class="article-entry" itemprop="articleBody">
+                                        
+
+
+                                            
+
+                                                
+                                                                    <h1 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h1><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">router-link</span> <span class="attr">to</span>=<span class="string">"/foo"</span>&gt;</span>Go to Foo<span class="tag">&lt;/<span class="name">router-link</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">router-view</span>&gt;</span><span class="tag">&lt;/<span class="name">router-view</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> routes = [</span><br><span class="line">  &#123; path: <span class="string">'/foo'</span>, component: Foo &#125;,</span><br><span class="line">  &#123; path: <span class="string">'/bar'</span>, component: Bar &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<h2 id="动态路由匹配"><a href="#动态路由匹配" class="headerlink" title="动态路由匹配"></a>动态路由匹配</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">routes: [</span><br><span class="line">  <span class="comment">// 动态路径参数 以冒号开头 id 和 post_id 是同级并列的</span></span><br><span class="line">  &#123; path: <span class="string">'/User/:id/post/:post_id'</span>, component: User &#125;</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="comment">// 模板</span></span><br><span class="line"><span class="keyword">const</span> User = &#123;</span><br><span class="line">  template: <span class="string">'&lt;div&gt;User &#123;&#123; $route.params.id &#125;&#125; Post_id &#123;&#123; $route.params.post_id &#125;&#125;&lt;/div&gt;'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>你可以在一个路由中设置多段『路径参数』，对应的值都会设置到 <code>$route.params</code> 中。例如：</p>
+<table>
+<thead>
+<tr>
+<th>模式</th>
+<th>匹配路径</th>
+<th>$route.params</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/user/:username</td>
+<td>/user/evan</td>
+<td><code>{ username: &#39;evan&#39; }</code></td>
+</tr>
+<tr>
+<td>/user/:username/post/:post_id</td>
+<td>/user/evan/post/123</td>
+<td><code>{ username: &#39;evan&#39;, post_id: 123 }</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="嵌套路由"><a href="#嵌套路由" class="headerlink" title="嵌套路由"></a>嵌套路由</h2><p>以 / 开头的嵌套路径会被当作根路径</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">routes: [</span><br><span class="line">  &#123;</span><br><span class="line">    path: <span class="string">'/User/:id/post/:post_id'</span>,</span><br><span class="line">    name: <span class="string">'User'</span>,</span><br><span class="line">    component: User,</span><br><span class="line">    children: [</span><br><span class="line">      &#123;</span><br><span class="line">        path: <span class="string">''</span>,</span><br><span class="line">        component: UserHome <span class="comment">// 默认匹配</span></span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        path: <span class="string">'profile'</span>,</span><br><span class="line">        component: UserProfile</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        path: <span class="string">'posts'</span>,</span><br><span class="line">        component: UserPosts</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">router-link</span> <span class="attr">to</span>=<span class="string">"/User/Shang/post/1/Profile"</span>&gt;</span>Go to User ProFile<span class="tag">&lt;/<span class="name">router-link</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">router-link</span> <span class="attr">to</span>=<span class="string">"/User/Xin/post/2/Posts"</span>&gt;</span>Go to User Posts<span class="tag">&lt;/<span class="name">router-link</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="编程式的导航"><a href="#编程式的导航" class="headerlink" title="编程式的导航"></a>编程式的导航</h2><table>
+<thead>
+<tr>
+<th>声明式</th>
+<th>编程式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&lt;router-link :to=&quot;...&quot;&gt;</code></td>
+<td><code>router.push(...)</code></td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">router-link</span> <span class="attr">:to</span>=<span class="string">"&#123;path: '/Hello'&#125;"</span>&gt;</span>Go to Hello<span class="tag">&lt;/<span class="name">router-link</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 字符串</span></span><br><span class="line">router.push(<span class="string">'home'</span>)</span><br><span class="line"><span class="comment">// 对象</span></span><br><span class="line">router.push(&#123; path: <span class="string">'home'</span> &#125;)</span><br><span class="line"><span class="comment">// 命名的路由</span></span><br><span class="line">router.push(&#123; name: <span class="string">'user'</span>, params: &#123; userId: <span class="number">123</span> &#125;&#125;)</span><br><span class="line"><span class="comment">// 带查询参数，变成 /register?plan=private</span></span><br><span class="line">router.push(&#123; path: <span class="string">'register'</span>, query: &#123; plan: <span class="string">'private'</span> &#125;&#125;)</span><br><span class="line"></span><br><span class="line">methods: &#123;</span><br><span class="line">  testPush () &#123;</span><br><span class="line">  	<span class="comment">// this.$router.push(&#123; path: '/Hello' &#125;)  无参数第一个必须为path</span></span><br><span class="line">    <span class="keyword">this</span>.$router.push(&#123;name: <span class="string">'Hello'</span>, params: &#123;userId: <span class="number">123</span>&#125;&#125;) <span class="comment">// 有参数第一个必须为name</span></span><br><span class="line">    <span class="comment">// 有无参数必须和路由定义中统一 (path: '/Hello/:userId',)</span></span><br><span class="line">  &#125;,</span><br><span class="line">  testReplace () &#123;</span><br><span class="line">    <span class="keyword">this</span>.$router.replace(&#123;name: <span class="string">'Hello'</span>, params: &#123;userId: <span class="number">123</span>&#125;&#125;)</span><br><span class="line">  &#125;,</span><br><span class="line">  testGo (n) &#123;</span><br><span class="line">  	<span class="keyword">this</span>.$router.go(n)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="命名路由"><a href="#命名路由" class="headerlink" title="命名路由"></a>命名路由</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">routes: [</span><br><span class="line">  &#123;</span><br><span class="line">    path: &apos;/user/:userId&apos;,</span><br><span class="line">    name: &apos;user&apos;,</span><br><span class="line">    component: User</span><br><span class="line">  &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;router-link :to=&quot;&#123; name: &apos;user&apos;, params: &#123; userId: 123 &#125;&#125;&quot;&gt;User&lt;/router-link&gt;</span><br></pre></td></tr></table></figure>
+<p>这跟代码调用 <code>router.push()</code> 是一回事：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">router.push(&#123; name: &apos;user&apos;, params: &#123; userId: 123 &#125;&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="命名视图"><a href="#命名视图" class="headerlink" title="命名视图"></a>命名视图</h2><p>默认为 default<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;router-view class=&quot;view one&quot;&gt;&lt;/router-view&gt;</span><br><span class="line">&lt;router-view class=&quot;view two&quot; name=&quot;a&quot;&gt;&lt;/router-view&gt;</span><br><span class="line">&lt;router-view class=&quot;view three&quot; name=&quot;b&quot;&gt;&lt;/router-view&gt;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  path: &apos;/&apos;,</span><br><span class="line">  components: &#123;</span><br><span class="line">    default: Hello,</span><br><span class="line">    a: UserProfile,</span><br><span class="line">    b: UserPosts</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br><span class="line">&#123;</span><br><span class="line">  path: &apos;/other&apos;,</span><br><span class="line">  components: &#123;</span><br><span class="line">    default: UserPosts,</span><br><span class="line">    a: UserProfile,</span><br><span class="line">    b: Hello</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<h2 id="重定向"><a href="#重定向" class="headerlink" title="重定向"></a>重定向</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">const router = new VueRouter(&#123;</span><br><span class="line">  routes: [</span><br><span class="line">    &#123; path: &apos;/a&apos;, redirect: &apos;/b&apos; &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;)</span><br><span class="line">// 目标为路由</span><br><span class="line">const router = new VueRouter(&#123;</span><br><span class="line">  routes: [</span><br><span class="line">    &#123; path: &apos;/a&apos;, redirect: &#123; name: &apos;foo&apos; &#125;&#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;)</span><br><span class="line">// 目标为方法</span><br><span class="line">const router = new VueRouter(&#123;</span><br><span class="line">  routes: [</span><br><span class="line">    &#123; path: &apos;/a&apos;, redirect: to =&gt; &#123;</span><br><span class="line">      // 方法接收 目标路由 作为参数</span><br><span class="line">      // return 重定向的 字符串路径/路径对象</span><br><span class="line">    &#125;&#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>query相当于在URL后面拼接参数，可以用 this.$route.query.num 读取</p>
+<h3 id="别名"><a href="#别名" class="headerlink" title="别名"></a>别名</h3>
+                                                                        
+                                    </div>
+                                    <footer class="article-footer">
+                                        <a data-url="http://yoursite.com/2017/06/15/Vue-js-学习笔记-路由-Router/" data-id="ck6zcqu7x000fpg74zh4yz0tv" class="article-share-link">
+                                            Share
+                                        </a>
+                                        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue/">Vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/router/">router</a></li></ul>
+
+                                    </footer>
+
+    </div>
+
+    
+
+                
+
+</article>
+        
+          <article id="post-Vue-js-学习笔记-组件-Components" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+  
+    <h2 itemprop="name">
+      <a class="article-title" href="/2017/06/11/Vue-js-学习笔记-组件-Components/">Vue.js 学习笔记 - 组件(Components)</a>
+    </h2>
+  
+  
+
+
+
+
+            </header>
+            
+
+                
+                    <div class="article-meta">
+                        <a href="/2017/06/11/Vue-js-学习笔记-组件-Components/" class="article-date">
+  <time datetime="2017-06-11T02:55:29.000Z" itemprop="datePublished">2017-06-11</time>
+</a>
+                            
+                    </div>
+                    
+
+                        
+
+                                    <div class="article-entry" itemprop="articleBody">
+                                        
+
+
+                                            
+
+                                                
+                                                                    <h1 id="Vue-组件"><a href="#Vue-组件" class="headerlink" title="Vue 组件"></a>Vue 组件</h1><h2 id="注册"><a href="#注册" class="headerlink" title="注册"></a>注册</h2><p>Components 要确保在初始化根实例 之前 注册了组件</p>
+<h3 id="全局注册："><a href="#全局注册：" class="headerlink" title="全局注册："></a>全局注册：</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(<span class="string">'my-component'</span>, &#123;</span><br><span class="line">  template: <span class="string">'&lt;div&gt;A custom component!&lt;/div&gt;'</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// 创建根实例</span></span><br><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="string">'#example'</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="局部注册："><a href="#局部注册：" class="headerlink" title="局部注册："></a>局部注册：</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Child = &#123;</span><br><span class="line">    template: <span class="string">'&lt;div&gt;A custom component!&lt;/div&gt;'</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="string">'#example'</span>,</span><br><span class="line">  components: &#123;</span><br><span class="line">      <span class="string">'my-component'</span>: Child</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><h3 id="is属性："><a href="#is属性：" class="headerlink" title="is属性："></a>is属性：</h3><p>把自定义组件绑定在此元素上<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">table</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">tr</span> <span class="attr">is</span>=<span class="string">"my-row"</span>&gt;</span><span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="data"><a href="#data" class="headerlink" title="data"></a>data</h3><p>在组件中必须是函数形式<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ES5</span></span><br><span class="line">data:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line"><span class="comment">// ES6</span></span><br><span class="line">data () &#123;&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="构成组件"><a href="#构成组件" class="headerlink" title="构成组件"></a>构成组件</h3><p>props down, events up</p>
+<h3 id="Prop验证"><a href="#Prop验证" class="headerlink" title="Prop验证"></a>Prop验证</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(<span class="string">'example'</span>, &#123;</span><br><span class="line">  props: &#123;</span><br><span class="line">    <span class="comment">// 基础类型检测 （`null` 意思是任何类型都可以）</span></span><br><span class="line">    propA: <span class="built_in">Number</span>,</span><br><span class="line">    <span class="comment">// 多种类型</span></span><br><span class="line">    propB: [<span class="built_in">String</span>, <span class="built_in">Number</span>],</span><br><span class="line">    <span class="comment">// 必传且是字符串</span></span><br><span class="line">    propC: &#123;</span><br><span class="line">      type: <span class="built_in">String</span>,</span><br><span class="line">      required: <span class="literal">true</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// 数字，有默认值</span></span><br><span class="line">    propD: &#123;</span><br><span class="line">      type: <span class="built_in">Number</span>,</span><br><span class="line">      <span class="keyword">default</span>: <span class="number">100</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// 数组／对象的默认值应当由一个工厂函数返回</span></span><br><span class="line">    propE: &#123;</span><br><span class="line">      type: <span class="built_in">Object</span>,</span><br><span class="line">      <span class="keyword">default</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> &#123; message: <span class="string">'hello'</span> &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// 自定义验证函数</span></span><br><span class="line">    propF: &#123;</span><br><span class="line">      validator: <span class="function"><span class="keyword">function</span> (<span class="params">value</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> value &gt; <span class="number">10</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="自定义事件"><a href="#自定义事件" class="headerlink" title="自定义事件"></a>自定义事件</h3><p>侦听子组件抛出的事件，必须用<em>v-on</em>在模板中绑定</p>
+<h3 id="绑定原生事件"><a href="#绑定原生事件" class="headerlink" title="绑定原生事件"></a>绑定原生事件</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">v-on:click.native</span><br></pre></td></tr></table></figure>
+<h3 id="子组件索引：ref"><a href="#子组件索引：ref" class="headerlink" title="子组件索引：ref"></a>子组件索引：ref</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"parent"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">user-profile</span> <span class="attr">ref</span>=<span class="string">"profile"</span>&gt;</span><span class="tag">&lt;/<span class="name">user-profile</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> parent = <span class="keyword">new</span> Vue(&#123; el: <span class="string">'#parent'</span> &#125;)</span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> child = parent.$refs.profile</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">和v-for一起用时，ref是个数组或对象</span><br></pre></td></tr></table></figure>
+<h2 id="Slot"><a href="#Slot" class="headerlink" title="Slot"></a>Slot</h2><p>Slot 具名Slot 作用域插槽</p>
+<p>动态组件 keep-alive</p>
+<p>Vue 组件的 API 来自三部分： Props 允许外部环境传递数据给组件 Events 允许组件触发外部环境的副作用 Slots 允许外部环境将额外的内容组合在组件中</p>
+
+                                                                        
+                                    </div>
+                                    <footer class="article-footer">
+                                        <a data-url="http://yoursite.com/2017/06/11/Vue-js-学习笔记-组件-Components/" data-id="ck6zcqu7s000cpg746atgvfwa" class="article-share-link">
+                                            Share
+                                        </a>
+                                        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue/">Vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/component/">component</a></li></ul>
+
+                                    </footer>
+
+    </div>
+
+    
+
+                
+
+</article>
+        
+          <article id="post-Vue-js-学习笔记-事件处理器" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+  
+    <h2 itemprop="name">
+      <a class="article-title" href="/2017/06/09/Vue-js-学习笔记-事件处理器/">Vue.js 学习笔记 - 事件处理器</a>
+    </h2>
+  
+  
+
+
+
+
+            </header>
+            
+
+                
+                    <div class="article-meta">
+                        <a href="/2017/06/09/Vue-js-学习笔记-事件处理器/" class="article-date">
+  <time datetime="2017-06-09T09:09:29.000Z" itemprop="datePublished">2017-06-09</time>
+</a>
+                            
+                    </div>
+                    
+
+                        
+
+                                    <div class="article-entry" itemprop="articleBody">
+                                        
+
+
+                                            
+
+                                                
+                                                                    <h1 id="事件处理器"><a href="#事件处理器" class="headerlink" title="事件处理器"></a>事件处理器</h1><h2 id="绑定"><a href="#绑定" class="headerlink" title="绑定"></a>绑定</h2><p>在 HTML 标签中添加<strong>v-on</strong>属性<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">v-on:click</span>=<span class="string">"greet"</span>&gt;</span>Greet<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">	methods: &#123;</span></span><br><span class="line"><span class="javascript">		greet: <span class="function"><span class="keyword">function</span> (<span class="params">event</span>) </span>&#123;</span></span><br><span class="line"><span class="undefined">    	&#125;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="事件修饰符"><a href="#事件修饰符" class="headerlink" title="事件修饰符"></a>事件修饰符</h2><ul>
+<li>.stop</li>
+<li>.prevent</li>
+<li>.capture</li>
+<li>.self</li>
+<li>.once<h2 id="按键修饰符"><a href="#按键修饰符" class="headerlink" title="按键修饰符"></a>按键修饰符</h2></li>
+<li>.enter</li>
+<li>.tab</li>
+<li>.delete (捕获 “删除” 和 “退格” 键)</li>
+<li>.esc</li>
+<li>.space</li>
+<li>.up</li>
+<li>.down</li>
+<li>.left</li>
+<li>.right</li>
+<li>.ctrl</li>
+<li>.alt</li>
+<li>.shift</li>
+<li>.meta</li>
+</ul>
+
+                                                                        
+                                    </div>
+                                    <footer class="article-footer">
+                                        <a data-url="http://yoursite.com/2017/06/09/Vue-js-学习笔记-事件处理器/" data-id="ck6zcqu7l000apg74a65vng0b" class="article-share-link">
+                                            Share
+                                        </a>
+                                        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue/">Vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/event/">event</a></li></ul>
+
+                                    </footer>
+
+    </div>
+
+    
+
+                
+
+</article>
+        
+          <article id="post-Vue-js-学习笔记-数组操作" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+  
+    <h2 itemprop="name">
+      <a class="article-title" href="/2017/06/09/Vue-js-学习笔记-数组操作/">Vue.js 学习笔记 - 数组操作</a>
+    </h2>
+  
+  
+
+
+
+
+            </header>
+            
+
+                
+                    <div class="article-meta">
+                        <a href="/2017/06/09/Vue-js-学习笔记-数组操作/" class="article-date">
+  <time datetime="2017-06-09T09:09:29.000Z" itemprop="datePublished">2017-06-09</time>
+</a>
+                            
+                    </div>
+                    
+
+                        
+
+                                    <div class="article-entry" itemprop="articleBody">
+                                        
+
+
+                                            
+
+                                                
+                                                                    <h1 id="数组操作"><a href="#数组操作" class="headerlink" title="数组操作"></a>数组操作</h1><h2 id="变异方法"><a href="#变异方法" class="headerlink" title="变异方法"></a>变异方法</h2><p>  push()<br>  pop()<br>  shift()<br>  unshift()<br>  splice()<br>  sort()<br>  reverse()</p>
+<h2 id="重塑数组"><a href="#重塑数组" class="headerlink" title="重塑数组"></a>重塑数组</h2><pre><code>filter(), concat(), slice()
+</code></pre><h2 id="其他操作"><a href="#其他操作" class="headerlink" title="其他操作"></a>其他操作</h2><h3 id="利用索引修改某一项数据："><a href="#利用索引修改某一项数据：" class="headerlink" title="利用索引修改某一项数据："></a>利用索引修改某一项数据：</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Vue.set(example1.items, indexOfItem, newValue)</span><br></pre></td></tr></table></figure>
+<h3 id="更改数组长度"><a href="#更改数组长度" class="headerlink" title="更改数组长度"></a>更改数组长度</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">example1.items.splice(indexOfItem, <span class="number">1</span>, newValue)</span><br></pre></td></tr></table></figure>
+                                                                        
+                                    </div>
+                                    <footer class="article-footer">
+                                        <a data-url="http://yoursite.com/2017/06/09/Vue-js-学习笔记-数组操作/" data-id="ck6zcqu7o000bpg74fxczdhtf" class="article-share-link">
+                                            Share
+                                        </a>
+                                        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue/">Vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/array/">array</a></li></ul>
+
+                                    </footer>
+
+    </div>
+
+    
+
+                
+
+</article>
+        
+          <article id="post-Vue-js-学习笔记-表单控件绑定" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+  
+    <h2 itemprop="name">
+      <a class="article-title" href="/2017/06/09/Vue-js-学习笔记-表单控件绑定/">Vue.js 学习笔记 - 表单控件绑定</a>
+    </h2>
+  
+  
+
+
+
+
+            </header>
+            
+
+                
+                    <div class="article-meta">
+                        <a href="/2017/06/09/Vue-js-学习笔记-表单控件绑定/" class="article-date">
+  <time datetime="2017-06-09T09:09:29.000Z" itemprop="datePublished">2017-06-09</time>
+</a>
+                            
+                    </div>
+                    
+
+                        
+
+                                    <div class="article-entry" itemprop="articleBody">
+                                        
+
+
+                                            
+
+                                                
+                                                                    <h1 id="表单控件绑定"><a href="#表单控件绑定" class="headerlink" title="表单控件绑定"></a>表单控件绑定</h1><h2 id="绑定"><a href="#绑定" class="headerlink" title="绑定"></a>绑定</h2><p>v-model<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">v-model.lazy</span>=<span class="string">"message"</span> <span class="attr">placeholder</span>=<span class="string">"edit me"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>Message is: &#123;&#123; message &#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">  <span class="keyword">var</span> app = <span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="javascript">    el: <span class="string">'#app'</span>,</span></span><br><span class="line"><span class="undefined">    data: &#123;</span></span><br><span class="line"><span class="javascript">      message: <span class="string">''</span></span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">  &#125;)</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="修饰符"><a href="#修饰符" class="headerlink" title="修饰符"></a>修饰符</h2><ul>
+<li>.lazy</li>
+<li>.number</li>
+<li>.trim</li>
+</ul>
+
+                                                                        
+                                    </div>
+                                    <footer class="article-footer">
+                                        <a data-url="http://yoursite.com/2017/06/09/Vue-js-学习笔记-表单控件绑定/" data-id="ck6zcqu7u000dpg74kv4zfdhc" class="article-share-link">
+                                            Share
+                                        </a>
+                                        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue/">Vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/form/">form</a></li></ul>
+
+                                    </footer>
+
+    </div>
+
+    
+
+                
+
+</article>
+        
+    </article>
+    
+  
+    
+      <nav class="page-nav">
+        <a class="extend prev" rel="prev" href="/">Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next</a>
+      </nav>
+    
+  </section>
+</div>
+
+  <footer class="footer">
+  <div class="outer">
+    <div class="float-right">
+      <ul class="list-inline">
+  
+    <li><i class="fe fe-bar-chart"></i> <span id="busuanzi_value_site_pv"></span></li>
+  
+    <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+</ul>
+    </div>
+    <ul class="list-inline">
+      <li>&copy; 2020 不懂鸟语的人</li>
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>Theme  <a href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
+    </ul>
+  </div>
+</footer>
+
+</main>
+<aside class="sidebar">
+  <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+    <div class="logo">
+      <a href="/"><img src="/images/hexo.svg" alt="不懂鸟语的人"></a>
+    </div>
+  
+  <ul class="nav nav-main">
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/">首页</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/archives">归档</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/gallery">相册</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/about">关于</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/links">友链</a>
+      </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="Search">
+        <i class="fe fe-search"></i>
+        Search
+      </a>
+    </li>
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      <div class="totop" id="totop">
+  <i class="fe fe-rocket"></i>
+</div>
+    </li>
+    <li class="nav-item">
+      
+        <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+          <i class="fe fe-feed"></i>
+        </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+</aside>
+<script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/lazyload.min.js"></script>
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+  <script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/ocean.js"></script>
+
+</body>
+</html>

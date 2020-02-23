@@ -1,5 +1,76 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta name="generator" content="Hexo 3.9.0"><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author" content="Shangxin"><title>Vue.js 学习笔记 - 路由(Router) · 不懂鸟语的人</title><meta name="description" content="路由12&amp;lt;router-link to=&quot;/foo&quot;&amp;gt;Go to Foo&amp;lt;/router-link&amp;gt;&amp;lt;router-view&amp;gt;&amp;lt;/router-view&amp;gt;
-1234const routes = [  &amp;#123; path: '/foo', compo"><meta name="keywords"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="short icon" href="/images/favicon.png" type="image/x-icon"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"></head><body><div class="sidebar animated fadeInDown"><div class="logo-title"><div class="title"><img src="/images/logo@2x.png" style="width:127px;"><h3 title><a href="/">不懂鸟语的人</a></h3><div class="description"><p>Shangxin 的个人学习笔记。精力原因，也许只为自己方便翻阅。</p></div></div></div><ul class="social-links"><li><a href="https://twitter.com/YangShangxin"><i class="fa fa-twitter"></i></a></li><li><a href="http://github.com/YoungSx"><i class="fa fa-github"></i></a></li></ul><div class="footer"><a target="_blank" href="/"><span>Theme by </span></a><a href="https://www.caicai.me"> CaiCai </a><span>&</span><a href="https://github.com/Ben02/hexo-theme-Anatole"> Ben</a><div class="by_farbox"><a href="https://hexo.io/zh-cn/" target="_blank">Proudly published with Hexo&#65281;</a></div></div></div><div class="main"><div class="page-top animated fadeInDown"><div class="nav"><li><a href="/">首页</a></li><li><a href="/about">关于</a></li><li><a href="/archives">归档</a></li><li><a href="/links">友链</a></li></div><div class="information"><div class="back_btn"><li><a class="fa fa-chevron-left" onclick="window.history.go(-1)"> </a></li></div><div class="avatar"><img src="/images/fbb.png"></div></div></div><div class="autopagerize_page_element"><div class="content"><div class="post-page"><div class="post animated fadeInDown"><div class="post-title"><h3><a>Vue.js 学习笔记 - 路由(Router)</a></h3></div><div class="post-content"><h1 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h1><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">router-link</span> <span class="attr">to</span>=<span class="string">"/foo"</span>&gt;</span>Go to Foo<span class="tag">&lt;/<span class="name">router-link</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">router-view</span>&gt;</span><span class="tag">&lt;/<span class="name">router-view</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  
+  
+    <meta name="description" content="Shangxin 的个人学习笔记。精力原因，也许只为自己方便翻阅。">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+    Vue.js 学习笔记 - 路由(Router) |
+    
+    不懂鸟语的人</title>
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+  
+  <script src="/js/pace.min.js"></script>
+</head>
+</html>
+<body>
+<main class="content">
+  <section class="outer">
+  <article id="post-Vue-js-学习笔记-路由-Router" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+  
+    <h1 class="article-title" itemprop="name">
+      Vue.js 学习笔记 - 路由(Router)
+    </h1>
+  
+  
+
+
+
+
+            </header>
+            
+
+                
+                    <div class="article-meta">
+                        <a href="/2017/06/15/Vue-js-学习笔记-路由-Router/" class="article-date">
+  <time datetime="2017-06-15T04:43:48.000Z" itemprop="datePublished">2017-06-15</time>
+</a>
+                            
+                    </div>
+                    
+
+                        
+                            
+    <div class="tocbot"></div>
+
+
+
+
+
+                                
+
+                                    <div class="article-entry" itemprop="articleBody">
+                                        
+
+
+                                            
+
+                                                
+                                                                    <h1 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h1><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">router-link</span> <span class="attr">to</span>=<span class="string">"/foo"</span>&gt;</span>Go to Foo<span class="tag">&lt;/<span class="name">router-link</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">router-view</span>&gt;</span><span class="tag">&lt;/<span class="name">router-view</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> routes = [</span><br><span class="line">  &#123; path: <span class="string">'/foo'</span>, component: Foo &#125;,</span><br><span class="line">  &#123; path: <span class="string">'/bar'</span>, component: Bar &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
 <h2 id="动态路由匹配"><a href="#动态路由匹配" class="headerlink" title="动态路由匹配"></a>动态路由匹配</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">routes: [</span><br><span class="line">  <span class="comment">// 动态路径参数 以冒号开头 id 和 post_id 是同级并列的</span></span><br><span class="line">  &#123; path: <span class="string">'/User/:id/post/:post_id'</span>, component: User &#125;</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="comment">// 模板</span></span><br><span class="line"><span class="keyword">const</span> User = &#123;</span><br><span class="line">  template: <span class="string">'&lt;div&gt;User &#123;&#123; $route.params.id &#125;&#125; Post_id &#123;&#123; $route.params.post_id &#125;&#125;&lt;/div&gt;'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>你可以在一个路由中设置多段『路径参数』，对应的值都会设置到 <code>$route.params</code> 中。例如：</p>
@@ -51,13 +122,173 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  path: &apos;/&apos;,</span><br><span class="line">  components: &#123;</span><br><span class="line">    default: Hello,</span><br><span class="line">    a: UserProfile,</span><br><span class="line">    b: UserPosts</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br><span class="line">&#123;</span><br><span class="line">  path: &apos;/other&apos;,</span><br><span class="line">  components: &#123;</span><br><span class="line">    default: UserPosts,</span><br><span class="line">    a: UserProfile,</span><br><span class="line">    b: Hello</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
 <h2 id="重定向"><a href="#重定向" class="headerlink" title="重定向"></a>重定向</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">const router = new VueRouter(&#123;</span><br><span class="line">  routes: [</span><br><span class="line">    &#123; path: &apos;/a&apos;, redirect: &apos;/b&apos; &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;)</span><br><span class="line">// 目标为路由</span><br><span class="line">const router = new VueRouter(&#123;</span><br><span class="line">  routes: [</span><br><span class="line">    &#123; path: &apos;/a&apos;, redirect: &#123; name: &apos;foo&apos; &#125;&#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;)</span><br><span class="line">// 目标为方法</span><br><span class="line">const router = new VueRouter(&#123;</span><br><span class="line">  routes: [</span><br><span class="line">    &#123; path: &apos;/a&apos;, redirect: to =&gt; &#123;</span><br><span class="line">      // 方法接收 目标路由 作为参数</span><br><span class="line">      // return 重定向的 字符串路径/路径对象</span><br><span class="line">    &#125;&#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 <p>query相当于在URL后面拼接参数，可以用 this.$route.query.num 读取</p>
-<h3 id="别名"><a href="#别名" class="headerlink" title="别名"></a>别名</h3></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2017-06-15</span><i class="fa fa-tag"></i><a class="tag" href="/tags/Vue/" title="Vue">Vue </a><a class="tag" href="/tags/router/" title="router">router </a></div></div></div></div><div class="share"><div class="evernote"><a class="fa fa-bookmark" href="javascript:(function(){EN_CLIP_HOST='http://www.evernote.com';try{var%20x=document.createElement('SCRIPT');x.type='text/javascript';x.src=EN_CLIP_HOST+'/public/bookmarkClipper.js?'+(new%20Date().getTime()/100000);document.getElementsByTagName('head')[0].appendChild(x);}catch(e){location.href=EN_CLIP_HOST+'/clip.action?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title);}})();" ref="nofollow" target="_blank"></a></div><div class="weibo"><a class="fa fa-weibo" href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));"></a></div><div class="twitter"><a class="fa fa-twitter" href="http://twitter.com/home?status=,http://yoursite.com/2017/06/15/Vue-js-学习笔记-路由-Router/,不懂鸟语的人,Vue.js 学习笔记 - 路由(Router),;"></a></div></div><div class="pagination"><ul class="clearfix"><li class="pre pagbuttons"><a class="btn" role="navigation" href="/2017/06/19/iView-学习笔记-栅格/" title="iView 学习笔记 - 栅格">上一篇</a></li><li class="next pagbuttons"><a class="btn" role="navigation" href="/2017/06/11/Vue-js-学习笔记-组件-Components/" title="Vue.js 学习笔记 - 组件(Components)">下一篇</a></li></ul></div><a id="comments"></a><div id="vcomments" style="margin:0 30px;"></div><script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script><script src="//cdn.jsdelivr.net/gh/xcss/valine@v1.1.7/dist/Valine.min.js?v=undefined"></script><script>var valine = new Valine({
-  el:'#vcomments',
-  notify:false || false, 
-  verify:false|| false, 
-  app_id:'b47PMHdzebB0ozGGdW68aQAN-gzGzoHsz',
-  app_key:'pnCuygqUh5uDjQt8wNEKSd8K',
-  placeholder:'Just go go',
-  path: window.location.pathname,
-  avatar:'mm'
-})</script></div></div></div></div><script src="/js/jquery.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script></body></html>
+<h3 id="别名"><a href="#别名" class="headerlink" title="别名"></a>别名</h3>
+                                                                        
+                                    </div>
+                                    <footer class="article-footer">
+                                        <a data-url="http://yoursite.com/2017/06/15/Vue-js-学习笔记-路由-Router/" data-id="ck6zcqu7x000fpg74zh4yz0tv" class="article-share-link">
+                                            Share
+                                        </a>
+                                        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue/">Vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/router/">router</a></li></ul>
+
+                                    </footer>
+
+    </div>
+
+    
+        
+  <nav class="article-nav">
+    
+      <a href="/2017/06/19/iView-学习笔记-栅格/" class="article-nav-link">
+        <strong class="article-nav-caption">Newer</strong>
+        <div class="article-nav-title">
+          
+            iView 学习笔记 - 栅格
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2017/06/11/Vue-js-学习笔记-组件-Components/" class="article-nav-link">
+        <strong class="article-nav-caption">Older</strong>
+        <div class="article-nav-title">Vue.js 学习笔记 - 组件(Components)</div>
+      </a>
+    
+  </nav>
+
+
+            
+
+                
+                    
+    <div class="vcomments" id="vcomments"></div>
+    <script src="https://unpkg.com/valine/dist/Valine.min.js"></script>
+        <script>
+            new Valine({
+                el: '#vcomments',
+                appId: 'b47PMHdzebB0ozGGdW68aQAN-gzGzoHsz',
+                appKey: 'pnCuygqUh5uDjQt8wNEKSd8K',
+                notify: 'false',
+                verify: 'false',
+                avatar: 'mp',
+                pageSize: '10',
+                placeholder: '请输入...'
+            })
+        </script>
+        
+                        
+                            
+
+</article>
+</section>
+  <footer class="footer">
+  <div class="outer">
+    <div class="float-right">
+      <ul class="list-inline">
+  
+    <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+    <li><i class="fe fe-bookmark"></i> <span id="busuanzi_value_page_pv"></span></li>
+  
+</ul>
+    </div>
+    <ul class="list-inline">
+      <li>&copy; 2020 不懂鸟语的人</li>
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>Theme  <a href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
+    </ul>
+  </div>
+</footer>
+
+</main>
+<aside class="sidebar">
+  <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+    <div class="logo">
+      <a href="/"><img src="/images/hexo.svg" alt="不懂鸟语的人"></a>
+    </div>
+  
+  <ul class="nav nav-main">
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/">首页</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/archives">归档</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/gallery">相册</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/about">关于</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/links">友链</a>
+      </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="Search">
+        <i class="fe fe-search"></i>
+        Search
+      </a>
+    </li>
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      <div class="totop" id="totop">
+  <i class="fe fe-rocket"></i>
+</div>
+    </li>
+    <li class="nav-item">
+      
+        <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+          <i class="fe fe-feed"></i>
+        </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+</aside>
+<script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/lazyload.min.js"></script>
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+  <script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+  <script src="/js/tocbot.min.js"></script>
+  <script>
+    // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+    tocbot.init({
+      tocSelector: '.tocbot',
+      contentSelector: '.article-entry',
+      headingSelector: 'h1, h2, h3, h4, h5, h6',
+      hasInnerContainers: true,
+      scrollSmooth: true,
+      positionFixedSelector: '.tocbot',
+      positionFixedClass: 'is-position-fixed',
+      fixedSidebarOffset: 'auto',
+    });
+  </script>
+
+
+<script src="/js/ocean.js"></script>
+
+</body>
+</html>
