@@ -58,6 +58,110 @@
       <h1 class="page-type-title"></h1>
       
         
+          <article id="post-FFmpeg-学习" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+  
+    <h2 itemprop="name">
+      <a class="article-title" href="/2020/03/23/FFmpeg-学习/">FFmpeg 学习</a>
+    </h2>
+  
+  
+
+
+
+
+            </header>
+            
+
+                
+                    <div class="article-meta">
+                        <a href="/2020/03/23/FFmpeg-学习/" class="article-date">
+  <time datetime="2020-03-23T15:11:27.000Z" itemprop="datePublished">2020-03-23</time>
+</a>
+                            
+                    </div>
+                    
+
+                        
+
+                                    <div class="article-entry" itemprop="articleBody">
+                                        
+
+
+                                            
+
+                                                
+                                                                    <h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><h3 id="AVRational"><a href="#AVRational" class="headerlink" title="AVRational"></a>AVRational</h3><p>ffmpeg 为了保证数据的精度与完整性，有一个 AVRational 数据类型，就是一个有理数（分数）<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> AVRational&#123;</span><br><span class="line">    <span class="keyword">int</span> num; <span class="comment">// Numerator</span></span><br><span class="line">    <span class="keyword">int</span> den; <span class="comment">// Denominator</span></span><br><span class="line">&#125; AVRational;</span><br></pre></td></tr></table></figure></p>
+<p>常见 <code>num / den</code> 的形式</p>
+<h2 id="改变视频分辨率"><a href="#改变视频分辨率" class="headerlink" title="改变视频分辨率"></a>改变视频分辨率</h2><h3 id="指定分辨率"><a href="#指定分辨率" class="headerlink" title="指定分辨率"></a>指定分辨率</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i data/origin/2.mp4 -vf scale=1920:1080 data/temp1080/2.mp4 -hide_banner</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>-i dirs</code> 输入文件路径</li>
+<li><code>-vf scale=1920\*1080</code> 缩放到 1920*1080, scale 是一种 video filter<br>  <code>-vf</code> 为 video filtergraph, <code>-vf</code> 是 <code>-filter:v</code> 的简称<br>  <code>-vf scale</code> 等同于 <code>-s</code></li>
+<li><code>-hide_banner</code> 选项用于在输出文件的详细信息时省略 ffmpeg 的版本信息和编译选项等<h3 id="宽高比缩放"><a href="#宽高比缩放" class="headerlink" title="宽高比缩放"></a>宽高比缩放</h3><strong>（不建议使用）</strong><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i data/origin/2.mp4 -vf scale=1920:-1 data/temp1080/2.mp4 -hide_banner</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>作用是：宽度设为 1920，高度自适应</p>
+<ul>
+<li><p>不同之处在于宽度写了 <code>-1</code>，代表根据宽度及宽高比自适应，猜测自适应那一方写负数就可以做到自适应<br>  <strong>但是此方法遇到明确的那一方无法除尽的时候会报错</strong></p>
+<h2 id="取帧"><a href="#取帧" class="headerlink" title="取帧"></a>取帧</h2><h3 id="拆所有帧"><a href="#拆所有帧" class="headerlink" title="拆所有帧"></a>拆所有帧</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i data/temp1080/2.mp4 <span class="_">-f</span> image2 -vframes 1441 -filter_complex <span class="string">'scale=1920:1080'</span> data/input/2.mp4/%07d.jpg</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>-vframes 1441</code> 总视频帧数为 1441</p>
+</li>
+<li><p><code>-filter_complex &#39;scale=1920:1080&#39;</code> 指定输出的图片尺寸（scale 是一种滤镜），<strong>如果不指定此参数则按照原始分辨率</strong></p>
+<h3 id="按照帧率"><a href="#按照帧率" class="headerlink" title="按照帧率"></a>按照帧率</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i data/temp1080/2.mp4 -r 5 data/input/2.mp4/2.mp4%07d.jpg</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>-i dirs</code> 输入文件路径</p>
+</li>
+<li><code>-r 5</code> 帧率为 5<h2 id="帧率"><a href="#帧率" class="headerlink" title="帧率"></a>帧率</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffprobe -v error -select_streams v -of default=noprint_wrappers=1:nokey=1 -show_entries stream=r_frame_rate src.mp4</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="总帧数"><a href="#总帧数" class="headerlink" title="总帧数"></a>总帧数</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffprobe -v error -count_frames -select_streams v:0 -show_entries stream=nb_<span class="built_in">read</span>_frames -of default=nokey=1:noprint_wrappers=1 src.mp4</span><br></pre></td></tr></table></figure>
+<h2 id="分析评测"><a href="#分析评测" class="headerlink" title="分析评测"></a>分析评测</h2><h3 id="PSNR"><a href="#PSNR" class="headerlink" title="PSNR"></a>PSNR</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i src.mp4 -i dst.mp4 -lavfi psnr <span class="_">-f</span> null -</span><br></pre></td></tr></table></figure>
+<p>此命令会打印出每一对对比帧的Y、U、V分量的 MSE 和 PSNR 及各自平均值</p>
+<ul>
+<li><code>-lavfi</code> 选项等同于 <code>-filter_complex</code> 所以以上命令等同于 <code>-filter_complex psnr=&quot;stats_file=psnr.log&quot;</code></li>
+<li><code>-lavfi psnr</code> 可以写为 <code>-lavfi psnr=&quot;stats_file=psnr.log&quot;</code> 将输出打印到 stats_file 所指定的文件如 <code>psnr.log</code></li>
+<li>src 及 dst 文件可各添加一个 <code>-s WeightxHeight</code> 来指定分辨率</li>
+<li><code>-f</code> 是 <code>fmt (input / output)</code> 强制输入输出文件格式<h3 id="SSIM"><a href="#SSIM" class="headerlink" title="SSIM"></a>SSIM</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i src.mp4  -i dst.mp4  -lavfi <span class="_">-f</span> null -</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>类似上述 PSNR</p>
+<h2 id="Log-控制"><a href="#Log-控制" class="headerlink" title="Log 控制"></a>Log 控制</h2><p><code>-loglevel</code> 参数控制 log 输出级别，包含以下值：</p>
+<ul>
+<li>quiet</li>
+<li>panic</li>
+<li>fatal</li>
+<li>error</li>
+<li>warning</li>
+<li>info</li>
+<li>verbose</li>
+<li>debug</li>
+<li>trace</li>
+</ul>
+
+                                                                        
+                                    </div>
+                                    <footer class="article-footer">
+                                        <a data-url="http://yoursite.com/2020/03/23/FFmpeg-学习/" data-id="ck84m143w00003k74nlnmeyt4" class="article-share-link">
+                                            Share
+                                        </a>
+                                        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/FFmpeg/">FFmpeg</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/音视频/">音视频</a></li></ul>
+
+                                    </footer>
+
+    </div>
+
+    
+
+                
+
+</article>
+        
           <article id="post-记一次上海推拿" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
 
     <div class="article-inner">
@@ -115,7 +219,7 @@
                                                                         
                                     </div>
                                     <footer class="article-footer">
-                                        <a data-url="http://yoursite.com/2020/03/22/记一次上海推拿/" data-id="ck838ybol000suo74mnwo4fw0" class="article-share-link">
+                                        <a data-url="http://yoursite.com/2020/03/22/记一次上海推拿/" data-id="ck84m145v000o3k746h6beedw" class="article-share-link">
                                             Share
                                         </a>
                                         
@@ -214,7 +318,7 @@
                                                                         
                                     </div>
                                     <footer class="article-footer">
-                                        <a data-url="http://yoursite.com/2019/11/20/Git-Commit-规范约束探索/" data-id="ck838ybms0002uo741qpt4gwo" class="article-share-link">
+                                        <a data-url="http://yoursite.com/2019/11/20/Git-Commit-规范约束探索/" data-id="ck84m144300013k74tgnbibhi" class="article-share-link">
                                             Share
                                         </a>
                                         
@@ -273,7 +377,7 @@
                                                                         
                                     </div>
                                     <footer class="article-footer">
-                                        <a data-url="http://yoursite.com/2018/07/04/用-JS-把-Video-转为-Audio/" data-id="ck838ybou0011uo74uxoeyc2o" class="article-share-link">
+                                        <a data-url="http://yoursite.com/2018/07/04/用-JS-把-Video-转为-Audio/" data-id="ck84m1460000t3k74dy0jrocl" class="article-share-link">
                                             Share
                                         </a>
                                         
@@ -344,7 +448,7 @@
                                                                         
                                     </div>
                                     <footer class="article-footer">
-                                        <a data-url="http://yoursite.com/2018/06/29/JS-录制压缩16K采样率-SampleRate-音频/" data-id="ck838ybmu0003uo74w4wndkon" class="article-share-link">
+                                        <a data-url="http://yoursite.com/2018/06/29/JS-录制压缩16K采样率-SampleRate-音频/" data-id="ck84m144900063k74kcvu4kc6" class="article-share-link">
                                             Share
                                         </a>
                                         
@@ -409,7 +513,7 @@
                                                                         
                                     </div>
                                     <footer class="article-footer">
-                                        <a data-url="http://yoursite.com/2018/01/21/闲扯一下哔哩哔哩实习的日子/" data-id="ck838ybos0010uo746qrs66cj" class="article-share-link">
+                                        <a data-url="http://yoursite.com/2018/01/21/闲扯一下哔哩哔哩实习的日子/" data-id="ck84m1487003f3k74byf993at" class="article-share-link">
                                             Share
                                         </a>
                                         
@@ -467,7 +571,7 @@
                                                                         
                                     </div>
                                     <footer class="article-footer">
-                                        <a data-url="http://yoursite.com/2018/01/21/曲折的求职（ShiXi）经历/" data-id="ck838yboq000xuo74xptqnipk" class="article-share-link">
+                                        <a data-url="http://yoursite.com/2018/01/21/曲折的求职（ShiXi）经历/" data-id="ck84m145t000n3k741jzgt4r2" class="article-share-link">
                                             Share
                                         </a>
                                         
@@ -556,7 +660,7 @@
                                                                         
                                     </div>
                                     <footer class="article-footer">
-                                        <a data-url="http://yoursite.com/2017/11/20/TensorFlow-学习笔记/" data-id="ck838ybod000kuo74zagv1v54" class="article-share-link">
+                                        <a data-url="http://yoursite.com/2017/11/20/TensorFlow-学习笔记/" data-id="ck84m144800053k74zp60yrfj" class="article-share-link">
                                             Share
                                         </a>
                                         
@@ -620,7 +724,7 @@ nstallation.
                                                                         
                                     </div>
                                     <footer class="article-footer">
-                                        <a data-url="http://yoursite.com/2017/10/12/Laravel-安装笔记/" data-id="ck838ybo6000fuo74wwk0thhy" class="article-share-link">
+                                        <a data-url="http://yoursite.com/2017/10/12/Laravel-安装笔记/" data-id="ck84m144700043k74q78r98jd" class="article-share-link">
                                             Share
                                         </a>
                                         
@@ -688,73 +792,11 @@ nstallation.
                                                                         
                                     </div>
                                     <footer class="article-footer">
-                                        <a data-url="http://yoursite.com/2017/08/11/fragment-mp4-转换/" data-id="ck838yboj000puo74tqfbg3o5" class="article-share-link">
+                                        <a data-url="http://yoursite.com/2017/08/11/fragment-mp4-转换/" data-id="ck84m144j000e3k74t2y45f6b" class="article-share-link">
                                             Share
                                         </a>
                                         
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ffmpeg/">ffmpeg</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/fmp4/">fmp4</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/fragment-mp4/">fragment mp4</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mp4/">mp4</a></li></ul>
-
-                                    </footer>
-
-    </div>
-
-    
-
-                
-
-</article>
-        
-          <article id="post-Ubuntu-下安装-Node-js-最新版" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
-
-    <div class="article-inner">
-        
-            <header class="article-header">
-                
-  
-    <h2 itemprop="name">
-      <a class="article-title" href="/2017/07/24/Ubuntu-下安装-Node-js-最新版/">Ubuntu 下安装 Node.js 最新版</a>
-    </h2>
-  
-  
-
-
-
-
-            </header>
-            
-
-                
-                    <div class="article-meta">
-                        <a href="/2017/07/24/Ubuntu-下安装-Node-js-最新版/" class="article-date">
-  <time datetime="2017-07-24T08:19:48.000Z" itemprop="datePublished">2017-07-24</time>
-</a>
-                            
-                    </div>
-                    
-
-                        
-
-                                    <div class="article-entry" itemprop="articleBody">
-                                        
-
-
-                                            
-
-                                                
-                                                                    <p>直接用以下代码的话，经常会安装到一个很老的版本：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt install nodejs</span><br></pre></td></tr></table></figure>
-<p>那么如果你想装最新版本，或者指定某版本，执行以下代码即可：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -sL https:<span class="comment">//deb.nodesource.com/setup_6.x | bash - </span></span><br><span class="line">apt-get install nodejs -y</span><br></pre></td></tr></table></figure>
-<p><em>其中 setup_6.x 的“6”修改为指定版本</em></p>
-
-                                                                        
-                                    </div>
-                                    <footer class="article-footer">
-                                        <a data-url="http://yoursite.com/2017/07/24/Ubuntu-下安装-Node-js-最新版/" data-id="ck838ybo4000euo744f3hwd7g" class="article-share-link">
-                                            Share
-                                        </a>
-                                        
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ubuntu/">Ubuntu</a></li></ul>
 
                                     </footer>
 
