@@ -105,12 +105,11 @@
 <li><code>-c:v libx264</code><br>  <code>-c:v libx264</code> 等同于 <code>-vcodec libx264</code> 等同于 <code>-codec:v libx264</code><br>  reference: <a href="http://ffmpeg.org/pipermail/ffmpeg-user/2017-February/035335.html" target="_blank" rel="noopener">http://ffmpeg.org/pipermail/ffmpeg-user/2017-February/035335.html</a></li>
 <li><code>-r 30</code> 帧率 30，需要放在 <code>-i</code> 之前</li>
 <li><code>-b:v 30m</code> 30m 视频码率（比特率）</li>
-<li><p><code>-crf 5</code> 网上这样说：<em>取值范围为0~51，其中0为无损模式，数值越大，画质越差，生成的文件却越小。从主观上讲，18~28是一个合理的范围。18被认为是视觉无损的（从技术角度上看当然还是有损的），它的输出视频质量和输入视频相当。</em> (本条命令没用到，用 -b:v 代替了)</p>
-<h2 id="画中画"><a href="#画中画" class="headerlink" title="画中画"></a>画中画</h2><p>这里画中画的实现方式是 overlay</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i src1.mp4 -i src2.mp4 -lavfi <span class="string">"[0:v]crop=x=960:y=540:w=960:h=540[a];[a]scale=1920:1080[b];[1:v][b]overlay=x=960:y=540[c]"</span> -map [c] -c:v libx264 dst.mp4 -y</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><code>-filter_complex</code> 同 <code>-lavfi</code></p>
-<ol>
+<li><code>-crf 5</code> 网上这样说：<em>取值范围为0~51，其中0为无损模式，数值越大，画质越差，生成的文件却越小。从主观上讲，18~28是一个合理的范围。18被认为是视觉无损的（从技术角度上看当然还是有损的），它的输出视频质量和输入视频相当。</em> (本条命令没用到，用 -b:v 代替了)</li>
+</ul>
+<h2 id="画中画"><a href="#画中画" class="headerlink" title="画中画"></a>画中画</h2><p>这里画中画的实现方式是 overlay<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i src1.mp4 -i src2.mp4 -lavfi <span class="string">"[0:v]crop=x=960:y=540:w=960:h=540[a];[a]scale=1920:1080[b];[1:v][b]overlay=x=960:y=540[c]"</span> -map [c] -c:v libx264 dst.mp4 -y</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><code>-filter_complex</code> 同 <code>-lavfi</code><ol>
 <li><code>;</code> 分隔每一次操作</li>
 <li><code>[0:v]crop=x=960:y=540:w=960:h=540[a]</code> 中 <code>[0:v]</code> 代表选中 <code>-i</code> 输入中第 1（下标 0）个<strong>视频</strong>流，经过裁剪（crop）出从横坐标 <code>x=960</code> 纵坐标 <code>y=540</code> 开始，宽度 <code>w=960</code> 高度 <code>h=540</code> 的画幅，结果视频流命名为 <code>[a]</code></li>
 <li><code>[a]</code> 流的尺度设置（此处实际情况是拉伸）为 <code>1920:1080</code> 的分辨率（源流是第一步裁剪出的 <code>960:540</code>），结果视频流命名为 <code>[b]</code></li>
@@ -146,7 +145,7 @@
                                                                         
                                     </div>
                                     <footer class="article-footer">
-                                        <a data-url="http://yoursite.com/2020/03/23/FFmpeg-学习/" data-id="ckayuvd4d0003x4g732zujjsm" class="article-share-link">
+                                        <a data-url="http://yoursite.com/2020/03/23/FFmpeg-学习/" data-id="ckayuzbop00033rg7bzdz8vma" class="article-share-link">
                                             Share
                                         </a>
                                         
