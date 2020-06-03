@@ -58,7 +58,7 @@
       <h1 class="page-type-title"></h1>
       
         
-          <article id="post-FFmpeg-ѧϰ" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+          <article id="post-FFmpeg-学习" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
 
     <div class="article-inner">
         
@@ -66,7 +66,7 @@
                 
   
     <h2 itemprop="name">
-      <a class="article-title" href="/2020/03/23/FFmpeg-ѧϰ/">FFmpeg 学习</a>
+      <a class="article-title" href="/2020/03/23/FFmpeg-学习/">FFmpeg 学习</a>
     </h2>
   
   
@@ -79,7 +79,7 @@
 
                 
                     <div class="article-meta">
-                        <a href="/2020/03/23/FFmpeg-ѧϰ/" class="article-date">
+                        <a href="/2020/03/23/FFmpeg-学习/" class="article-date">
   <time datetime="2020-03-23T15:11:27.000Z" itemprop="datePublished">2020-03-23</time>
 </a>
                             
@@ -97,39 +97,64 @@
                                                 
                                                                     <h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><h3 id="AVRational"><a href="#AVRational" class="headerlink" title="AVRational"></a>AVRational</h3><p>ffmpeg 为了保证数据的精度与完整性，有一个 AVRational 数据类型，就是一个有理数（分数）<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> AVRational&#123;</span><br><span class="line">    <span class="keyword">int</span> num; <span class="comment">// Numerator</span></span><br><span class="line">    <span class="keyword">int</span> den; <span class="comment">// Denominator</span></span><br><span class="line">&#125; AVRational;</span><br></pre></td></tr></table></figure></p>
 <p>常见 <code>num / den</code> 的形式</p>
-<h2 id="改变视频分辨率"><a href="#改变视频分辨率" class="headerlink" title="改变视频分辨率"></a>改变视频分辨率</h2><h3 id="指定分辨率"><a href="#指定分辨率" class="headerlink" title="指定分辨率"></a>指定分辨率</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i data/origin/2.mp4 -vf scale=1920:1080 data/temp1080/2.mp4 -hide_banner</span><br></pre></td></tr></table></figure>
+<h2 id="改变视频分辨率"><a href="#改变视频分辨率" class="headerlink" title="改变视频分辨率"></a>改变视频分辨率</h2><h3 id="指定分辨率"><a href="#指定分辨率" class="headerlink" title="指定分辨率"></a>指定分辨率</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i data/origin/2.mp4 -vf scale=1920:1080 -c:v libx264 -b:v 10m data/temp1080/2.mp4 -hide_banner</span><br></pre></td></tr></table></figure>
 <ul>
 <li><code>-i dirs</code> 输入文件路径</li>
 <li><code>-vf scale=1920\*1080</code> 缩放到 1920*1080, scale 是一种 video filter<br>  <code>-vf</code> 为 video filtergraph, <code>-vf</code> 是 <code>-filter:v</code> 的简称<br>  <code>-vf scale</code> 等同于 <code>-s</code></li>
-<li><code>-hide_banner</code> 选项用于在输出文件的详细信息时省略 ffmpeg 的版本信息和编译选项等<h3 id="宽高比缩放"><a href="#宽高比缩放" class="headerlink" title="宽高比缩放"></a>宽高比缩放</h3><strong>（不建议使用）</strong><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i data/origin/2.mp4 -vf scale=1920:-1 data/temp1080/2.mp4 -hide_banner</span><br></pre></td></tr></table></figure>
+<li><code>-hide_banner</code> 选项用于在输出文件的详细信息时省略 ffmpeg 的版本信息和编译选项等</li>
+<li><code>-c:v libx264</code> 指定编码器 libx264</li>
+<li><code>-b:v 10m</code> 指定码率 10m<h3 id="宽高比缩放"><a href="#宽高比缩放" class="headerlink" title="宽高比缩放"></a>宽高比缩放</h3><strong>（不建议使用）</strong><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i data/origin/2.mp4 -vf scale=1920:-1 data/temp1080/2.mp4 -hide_banner</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>作用是：宽度设为 1920，高度自适应</p>
 <ul>
-<li><p>不同之处在于宽度写了 <code>-1</code>，代表根据宽度及宽高比自适应，猜测自适应那一方写负数就可以做到自适应<br>  <strong>但是此方法遇到明确的那一方无法除尽的时候会报错</strong></p>
+<li>不同之处在于宽度写了 <code>-1</code>，代表根据宽度及宽高比自适应，猜测自适应那一方写负数就可以做到自适应<br>  <strong>但是此方法遇到明确的那一方无法除尽的时候会报错</strong><h2 id="裁剪视频"><a href="#裁剪视频" class="headerlink" title="裁剪视频"></a>裁剪视频</h2>使用 -ss 和 -t 选项，从第0秒开始，向后截取31秒视频，并保存<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -ss 00:00:00 -i video.mp4 -vcodec copy -acodec copy -t 00:00:31 output1.mp4</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
 <h2 id="取帧"><a href="#取帧" class="headerlink" title="取帧"></a>取帧</h2><h3 id="拆所有帧"><a href="#拆所有帧" class="headerlink" title="拆所有帧"></a>拆所有帧</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i data/temp1080/2.mp4 <span class="_">-f</span> image2 -vframes 1441 -filter_complex <span class="string">'scale=1920:1080'</span> data/input/2.mp4/%07d.jpg</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>-vframes 1441</code> 总视频帧数为 1441</li>
+<li><code>-filter_complex &#39;scale=1920:1080&#39;</code> 指定输出的图片尺寸（scale 是一种滤镜），<strong>如果不指定此参数则按照原始分辨率</strong><h3 id="按照帧率"><a href="#按照帧率" class="headerlink" title="按照帧率"></a>按照帧率</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i data/temp1080/2.mp4 -r 5 data/input/2.mp4/2.mp4%07d.jpg</span><br></pre></td></tr></table></figure>
 </li>
-<li><p><code>-vframes 1441</code> 总视频帧数为 1441</p>
-</li>
-<li><p><code>-filter_complex &#39;scale=1920:1080&#39;</code> 指定输出的图片尺寸（scale 是一种滤镜），<strong>如果不指定此参数则按照原始分辨率</strong></p>
-<h3 id="按照帧率"><a href="#按照帧率" class="headerlink" title="按照帧率"></a>按照帧率</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i data/temp1080/2.mp4 -r 5 data/input/2.mp4/2.mp4%07d.jpg</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><code>-i dirs</code> 输入文件路径</p>
-</li>
+</ul>
+<p>属于截图，和原视频帧率无关</p>
+<ul>
+<li><code>-i dirs</code> 输入文件路径</li>
 <li><code>-r 5</code> 帧率为 5<h2 id="帧率"><a href="#帧率" class="headerlink" title="帧率"></a>帧率</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffprobe -v error -select_streams v -of default=noprint_wrappers=1:nokey=1 -show_entries stream=r_frame_rate src.mp4</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <h2 id="总帧数"><a href="#总帧数" class="headerlink" title="总帧数"></a>总帧数</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffprobe -v error -count_frames -select_streams v:0 -show_entries stream=nb_<span class="built_in">read</span>_frames -of default=nokey=1:noprint_wrappers=1 src.mp4</span><br></pre></td></tr></table></figure>
-<h2 id="分析评测"><a href="#分析评测" class="headerlink" title="分析评测"></a>分析评测</h2><h3 id="PSNR"><a href="#PSNR" class="headerlink" title="PSNR"></a>PSNR</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i src.mp4 -i dst.mp4 -lavfi psnr <span class="_">-f</span> null -</span><br></pre></td></tr></table></figure>
+<h2 id="图片集合成视频"><a href="#图片集合成视频" class="headerlink" title="图片集合成视频"></a>图片集合成视频</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -threads 6 -pattern_<span class="built_in">type</span> glob <span class="_">-f</span> image2 -r 30 -i <span class="string">'LOL2/*.bmp'</span> -c:v libx264 -b:v 30m out.mp4</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>-threads 6</code> 线程数 6</li>
+<li><code>-c:v libx264</code><br>  <code>-c:v libx264</code> 等同于 <code>-vcodec libx264</code> 等同于 <code>-codec:v libx264</code><br>  reference: <a href="http://ffmpeg.org/pipermail/ffmpeg-user/2017-February/035335.html" target="_blank" rel="noopener">http://ffmpeg.org/pipermail/ffmpeg-user/2017-February/035335.html</a></li>
+<li><code>-r 30</code> 帧率 30，需要放在 <code>-i</code> 之前</li>
+<li><code>-b:v 30m</code> 30m 视频码率（比特率）</li>
+<li><p><code>-crf 5</code> 网上这样说：<em>取值范围为0~51，其中0为无损模式，数值越大，画质越差，生成的文件却越小。从主观上讲，18~28是一个合理的范围。18被认为是视觉无损的（从技术角度上看当然还是有损的），它的输出视频质量和输入视频相当。</em> (本条命令没用到，用 -b:v 代替了)</p>
+<h2 id="画中画"><a href="#画中画" class="headerlink" title="画中画"></a>画中画</h2><p>这里画中画的实现方式是 overlay</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i src1.mp4 -i src2.mp4 -lavfi <span class="string">"[0:v]crop=x=960:y=540:w=960:h=540[a];[a]scale=1920:1080[b];[1:v][b]overlay=x=960:y=540[c]"</span> -map [c] -c:v libx264 dst.mp4 -y</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>-filter_complex</code> 同 <code>-lavfi</code></p>
+<ol>
+<li><code>;</code> 分隔每一次操作</li>
+<li><code>[0:v]crop=x=960:y=540:w=960:h=540[a]</code> 中 <code>[0:v]</code> 代表选中 <code>-i</code> 输入中第 1（下标 0）个<strong>视频</strong>流，经过裁剪（crop）出从横坐标 <code>x=960</code> 纵坐标 <code>y=540</code> 开始，宽度 <code>w=960</code> 高度 <code>h=540</code> 的画幅，结果视频流命名为 <code>[a]</code></li>
+<li><code>[a]</code> 流的尺度设置（此处实际情况是拉伸）为 <code>1920:1080</code> 的分辨率（源流是第一步裁剪出的 <code>960:540</code>），结果视频流命名为 <code>[b]</code></li>
+<li><code>[1:v][b]overlay[c]</code>  中 <code>[0:v]</code> 第 2（下标 1）个<strong>视频</strong>流当作背景画面，将 <code>[b]</code> 视频流覆盖到其上面，定位到 <code>(960, 540)</code> 的位置（不指定默认在左上角），结果视频流命名为 <code>[c]</code></li>
+</ol>
+</li>
+<li><code>-map [c]</code> 输出 c 视频流</li>
+<li><code>-y</code> 不提示直接覆盖已存在文件<h2 id="分析评测"><a href="#分析评测" class="headerlink" title="分析评测"></a>分析评测</h2>在超分辨率工作中通常把 <strong>PSNR</strong> 和 <strong>SSIM</strong> 两个指标结合看，因为常常视频非常模糊但是 PSNR 得分很高，这时候 SSIM 不会很高<h3 id="PSNR"><a href="#PSNR" class="headerlink" title="PSNR"></a>PSNR</h3>峰值信噪比<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i src.mp4 -i dst.mp4 -lavfi psnr <span class="_">-f</span> null -</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
 <p>此命令会打印出每一对对比帧的Y、U、V分量的 MSE 和 PSNR 及各自平均值</p>
 <ul>
 <li><code>-lavfi</code> 选项等同于 <code>-filter_complex</code> 所以以上命令等同于 <code>-filter_complex psnr=&quot;stats_file=psnr.log&quot;</code></li>
 <li><code>-lavfi psnr</code> 可以写为 <code>-lavfi psnr=&quot;stats_file=psnr.log&quot;</code> 将输出打印到 stats_file 所指定的文件如 <code>psnr.log</code></li>
 <li>src 及 dst 文件可各添加一个 <code>-s WeightxHeight</code> 来指定分辨率</li>
-<li><code>-f</code> 是 <code>fmt (input / output)</code> 强制输入输出文件格式<h3 id="SSIM"><a href="#SSIM" class="headerlink" title="SSIM"></a>SSIM</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i src.mp4  -i dst.mp4  -lavfi <span class="_">-f</span> null -</span><br></pre></td></tr></table></figure>
+<li><code>-f</code> 是 <code>fmt (input / output)</code> 强制输入输出文件格式<h3 id="SSIM"><a href="#SSIM" class="headerlink" title="SSIM"></a>SSIM</h3>结构相似性<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i src.mp4 -i dst.mp4 -lavfi <span class="_">-f</span> null -</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p>类似上述 PSNR</p>
+<h2 id="色彩空间"><a href="#色彩空间" class="headerlink" title="色彩空间"></a>色彩空间</h2><p><code>-pix_fmts</code></p>
 <h2 id="Log-控制"><a href="#Log-控制" class="headerlink" title="Log 控制"></a>Log 控制</h2><p><code>-loglevel</code> 参数控制 log 输出级别，包含以下值：</p>
 <ul>
 <li>quiet</li>
@@ -146,7 +171,7 @@
                                                                         
                                     </div>
                                     <footer class="article-footer">
-                                        <a data-url="http://yoursite.com/2020/03/23/FFmpeg-ѧϰ/" data-id="ckayt57c300024mg7i15qv6lg" class="article-share-link">
+                                        <a data-url="http://yoursite.com/2020/03/23/FFmpeg-学习/" data-id="ckayuvd4d0003x4g732zujjsm" class="article-share-link">
                                             Share
                                         </a>
                                         
@@ -219,7 +244,7 @@
                                                                         
                                     </div>
                                     <footer class="article-footer">
-                                        <a data-url="http://yoursite.com/2020/03/22/记一次上海推拿/" data-id="ckayt57ch000q4mg7ogmmvb1e" class="article-share-link">
+                                        <a data-url="http://yoursite.com/2020/03/22/记一次上海推拿/" data-id="ckayuvd4r000sx4g7w4ee3v7x" class="article-share-link">
                                             Share
                                         </a>
                                         
@@ -318,7 +343,7 @@
                                                                         
                                     </div>
                                     <footer class="article-footer">
-                                        <a data-url="http://yoursite.com/2019/11/20/Git-Commit-规范约束探索/" data-id="ckayt57c200014mg761fnmgjk" class="article-share-link">
+                                        <a data-url="http://yoursite.com/2019/11/20/Git-Commit-规范约束探索/" data-id="ckayuvd4e0004x4g7hg690dwu" class="article-share-link">
                                             Share
                                         </a>
                                         
@@ -377,7 +402,7 @@
                                                                         
                                     </div>
                                     <footer class="article-footer">
-                                        <a data-url="http://yoursite.com/2018/07/04/用-JS-把-Video-转为-Audio/" data-id="ckayt57cg000o4mg7pcqvfw98" class="article-share-link">
+                                        <a data-url="http://yoursite.com/2018/07/04/用-JS-把-Video-转为-Audio/" data-id="ckayuvd4q000qx4g70hrzuzzf" class="article-share-link">
                                             Share
                                         </a>
                                         
@@ -448,7 +473,7 @@
                                                                         
                                     </div>
                                     <footer class="article-footer">
-                                        <a data-url="http://yoursite.com/2018/06/29/JS-录制压缩16K采样率-SampleRate-音频/" data-id="ckayt57c400044mg7o0cchtib" class="article-share-link">
+                                        <a data-url="http://yoursite.com/2018/06/29/JS-录制压缩16K采样率-SampleRate-音频/" data-id="ckayuvd4f0005x4g76ejuaacq" class="article-share-link">
                                             Share
                                         </a>
                                         
@@ -513,7 +538,7 @@
                                                                         
                                     </div>
                                     <footer class="article-footer">
-                                        <a data-url="http://yoursite.com/2018/01/21/闲扯一下哔哩哔哩实习的日子/" data-id="ckayt57ch000p4mg760dompp9" class="article-share-link">
+                                        <a data-url="http://yoursite.com/2018/01/21/闲扯一下哔哩哔哩实习的日子/" data-id="ckayuvd4s000tx4g75npyzs01" class="article-share-link">
                                             Share
                                         </a>
                                         
@@ -571,7 +596,7 @@
                                                                         
                                     </div>
                                     <footer class="article-footer">
-                                        <a data-url="http://yoursite.com/2018/01/21/曲折的求职（ShiXi）经历/" data-id="ckayt57cf000k4mg7v7hikhh3" class="article-share-link">
+                                        <a data-url="http://yoursite.com/2018/01/21/曲折的求职（ShiXi）经历/" data-id="ckayuvd4p000ox4g7v827bp76" class="article-share-link">
                                             Share
                                         </a>
                                         
@@ -660,7 +685,7 @@
                                                                         
                                     </div>
                                     <footer class="article-footer">
-                                        <a data-url="http://yoursite.com/2017/11/20/TensorFlow-学习笔记/" data-id="ckayt57c700094mg7bn7spixn" class="article-share-link">
+                                        <a data-url="http://yoursite.com/2017/11/20/TensorFlow-学习笔记/" data-id="ckayuvd4h0009x4g7eua7puox" class="article-share-link">
                                             Share
                                         </a>
                                         
@@ -724,7 +749,7 @@ nstallation.
                                                                         
                                     </div>
                                     <footer class="article-footer">
-                                        <a data-url="http://yoursite.com/2017/10/12/Laravel-安装笔记/" data-id="ckayt57c500064mg77tdflm0i" class="article-share-link">
+                                        <a data-url="http://yoursite.com/2017/10/12/Laravel-安装笔记/" data-id="ckayuvd4g0007x4g72yut995o" class="article-share-link">
                                             Share
                                         </a>
                                         
@@ -792,7 +817,7 @@ nstallation.
                                                                         
                                     </div>
                                     <footer class="article-footer">
-                                        <a data-url="http://yoursite.com/2017/08/11/fragment-mp4-转换/" data-id="ckayt57ca000e4mg70s8wygya" class="article-share-link">
+                                        <a data-url="http://yoursite.com/2017/08/11/fragment-mp4-转换/" data-id="ckayuvd4n000ix4g79g6vt5v5" class="article-share-link">
                                             Share
                                         </a>
                                         
