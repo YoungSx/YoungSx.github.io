@@ -1,76 +1,57 @@
+
+
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-cn">
 <head><meta name="generator" content="Hexo 3.9.0">
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
+  <title>JS 录制压缩16K采样率(SampleRate)音频 [ 不懂鸟语的人 ]</title>
   
-  
-  
-    <meta name="description" content="Shangxin 的个人学习笔记。精力原因，也许只为自己方便翻阅。">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <title>
-    JS 录制压缩16K采样率(SampleRate)音频 |
+    <!-- stylesheets list from _config.yml -->
     
-    不懂鸟语的人</title>
+      <link rel="stylesheet" href="/css/acanal.css">
+    
+      <link rel="stylesheet" href="/css/highlight.css">
+    
   
-    <link rel="shortcut icon" href="/favicon.ico">
-  
-  <link rel="stylesheet" href="/css/style.css">
-  
-    <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
-  
-  <script src="/js/pace.min.js"></script>
 </head>
-</html>
 <body>
-<main class="content">
-  <section class="outer">
-  <article id="post-JS-录制压缩16K采样率-SampleRate-音频" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
 
-    <div class="article-inner">
-        
-            <header class="article-header">
-                
-  
-    <h1 class="article-title" itemprop="name">
-      JS 录制压缩16K采样率(SampleRate)音频
-    </h1>
-  
-  
+<div id="menu-outer">
+  <div id="menu-inner">
+    
+      <a href="/">Home</a>
+    
+      <a href="/about">About</a>
+    
+      <a href="/contact">Contact</a>
+    
+      <a href="/archives">Archives</a>
+    
+  </div>
+</div>
 
-
-
-
-            </header>
-            
-
-                
-                    <div class="article-meta">
-                        <a href="/2018/06/29/JS-录制压缩16K采样率-SampleRate-音频/" class="article-date">
-  <time datetime="2018-06-29T06:20:49.000Z" itemprop="datePublished">2018-06-29</time>
-</a>
-                            
-                    </div>
-                    
-
-                        
-                            
-    <div class="tocbot"></div>
-
-
-
-
-
-                                
-
-                                    <div class="article-entry" itemprop="articleBody">
-                                        
-
-
-                                            
-
-                                                
-                                                                    <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>考研复习期间压力大，写点代码放松一下。另外，没接触过音频编码相关知识…</p>
+<div id="content-outer">
+  <div id="content-inner">
+    
+<article id="post">
+  <header class="post-header">
+    <div id="site-info">
+      <div class="post-date-left">
+        Fri Jun 29 2018 14:20:49 GMT+0800
+      </div>
+      <div class="site-title-area">
+        <div class="site-title">不懂鸟语的人</div>
+        <div class="site-subtitle">我的个人学习笔记</div>
+      </div>
+      <div class="post-date-right">
+        Fri Jun 29 2018 14:20:49 GMT+0800
+      </div>
+    </div>
+    <h1>JS 录制压缩16K采样率(SampleRate)音频</h1>
+  </header>
+  <div class="post-body">
+    <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>考研复习期间压力大，写点代码放松一下。另外，没接触过音频编码相关知识…</p>
 <h2 id="开搞"><a href="#开搞" class="headerlink" title="开搞"></a>开搞</h2><h3 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h3><p>涉及到 JS 的语音识别，录音我使用的是 <a href="https://github.com/mattdiamond/Recorderjs" target="_blank" rel="noopener">Recorder.js</a>。各个平台只接受 16K/8K SampleRate 的音频，JS 录制默认是 44.1K SampleRate，这时需要压缩采样率。</p>
 <h3 id="可选方案"><a href="#可选方案" class="headerlink" title="可选方案"></a>可选方案</h3><ol>
 <li>ffmpeg.js（ffmpeg 的 JS 移植版），大略看一下，用起来貌似有点麻烦，库还很大，暂且放弃。</li>
@@ -85,172 +66,44 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 修改后 双声道版</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">encodeWAV</span>(<span class="params">samples</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> buffer = <span class="keyword">new</span> <span class="built_in">ArrayBuffer</span>(<span class="number">44</span> + samples.length * <span class="number">2</span>);</span><br><span class="line">    <span class="keyword">var</span> view = <span class="keyword">new</span> <span class="built_in">DataView</span>(buffer);</span><br><span class="line"></span><br><span class="line">    numChannels = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> bitPerSample = <span class="number">16</span>,</span><br><span class="line">        blockAlign = numChannels * (bitPerSample / <span class="number">8</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* RIFF identifier */</span></span><br><span class="line">    writeString(view, <span class="number">0</span>, <span class="string">'RIFF'</span>);</span><br><span class="line">    <span class="comment">/* RIFF chunk length */</span></span><br><span class="line">    view.setUint32(<span class="number">4</span>, <span class="number">36</span> + samples.length * <span class="number">2</span>, <span class="literal">true</span>);</span><br><span class="line">    <span class="comment">/* RIFF type */</span></span><br><span class="line">    writeString(view, <span class="number">8</span>, <span class="string">'WAVE'</span>);</span><br><span class="line">    <span class="comment">/* format chunk identifier */</span></span><br><span class="line">    writeString(view, <span class="number">12</span>, <span class="string">'fmt '</span>);</span><br><span class="line">    <span class="comment">/* format chunk length */</span></span><br><span class="line">    view.setUint32(<span class="number">16</span>, <span class="number">16</span>, <span class="literal">true</span>);</span><br><span class="line">    <span class="comment">/* sample format (raw) */</span></span><br><span class="line">    view.setUint16(<span class="number">20</span>, <span class="number">1</span>, <span class="literal">true</span>);</span><br><span class="line">    <span class="comment">/* channel count */</span></span><br><span class="line">    view.setUint16(<span class="number">22</span>, numChannels, <span class="literal">true</span>);</span><br><span class="line">    <span class="comment">/* sample rate */</span></span><br><span class="line">    view.setUint32(<span class="number">24</span>, newSampleRate, <span class="literal">true</span>);</span><br><span class="line">    <span class="comment">/* byte rate (sample rate * block align) */</span></span><br><span class="line">    view.setUint32(<span class="number">28</span>, newSampleRate * blockAlign, <span class="literal">true</span>);</span><br><span class="line">    <span class="comment">/* block align (channel count * bytes per sample) */</span></span><br><span class="line">    view.setUint16(<span class="number">32</span>, blockAlign, <span class="literal">true</span>);</span><br><span class="line">    <span class="comment">/* bits per sample */</span></span><br><span class="line">    view.setUint16(<span class="number">34</span>, bitPerSample, <span class="literal">true</span>);</span><br><span class="line">    <span class="comment">/* data chunk identifier */</span></span><br><span class="line">    writeString(view, <span class="number">36</span>, <span class="string">'data'</span>);</span><br><span class="line">    <span class="comment">/* data chunk length */</span></span><br><span class="line">    view.setUint32(<span class="number">40</span>, samples.length * <span class="number">2</span>, <span class="literal">true</span>);</span><br><span class="line"></span><br><span class="line">    floatTo16BitPCM(view, <span class="number">44</span>, samples);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> view;</span><br><span class="line">&#125;</span><br><span class="line">&#125;, self);</span><br></pre></td></tr></table></figure>
 <p><em>不过最后效果好像还有些缺陷…不保证能用…以后有时间再研究研究…</em></p>
 
-                                                                        
-                                    </div>
-                                    <footer class="article-footer">
-                                        <a data-url="http://yoursite.com/2018/06/29/JS-录制压缩16K采样率-SampleRate-音频/" data-id="ckayvaxrs0005i4g7it7umlxr" class="article-share-link">
-                                            Share
-                                        </a>
-                                        
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AudioBuffer/">AudioBuffer</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SampleRate/">SampleRate</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
-
-                                    </footer>
-
-    </div>
-
-    
-        
-  <nav class="article-nav">
-    
-      <a href="/2018/07/04/用-JS-把-Video-转为-Audio/" class="article-nav-link">
-        <strong class="article-nav-caption">Newer</strong>
-        <div class="article-nav-title">
-          
-            用 JS 把 Video 转为 Audio
-          
-        </div>
-      </a>
-    
-    
-      <a href="/2018/01/21/闲扯一下哔哩哔哩实习的日子/" class="article-nav-link">
-        <strong class="article-nav-caption">Older</strong>
-        <div class="article-nav-title">闲扯一下哔哩哔哩实习的日子</div>
-      </a>
-    
-  </nav>
-
-
-            
-
-                
-                    
-    <div class="vcomments" id="vcomments"></div>
-    <script src="https://unpkg.com/valine/dist/Valine.min.js"></script>
-        <script>
-            new Valine({
-                el: '#vcomments',
-                appId: 'b47PMHdzebB0ozGGdW68aQAN-gzGzoHsz',
-                appKey: 'pnCuygqUh5uDjQt8wNEKSd8K',
-                notify: 'false',
-                verify: 'false',
-                avatar: 'mp',
-                pageSize: '10',
-                placeholder: '请输入...'
-            })
-        </script>
-        
-                        
-                            
-
-</article>
-</section>
-  <footer class="footer">
-  <div class="outer">
-    <div class="float-right">
-      <ul class="list-inline">
-  
-    <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
-  
-    <li><i class="fe fe-bookmark"></i> <span id="busuanzi_value_page_pv"></span></li>
-  
-</ul>
-    </div>
-    <ul class="list-inline">
-      <li>&copy; 2020 不懂鸟语的人</li>
-      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
-      <li>Theme  <a href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
-    </ul>
   </div>
-</footer>
+</article>
 
-</main>
-<aside class="sidebar">
-  <button class="navbar-toggle"></button>
-<nav class="navbar">
+<div id="paginator">
   
-    <div class="logo">
-      <a href="/"><img src="/images/hexo.svg" alt="不懂鸟语的人"></a>
+</div>
+
+  </div>
+</div>
+
+<div id="bottom-outer">
+  <div id="bottom-inner">
+    <div id="footer-info">
+      <div class="post-date-left">
+        Fri Jun 29 2018 14:20:49 GMT+0800
+      </div>
+      <div class="site-title-area">
+        <div class="site-title">
+          <a href="/">Home</a>
+        </div>
+        <div class="site-subtitle">
+          Site by Shangxin using
+          <a href="http://hexo.io">hexo blog framework</a>
+        </div>
+      </div>
+      <div class="post-date-right">
+        Fri Jun 29 2018 14:20:49 GMT+0800
+      </div>
     </div>
+  </div>
+</div>
+
+
+  <!-- scripts list from theme config.yml -->
   
-  <ul class="nav nav-main">
-    
-      <li class="nav-item">
-        <a class="nav-item-link" href="/">首页</a>
-      </li>
-    
-      <li class="nav-item">
-        <a class="nav-item-link" href="/archives">归档</a>
-      </li>
-    
-      <li class="nav-item">
-        <a class="nav-item-link" href="/gallery">相册</a>
-      </li>
-    
-      <li class="nav-item">
-        <a class="nav-item-link" href="/about">关于</a>
-      </li>
-    
-      <li class="nav-item">
-        <a class="nav-item-link" href="/links">友链</a>
-      </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link nav-item-search" title="Search">
-        <i class="fe fe-search"></i>
-        Search
-      </a>
-    </li>
-  </ul>
-</nav>
-<nav class="navbar navbar-bottom">
-  <ul class="nav">
-    <li class="nav-item">
-      <div class="totop" id="totop">
-  <i class="fe fe-rocket"></i>
-</div>
-    </li>
-    <li class="nav-item">
-      
-        <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
-          <i class="fe fe-feed"></i>
-        </a>
-      
-    </li>
-  </ul>
-</nav>
-<div class="search-form-wrap">
-  <div class="local-search local-search-plugin">
-  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
-  <div id="local-search-result" class="local-search-result"></div>
-</div>
-</div>
-</aside>
-<script src="/js/jquery-2.0.3.min.js"></script>
-<script src="/js/jquery.justifiedGallery.min.js"></script>
-<script src="/js/lazyload.min.js"></script>
-<script src="/js/busuanzi-2.3.pure.min.js"></script>
+    <script src="/js/acanal.js"></script>
+  
 
-  <script src="/fancybox/jquery.fancybox.min.js"></script>
-
-
-
-  <script src="/js/tocbot.min.js"></script>
-  <script>
-    // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
-    tocbot.init({
-      tocSelector: '.tocbot',
-      contentSelector: '.article-entry',
-      headingSelector: 'h1, h2, h3, h4, h5, h6',
-      hasInnerContainers: true,
-      scrollSmooth: true,
-      positionFixedSelector: '.tocbot',
-      positionFixedClass: 'is-position-fixed',
-      fixedSidebarOffset: 'auto',
-    });
-  </script>
-
-
-<script src="/js/ocean.js"></script>
 
 </body>
 </html>

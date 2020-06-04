@@ -1,245 +1,98 @@
+
+
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-cn">
 <head><meta name="generator" content="Hexo 3.9.0">
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
+  <title>Vue.js 学习笔记 - 虚拟列表(Virtual-Scroll-List)心得 [ 不懂鸟语的人 ]</title>
   
-  
-  
-    <meta name="description" content="Shangxin 的个人学习笔记。精力原因，也许只为自己方便翻阅。">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <title>
-    Vue.js 学习笔记 - 虚拟列表(Virtual-Scroll-List)心得 |
+    <!-- stylesheets list from _config.yml -->
     
-    不懂鸟语的人</title>
+      <link rel="stylesheet" href="/css/acanal.css">
+    
+      <link rel="stylesheet" href="/css/highlight.css">
+    
   
-    <link rel="shortcut icon" href="/favicon.ico">
-  
-  <link rel="stylesheet" href="/css/style.css">
-  
-    <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
-  
-  <script src="/js/pace.min.js"></script>
 </head>
-</html>
 <body>
-<main class="content">
-  <section class="outer">
-  <article id="post-Vue-js-学习笔记-虚拟列表-Virtual-Scroll-List-心得" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
 
-    <div class="article-inner">
-        
-            <header class="article-header">
-                
-  
-    <h1 class="article-title" itemprop="name">
-      Vue.js 学习笔记 - 虚拟列表(Virtual-Scroll-List)心得
-    </h1>
-  
-  
+<div id="menu-outer">
+  <div id="menu-inner">
+    
+      <a href="/">Home</a>
+    
+      <a href="/about">About</a>
+    
+      <a href="/contact">Contact</a>
+    
+      <a href="/archives">Archives</a>
+    
+  </div>
+</div>
 
-
-
-
-            </header>
-            
-
-                
-                    <div class="article-meta">
-                        <a href="/2017/07/12/Vue-js-学习笔记-虚拟列表-Virtual-Scroll-List-心得/" class="article-date">
-  <time datetime="2017-07-12T09:36:14.000Z" itemprop="datePublished">2017-07-12</time>
-</a>
-                            
-                    </div>
-                    
-
-                        
-                            
-    <div class="tocbot"></div>
-
-
-
-
-
-                                
-
-                                    <div class="article-entry" itemprop="articleBody">
-                                        
-
-
-                                            
-
-                                                
-                                                                    <p>#虚拟列表</p>
+<div id="content-outer">
+  <div id="content-inner">
+    
+<article id="post">
+  <header class="post-header">
+    <div id="site-info">
+      <div class="post-date-left">
+        Wed Jul 12 2017 17:36:14 GMT+0800
+      </div>
+      <div class="site-title-area">
+        <div class="site-title">不懂鸟语的人</div>
+        <div class="site-subtitle">我的个人学习笔记</div>
+      </div>
+      <div class="post-date-right">
+        Wed Jul 12 2017 17:36:14 GMT+0800
+      </div>
+    </div>
+    <h1>Vue.js 学习笔记 - 虚拟列表(Virtual-Scroll-List)心得</h1>
+  </header>
+  <div class="post-body">
+    <p>#虚拟列表</p>
 <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>手上有个字幕编辑器的项目，因为长视频也许会有几千条字幕，所以字幕编辑器的列表中就会有几千条列表项。<br>但是如果将这几千条列表项全部渲染在 DOM 中，就会造成浏览器轻则卡顿，重则卡死，根本无法正常使用。<br>针对这种情况，我通过 Google 了解到可以通过虚拟列表技术来解决。<br>虚拟列表做的事情，就是按需渲染。只需要渲染当前视图需要显示的几个条目和即将滚动到的几个条目。在开发者工具中可以发现，DOM 中只存在这么几条列表项，当滚动的时候会替换这几项。所以大大节省了系统资源，提升了用户体验。<br>我在 GitHub 上找了几个基于Vue.js 的虚拟列表实现，最终找到了一个最合适的 <a href="https://github.com/tangbc/vue-virtual-scroll-list" target="_blank" rel="noopener">vue-virtual-scroll-list</a> ，并在项目中进行了使用。<br>我在闲暇之余研读了一下此项目的代码，发现实现方式比想象中还要简单。</p>
 <h2 id="核心实现"><a href="#核心实现" class="headerlink" title="核心实现"></a>核心实现</h2><p><strong>this.$slots.default</strong>类型为数组，存储的是此组件两标签中的内容，在此特指大量的列表项。<br>通过 Vue 数组的 filter 方法，筛选出处于当前视图中的几个项，选择性的只渲染出这几个在 DOM 中。渲染是依据 Vue 的 render 函数来动态定义组件。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  name: <span class="string">'item'</span>,</span><br><span class="line">  props: [</span><br><span class="line">    <span class="string">'item'</span>,</span><br><span class="line">    <span class="string">'k'</span></span><br><span class="line">  ],</span><br><span class="line">  render: <span class="function"><span class="keyword">function</span> (<span class="params">createElement</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> createElement(</span><br><span class="line">        <span class="string">'div'</span>,</span><br><span class="line">        <span class="keyword">this</span>.$slots.default.filter(<span class="function"><span class="keyword">function</span> (<span class="params">slot, index</span>) </span>&#123;</span><br><span class="line">          <span class="keyword">return</span> index &gt; <span class="number">5</span> &amp;&amp; index &lt; <span class="number">10</span></span><br><span class="line">        &#125;)</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
-                                                                        
-                                    </div>
-                                    <footer class="article-footer">
-                                        <a data-url="http://yoursite.com/2017/07/12/Vue-js-学习笔记-虚拟列表-Virtual-Scroll-List-心得/" data-id="ckayvaxrx000ei4g7qmq8q1l4" class="article-share-link">
-                                            Share
-                                        </a>
-                                        
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue/">Vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/virtual-scroll-list/">virtual-scroll-list</a></li></ul>
-
-                                    </footer>
-
-    </div>
-
-    
-        
-  <nav class="article-nav">
-    
-      <a href="/2017/07/19/iView-学习笔记-Table-利用-Render-实现复杂绑定/" class="article-nav-link">
-        <strong class="article-nav-caption">Newer</strong>
-        <div class="article-nav-title">
-          
-            iView 学习笔记 - Table 利用 Render 实现复杂绑定
-          
-        </div>
-      </a>
-    
-    
-      <a href="/2017/07/10/Javascript-取时间戳/" class="article-nav-link">
-        <strong class="article-nav-caption">Older</strong>
-        <div class="article-nav-title">Javascript 取时间戳</div>
-      </a>
-    
-  </nav>
-
-
-            
-
-                
-                    
-    <div class="vcomments" id="vcomments"></div>
-    <script src="https://unpkg.com/valine/dist/Valine.min.js"></script>
-        <script>
-            new Valine({
-                el: '#vcomments',
-                appId: 'b47PMHdzebB0ozGGdW68aQAN-gzGzoHsz',
-                appKey: 'pnCuygqUh5uDjQt8wNEKSd8K',
-                notify: 'false',
-                verify: 'false',
-                avatar: 'mp',
-                pageSize: '10',
-                placeholder: '请输入...'
-            })
-        </script>
-        
-                        
-                            
-
-</article>
-</section>
-  <footer class="footer">
-  <div class="outer">
-    <div class="float-right">
-      <ul class="list-inline">
-  
-    <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
-  
-    <li><i class="fe fe-bookmark"></i> <span id="busuanzi_value_page_pv"></span></li>
-  
-</ul>
-    </div>
-    <ul class="list-inline">
-      <li>&copy; 2020 不懂鸟语的人</li>
-      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
-      <li>Theme  <a href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
-    </ul>
   </div>
-</footer>
+</article>
 
-</main>
-<aside class="sidebar">
-  <button class="navbar-toggle"></button>
-<nav class="navbar">
+<div id="paginator">
   
-    <div class="logo">
-      <a href="/"><img src="/images/hexo.svg" alt="不懂鸟语的人"></a>
+</div>
+
+  </div>
+</div>
+
+<div id="bottom-outer">
+  <div id="bottom-inner">
+    <div id="footer-info">
+      <div class="post-date-left">
+        Wed Jul 12 2017 17:36:14 GMT+0800
+      </div>
+      <div class="site-title-area">
+        <div class="site-title">
+          <a href="/">Home</a>
+        </div>
+        <div class="site-subtitle">
+          Site by Shangxin using
+          <a href="http://hexo.io">hexo blog framework</a>
+        </div>
+      </div>
+      <div class="post-date-right">
+        Wed Jul 12 2017 17:36:14 GMT+0800
+      </div>
     </div>
+  </div>
+</div>
+
+
+  <!-- scripts list from theme config.yml -->
   
-  <ul class="nav nav-main">
-    
-      <li class="nav-item">
-        <a class="nav-item-link" href="/">首页</a>
-      </li>
-    
-      <li class="nav-item">
-        <a class="nav-item-link" href="/archives">归档</a>
-      </li>
-    
-      <li class="nav-item">
-        <a class="nav-item-link" href="/gallery">相册</a>
-      </li>
-    
-      <li class="nav-item">
-        <a class="nav-item-link" href="/about">关于</a>
-      </li>
-    
-      <li class="nav-item">
-        <a class="nav-item-link" href="/links">友链</a>
-      </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link nav-item-search" title="Search">
-        <i class="fe fe-search"></i>
-        Search
-      </a>
-    </li>
-  </ul>
-</nav>
-<nav class="navbar navbar-bottom">
-  <ul class="nav">
-    <li class="nav-item">
-      <div class="totop" id="totop">
-  <i class="fe fe-rocket"></i>
-</div>
-    </li>
-    <li class="nav-item">
-      
-        <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
-          <i class="fe fe-feed"></i>
-        </a>
-      
-    </li>
-  </ul>
-</nav>
-<div class="search-form-wrap">
-  <div class="local-search local-search-plugin">
-  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
-  <div id="local-search-result" class="local-search-result"></div>
-</div>
-</div>
-</aside>
-<script src="/js/jquery-2.0.3.min.js"></script>
-<script src="/js/jquery.justifiedGallery.min.js"></script>
-<script src="/js/lazyload.min.js"></script>
-<script src="/js/busuanzi-2.3.pure.min.js"></script>
+    <script src="/js/acanal.js"></script>
+  
 
-  <script src="/fancybox/jquery.fancybox.min.js"></script>
-
-
-
-  <script src="/js/tocbot.min.js"></script>
-  <script>
-    // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
-    tocbot.init({
-      tocSelector: '.tocbot',
-      contentSelector: '.article-entry',
-      headingSelector: 'h1, h2, h3, h4, h5, h6',
-      hasInnerContainers: true,
-      scrollSmooth: true,
-      positionFixedSelector: '.tocbot',
-      positionFixedClass: 'is-position-fixed',
-      fixedSidebarOffset: 'auto',
-    });
-  </script>
-
-
-<script src="/js/ocean.js"></script>
 
 </body>
 </html>

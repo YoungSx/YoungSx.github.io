@@ -1,244 +1,97 @@
+
+
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-cn">
 <head><meta name="generator" content="Hexo 3.9.0">
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
+  <title>Javascript 取时间戳 [ 不懂鸟语的人 ]</title>
   
-  
-  
-    <meta name="description" content="Shangxin 的个人学习笔记。精力原因，也许只为自己方便翻阅。">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <title>
-    Javascript 取时间戳 |
+    <!-- stylesheets list from _config.yml -->
     
-    不懂鸟语的人</title>
+      <link rel="stylesheet" href="/css/acanal.css">
+    
+      <link rel="stylesheet" href="/css/highlight.css">
+    
   
-    <link rel="shortcut icon" href="/favicon.ico">
-  
-  <link rel="stylesheet" href="/css/style.css">
-  
-    <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
-  
-  <script src="/js/pace.min.js"></script>
 </head>
-</html>
 <body>
-<main class="content">
-  <section class="outer">
-  <article id="post-Javascript-取时间戳" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
 
-    <div class="article-inner">
-        
-            <header class="article-header">
-                
-  
-    <h1 class="article-title" itemprop="name">
-      Javascript 取时间戳
-    </h1>
-  
-  
+<div id="menu-outer">
+  <div id="menu-inner">
+    
+      <a href="/">Home</a>
+    
+      <a href="/about">About</a>
+    
+      <a href="/contact">Contact</a>
+    
+      <a href="/archives">Archives</a>
+    
+  </div>
+</div>
 
-
-
-
-            </header>
-            
-
-                
-                    <div class="article-meta">
-                        <a href="/2017/07/10/Javascript-取时间戳/" class="article-date">
-  <time datetime="2017-07-10T10:42:08.000Z" itemprop="datePublished">2017-07-10</time>
-</a>
-                            
-                    </div>
-                    
-
-                        
-                            
-    <div class="tocbot"></div>
-
-
-
-
-
-                                
-
-                                    <div class="article-entry" itemprop="articleBody">
-                                        
-
-
-                                            
-
-                                                
-                                                                    <h1 id="Javascript-取时间戳"><a href="#Javascript-取时间戳" class="headerlink" title="Javascript 取时间戳"></a>Javascript 取时间戳</h1><p>一直以来只知道<strong>var now = new Date()</strong>取到的是时间格式的当前时间，但是却不知道怎么取时间戳。<br>直到我在别人的一份代码中看到了以下代码，才知道还有这种操作，可以很方便的得到时间戳。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> now = +<span class="keyword">new</span> <span class="built_in">Date</span>()</span><br><span class="line"><span class="comment">// + 的意思是整数型 也就是取毫秒 也就是时间戳</span></span><br></pre></td></tr></table></figure></p>
+<div id="content-outer">
+  <div id="content-inner">
+    
+<article id="post">
+  <header class="post-header">
+    <div id="site-info">
+      <div class="post-date-left">
+        Mon Jul 10 2017 18:42:08 GMT+0800
+      </div>
+      <div class="site-title-area">
+        <div class="site-title">不懂鸟语的人</div>
+        <div class="site-subtitle">我的个人学习笔记</div>
+      </div>
+      <div class="post-date-right">
+        Mon Jul 10 2017 18:42:08 GMT+0800
+      </div>
+    </div>
+    <h1>Javascript 取时间戳</h1>
+  </header>
+  <div class="post-body">
+    <h1 id="Javascript-取时间戳"><a href="#Javascript-取时间戳" class="headerlink" title="Javascript 取时间戳"></a>Javascript 取时间戳</h1><p>一直以来只知道<strong>var now = new Date()</strong>取到的是时间格式的当前时间，但是却不知道怎么取时间戳。<br>直到我在别人的一份代码中看到了以下代码，才知道还有这种操作，可以很方便的得到时间戳。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> now = +<span class="keyword">new</span> <span class="built_in">Date</span>()</span><br><span class="line"><span class="comment">// + 的意思是整数型 也就是取毫秒 也就是时间戳</span></span><br></pre></td></tr></table></figure></p>
 <p>再后来，看到了这么一种取时间戳的方法，更加一目了然了。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> now = <span class="keyword">new</span> <span class="built_in">Date</span>().getTime()</span><br></pre></td></tr></table></figure></p>
 
-                                                                        
-                                    </div>
-                                    <footer class="article-footer">
-                                        <a data-url="http://yoursite.com/2017/07/10/Javascript-取时间戳/" data-id="ckayvaxrs0006i4g7au8vko93" class="article-share-link">
-                                            Share
-                                        </a>
-                                        
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/timestamp/">timestamp</a></li></ul>
-
-                                    </footer>
-
-    </div>
-
-    
-        
-  <nav class="article-nav">
-    
-      <a href="/2017/07/12/Vue-js-学习笔记-虚拟列表-Virtual-Scroll-List-心得/" class="article-nav-link">
-        <strong class="article-nav-caption">Newer</strong>
-        <div class="article-nav-title">
-          
-            Vue.js 学习笔记 - 虚拟列表(Virtual-Scroll-List)心得
-          
-        </div>
-      </a>
-    
-    
-      <a href="/2017/06/19/iView-学习笔记-布局/" class="article-nav-link">
-        <strong class="article-nav-caption">Older</strong>
-        <div class="article-nav-title">iView 学习笔记 - 布局</div>
-      </a>
-    
-  </nav>
-
-
-            
-
-                
-                    
-    <div class="vcomments" id="vcomments"></div>
-    <script src="https://unpkg.com/valine/dist/Valine.min.js"></script>
-        <script>
-            new Valine({
-                el: '#vcomments',
-                appId: 'b47PMHdzebB0ozGGdW68aQAN-gzGzoHsz',
-                appKey: 'pnCuygqUh5uDjQt8wNEKSd8K',
-                notify: 'false',
-                verify: 'false',
-                avatar: 'mp',
-                pageSize: '10',
-                placeholder: '请输入...'
-            })
-        </script>
-        
-                        
-                            
-
-</article>
-</section>
-  <footer class="footer">
-  <div class="outer">
-    <div class="float-right">
-      <ul class="list-inline">
-  
-    <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
-  
-    <li><i class="fe fe-bookmark"></i> <span id="busuanzi_value_page_pv"></span></li>
-  
-</ul>
-    </div>
-    <ul class="list-inline">
-      <li>&copy; 2020 不懂鸟语的人</li>
-      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
-      <li>Theme  <a href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
-    </ul>
   </div>
-</footer>
+</article>
 
-</main>
-<aside class="sidebar">
-  <button class="navbar-toggle"></button>
-<nav class="navbar">
+<div id="paginator">
   
-    <div class="logo">
-      <a href="/"><img src="/images/hexo.svg" alt="不懂鸟语的人"></a>
+</div>
+
+  </div>
+</div>
+
+<div id="bottom-outer">
+  <div id="bottom-inner">
+    <div id="footer-info">
+      <div class="post-date-left">
+        Mon Jul 10 2017 18:42:08 GMT+0800
+      </div>
+      <div class="site-title-area">
+        <div class="site-title">
+          <a href="/">Home</a>
+        </div>
+        <div class="site-subtitle">
+          Site by Shangxin using
+          <a href="http://hexo.io">hexo blog framework</a>
+        </div>
+      </div>
+      <div class="post-date-right">
+        Mon Jul 10 2017 18:42:08 GMT+0800
+      </div>
     </div>
+  </div>
+</div>
+
+
+  <!-- scripts list from theme config.yml -->
   
-  <ul class="nav nav-main">
-    
-      <li class="nav-item">
-        <a class="nav-item-link" href="/">首页</a>
-      </li>
-    
-      <li class="nav-item">
-        <a class="nav-item-link" href="/archives">归档</a>
-      </li>
-    
-      <li class="nav-item">
-        <a class="nav-item-link" href="/gallery">相册</a>
-      </li>
-    
-      <li class="nav-item">
-        <a class="nav-item-link" href="/about">关于</a>
-      </li>
-    
-      <li class="nav-item">
-        <a class="nav-item-link" href="/links">友链</a>
-      </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link nav-item-search" title="Search">
-        <i class="fe fe-search"></i>
-        Search
-      </a>
-    </li>
-  </ul>
-</nav>
-<nav class="navbar navbar-bottom">
-  <ul class="nav">
-    <li class="nav-item">
-      <div class="totop" id="totop">
-  <i class="fe fe-rocket"></i>
-</div>
-    </li>
-    <li class="nav-item">
-      
-        <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
-          <i class="fe fe-feed"></i>
-        </a>
-      
-    </li>
-  </ul>
-</nav>
-<div class="search-form-wrap">
-  <div class="local-search local-search-plugin">
-  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
-  <div id="local-search-result" class="local-search-result"></div>
-</div>
-</div>
-</aside>
-<script src="/js/jquery-2.0.3.min.js"></script>
-<script src="/js/jquery.justifiedGallery.min.js"></script>
-<script src="/js/lazyload.min.js"></script>
-<script src="/js/busuanzi-2.3.pure.min.js"></script>
+    <script src="/js/acanal.js"></script>
+  
 
-  <script src="/fancybox/jquery.fancybox.min.js"></script>
-
-
-
-  <script src="/js/tocbot.min.js"></script>
-  <script>
-    // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
-    tocbot.init({
-      tocSelector: '.tocbot',
-      contentSelector: '.article-entry',
-      headingSelector: 'h1, h2, h3, h4, h5, h6',
-      hasInnerContainers: true,
-      scrollSmooth: true,
-      positionFixedSelector: '.tocbot',
-      positionFixedClass: 'is-position-fixed',
-      fixedSidebarOffset: 'auto',
-    });
-  </script>
-
-
-<script src="/js/ocean.js"></script>
 
 </body>
 </html>

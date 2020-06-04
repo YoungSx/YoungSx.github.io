@@ -1,76 +1,57 @@
+
+
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-cn">
 <head><meta name="generator" content="Hexo 3.9.0">
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
+  <title>Vue.js 学习笔记 - 组件(Components) [ 不懂鸟语的人 ]</title>
   
-  
-  
-    <meta name="description" content="Shangxin 的个人学习笔记。精力原因，也许只为自己方便翻阅。">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <title>
-    Vue.js 学习笔记 - 组件(Components) |
+    <!-- stylesheets list from _config.yml -->
     
-    不懂鸟语的人</title>
+      <link rel="stylesheet" href="/css/acanal.css">
+    
+      <link rel="stylesheet" href="/css/highlight.css">
+    
   
-    <link rel="shortcut icon" href="/favicon.ico">
-  
-  <link rel="stylesheet" href="/css/style.css">
-  
-    <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
-  
-  <script src="/js/pace.min.js"></script>
 </head>
-</html>
 <body>
-<main class="content">
-  <section class="outer">
-  <article id="post-Vue-js-学习笔记-组件-Components" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
 
-    <div class="article-inner">
-        
-            <header class="article-header">
-                
-  
-    <h1 class="article-title" itemprop="name">
-      Vue.js 学习笔记 - 组件(Components)
-    </h1>
-  
-  
+<div id="menu-outer">
+  <div id="menu-inner">
+    
+      <a href="/">Home</a>
+    
+      <a href="/about">About</a>
+    
+      <a href="/contact">Contact</a>
+    
+      <a href="/archives">Archives</a>
+    
+  </div>
+</div>
 
-
-
-
-            </header>
-            
-
-                
-                    <div class="article-meta">
-                        <a href="/2017/06/11/Vue-js-学习笔记-组件-Components/" class="article-date">
-  <time datetime="2017-06-11T02:55:29.000Z" itemprop="datePublished">2017-06-11</time>
-</a>
-                            
-                    </div>
-                    
-
-                        
-                            
-    <div class="tocbot"></div>
-
-
-
-
-
-                                
-
-                                    <div class="article-entry" itemprop="articleBody">
-                                        
-
-
-                                            
-
-                                                
-                                                                    <h1 id="Vue-组件"><a href="#Vue-组件" class="headerlink" title="Vue 组件"></a>Vue 组件</h1><h2 id="注册"><a href="#注册" class="headerlink" title="注册"></a>注册</h2><p>Components 要确保在初始化根实例 之前 注册了组件</p>
+<div id="content-outer">
+  <div id="content-inner">
+    
+<article id="post">
+  <header class="post-header">
+    <div id="site-info">
+      <div class="post-date-left">
+        Sun Jun 11 2017 10:55:29 GMT+0800
+      </div>
+      <div class="site-title-area">
+        <div class="site-title">不懂鸟语的人</div>
+        <div class="site-subtitle">我的个人学习笔记</div>
+      </div>
+      <div class="post-date-right">
+        Sun Jun 11 2017 10:55:29 GMT+0800
+      </div>
+    </div>
+    <h1>Vue.js 学习笔记 - 组件(Components)</h1>
+  </header>
+  <div class="post-body">
+    <h1 id="Vue-组件"><a href="#Vue-组件" class="headerlink" title="Vue 组件"></a>Vue 组件</h1><h2 id="注册"><a href="#注册" class="headerlink" title="注册"></a>注册</h2><p>Components 要确保在初始化根实例 之前 注册了组件</p>
 <h3 id="全局注册："><a href="#全局注册：" class="headerlink" title="全局注册："></a>全局注册：</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(<span class="string">'my-component'</span>, &#123;</span><br><span class="line">  template: <span class="string">'&lt;div&gt;A custom component!&lt;/div&gt;'</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// 创建根实例</span></span><br><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="string">'#example'</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 <h3 id="局部注册："><a href="#局部注册：" class="headerlink" title="局部注册："></a>局部注册：</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Child = &#123;</span><br><span class="line">    template: <span class="string">'&lt;div&gt;A custom component!&lt;/div&gt;'</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="string">'#example'</span>,</span><br><span class="line">  components: &#123;</span><br><span class="line">      <span class="string">'my-component'</span>: Child</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 <h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><h3 id="is属性："><a href="#is属性：" class="headerlink" title="is属性："></a>is属性：</h3><p>把自定义组件绑定在此元素上<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">table</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">tr</span> <span class="attr">is</span>=<span class="string">"my-row"</span>&gt;</span><span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
@@ -84,172 +65,44 @@
 <p>动态组件 keep-alive</p>
 <p>Vue 组件的 API 来自三部分： Props 允许外部环境传递数据给组件 Events 允许组件触发外部环境的副作用 Slots 允许外部环境将额外的内容组合在组件中</p>
 
-                                                                        
-                                    </div>
-                                    <footer class="article-footer">
-                                        <a data-url="http://yoursite.com/2017/06/11/Vue-js-学习笔记-组件-Components/" data-id="ckayvaxrx000di4g7f7ndshwr" class="article-share-link">
-                                            Share
-                                        </a>
-                                        
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue/">Vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/component/">component</a></li></ul>
-
-                                    </footer>
-
-    </div>
-
-    
-        
-  <nav class="article-nav">
-    
-      <a href="/2017/06/15/Vue-js-学习笔记-路由-Router/" class="article-nav-link">
-        <strong class="article-nav-caption">Newer</strong>
-        <div class="article-nav-title">
-          
-            Vue.js 学习笔记 - 路由(Router)
-          
-        </div>
-      </a>
-    
-    
-      <a href="/2017/06/09/Vue-js-学习笔记-事件处理器/" class="article-nav-link">
-        <strong class="article-nav-caption">Older</strong>
-        <div class="article-nav-title">Vue.js 学习笔记 - 事件处理器</div>
-      </a>
-    
-  </nav>
-
-
-            
-
-                
-                    
-    <div class="vcomments" id="vcomments"></div>
-    <script src="https://unpkg.com/valine/dist/Valine.min.js"></script>
-        <script>
-            new Valine({
-                el: '#vcomments',
-                appId: 'b47PMHdzebB0ozGGdW68aQAN-gzGzoHsz',
-                appKey: 'pnCuygqUh5uDjQt8wNEKSd8K',
-                notify: 'false',
-                verify: 'false',
-                avatar: 'mp',
-                pageSize: '10',
-                placeholder: '请输入...'
-            })
-        </script>
-        
-                        
-                            
-
-</article>
-</section>
-  <footer class="footer">
-  <div class="outer">
-    <div class="float-right">
-      <ul class="list-inline">
-  
-    <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
-  
-    <li><i class="fe fe-bookmark"></i> <span id="busuanzi_value_page_pv"></span></li>
-  
-</ul>
-    </div>
-    <ul class="list-inline">
-      <li>&copy; 2020 不懂鸟语的人</li>
-      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
-      <li>Theme  <a href="https://github.com/zhwangart/hexo-theme-ocean">Ocean</a></li>
-    </ul>
   </div>
-</footer>
+</article>
 
-</main>
-<aside class="sidebar">
-  <button class="navbar-toggle"></button>
-<nav class="navbar">
+<div id="paginator">
   
-    <div class="logo">
-      <a href="/"><img src="/images/hexo.svg" alt="不懂鸟语的人"></a>
+</div>
+
+  </div>
+</div>
+
+<div id="bottom-outer">
+  <div id="bottom-inner">
+    <div id="footer-info">
+      <div class="post-date-left">
+        Sun Jun 11 2017 10:55:29 GMT+0800
+      </div>
+      <div class="site-title-area">
+        <div class="site-title">
+          <a href="/">Home</a>
+        </div>
+        <div class="site-subtitle">
+          Site by Shangxin using
+          <a href="http://hexo.io">hexo blog framework</a>
+        </div>
+      </div>
+      <div class="post-date-right">
+        Sun Jun 11 2017 10:55:29 GMT+0800
+      </div>
     </div>
+  </div>
+</div>
+
+
+  <!-- scripts list from theme config.yml -->
   
-  <ul class="nav nav-main">
-    
-      <li class="nav-item">
-        <a class="nav-item-link" href="/">首页</a>
-      </li>
-    
-      <li class="nav-item">
-        <a class="nav-item-link" href="/archives">归档</a>
-      </li>
-    
-      <li class="nav-item">
-        <a class="nav-item-link" href="/gallery">相册</a>
-      </li>
-    
-      <li class="nav-item">
-        <a class="nav-item-link" href="/about">关于</a>
-      </li>
-    
-      <li class="nav-item">
-        <a class="nav-item-link" href="/links">友链</a>
-      </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link nav-item-search" title="Search">
-        <i class="fe fe-search"></i>
-        Search
-      </a>
-    </li>
-  </ul>
-</nav>
-<nav class="navbar navbar-bottom">
-  <ul class="nav">
-    <li class="nav-item">
-      <div class="totop" id="totop">
-  <i class="fe fe-rocket"></i>
-</div>
-    </li>
-    <li class="nav-item">
-      
-        <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
-          <i class="fe fe-feed"></i>
-        </a>
-      
-    </li>
-  </ul>
-</nav>
-<div class="search-form-wrap">
-  <div class="local-search local-search-plugin">
-  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
-  <div id="local-search-result" class="local-search-result"></div>
-</div>
-</div>
-</aside>
-<script src="/js/jquery-2.0.3.min.js"></script>
-<script src="/js/jquery.justifiedGallery.min.js"></script>
-<script src="/js/lazyload.min.js"></script>
-<script src="/js/busuanzi-2.3.pure.min.js"></script>
+    <script src="/js/acanal.js"></script>
+  
 
-  <script src="/fancybox/jquery.fancybox.min.js"></script>
-
-
-
-  <script src="/js/tocbot.min.js"></script>
-  <script>
-    // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
-    tocbot.init({
-      tocSelector: '.tocbot',
-      contentSelector: '.article-entry',
-      headingSelector: 'h1, h2, h3, h4, h5, h6',
-      hasInnerContainers: true,
-      scrollSmooth: true,
-      positionFixedSelector: '.tocbot',
-      positionFixedClass: 'is-position-fixed',
-      fixedSidebarOffset: 'auto',
-    });
-  </script>
-
-
-<script src="/js/ocean.js"></script>
 
 </body>
 </html>
