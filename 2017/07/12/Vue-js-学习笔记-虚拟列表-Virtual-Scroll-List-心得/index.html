@@ -35,25 +35,26 @@
   <div id="content-inner">
     
 <article id="post">
-  <header class="post-header">
-    <div id="site-info">
-      <div class="post-date-left">
-        
+  <header class="page-header">
+  <div id="site-info">
+    <div class="post-date-left">
+      
         Wed Jul 12 2017 17:36:14 GMT+0800
-        
-      </div>
-      <div class="site-title-area">
-        <div class="site-title">不懂鸟语的人</div>
-        <div class="site-subtitle">我的个人学习笔记</div>
-      </div>
-      <div class="post-date-right">
-        
-        Wed Jul 12 2017 17:36:14 GMT+0800
-        
-      </div>
+      
     </div>
-    <h1>Vue.js 学习笔记 - 虚拟列表(Virtual-Scroll-List)心得</h1>
-  </header>
+    <div class="site-title-area">
+      <div class="site-title">不懂鸟语的人</div>
+      <div class="site-subtitle">我的个人学习笔记</div>
+    </div>
+    <div class="post-date-right">
+      
+        Wed Jul 12 2017 17:36:14 GMT+0800
+      
+    </div>
+  </div>
+</header>
+  
+  <h1>Vue.js 学习笔记 - 虚拟列表(Virtual-Scroll-List)心得</h1>
   <div class="post-body">
     <p>#虚拟列表</p>
 <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>手上有个字幕编辑器的项目，因为长视频也许会有几千条字幕，所以字幕编辑器的列表中就会有几千条列表项。<br>但是如果将这几千条列表项全部渲染在 DOM 中，就会造成浏览器轻则卡顿，重则卡死，根本无法正常使用。<br>针对这种情况，我通过 Google 了解到可以通过虚拟列表技术来解决。<br>虚拟列表做的事情，就是按需渲染。只需要渲染当前视图需要显示的几个条目和即将滚动到的几个条目。在开发者工具中可以发现，DOM 中只存在这么几条列表项，当滚动的时候会替换这几项。所以大大节省了系统资源，提升了用户体验。<br>我在 GitHub 上找了几个基于Vue.js 的虚拟列表实现，最终找到了一个最合适的 <a href="https://github.com/tangbc/vue-virtual-scroll-list" target="_blank" rel="noopener">vue-virtual-scroll-list</a> ，并在项目中进行了使用。<br>我在闲暇之余研读了一下此项目的代码，发现实现方式比想象中还要简单。</p>
@@ -74,7 +75,7 @@
     <div id="footer-info">
       <div class="post-date-left">
         
-        Wed Jul 12 2017 17:36:14 GMT+0800
+          Wed Jul 12 2017 17:36:14 GMT+0800
         
       </div>
       <div class="site-title-area">
@@ -88,7 +89,7 @@
       </div>
       <div class="post-date-right">
         
-        Wed Jul 12 2017 17:36:14 GMT+0800
+          Wed Jul 12 2017 17:36:14 GMT+0800
         
       </div>
     </div>
@@ -106,11 +107,21 @@
             verify: 'false',
             avatar: 'mp',
             pageSize: '10',
-            placeholder: '请输入...'
+            placeholder: '请输入...',
+            visitor: 'true'
         })
     </script>
 
+      
+        <span id="/2017/07/12/Vue-js-学习笔记-虚拟列表-Virtual-Scroll-List-心得/" class="leancloud-visitors view" data-flag-title>
+          <em class="post-meta-item-text">阅读量 </em>
+          <i class="leancloud-visitors-count">不知道 &gt;_&lt;</i>
+        </span>
+      
     
+    <!-- 不蒜子网站访问量统计 -->
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
   </div>
 </div>
 

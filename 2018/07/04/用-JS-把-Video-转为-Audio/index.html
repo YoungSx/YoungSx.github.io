@@ -35,25 +35,26 @@
   <div id="content-inner">
     
 <article id="post">
-  <header class="post-header">
-    <div id="site-info">
-      <div class="post-date-left">
-        
+  <header class="page-header">
+  <div id="site-info">
+    <div class="post-date-left">
+      
         Wed Jul 04 2018 23:38:39 GMT+0800
-        
-      </div>
-      <div class="site-title-area">
-        <div class="site-title">不懂鸟语的人</div>
-        <div class="site-subtitle">我的个人学习笔记</div>
-      </div>
-      <div class="post-date-right">
-        
-        Wed Jul 04 2018 23:38:39 GMT+0800
-        
-      </div>
+      
     </div>
-    <h1>用 JS 把 Video 转为 Audio</h1>
-  </header>
+    <div class="site-title-area">
+      <div class="site-title">不懂鸟语的人</div>
+      <div class="site-subtitle">我的个人学习笔记</div>
+    </div>
+    <div class="post-date-right">
+      
+        Wed Jul 04 2018 23:38:39 GMT+0800
+      
+    </div>
+  </div>
+</header>
+  
+  <h1>用 JS 把 Video 转为 Audio</h1>
   <div class="post-body">
     <p>参考了一下 StackOverflow <a href="https://stackoverflow.com/questions/49140159/extracting-audio-from-a-video-file/49182456#49182456" target="_blank" rel="noopener">https://stackoverflow.com/questions/49140159/extracting-audio-from-a-video-file/49182456#49182456</a><br>以下代码可以提取出音频，但是音频体积却比源视频大的问题却没解决。<br>或许我该用 offlineAudioContext.startRendering() 这个方法试试？</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> videoSrc = <span class="string">'http://otof18y9e.bkt.clouddn.com/frag_bunny.mp4'</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">startSelect</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> audioContext = <span class="keyword">new</span> OfflineAudioContext(<span class="number">2</span>, <span class="number">44100</span> * <span class="number">100</span>, <span class="number">44100</span>);</span><br><span class="line">  <span class="comment">// var audioContext = new window.AudioContext()</span></span><br><span class="line">  <span class="keyword">var</span> videoFileAsBuffer = <span class="keyword">new</span> <span class="built_in">Promise</span>(requestVideo)</span><br><span class="line">  videoFileAsBuffer.then(<span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(data)</span><br><span class="line">    audioContext.decodeAudioData(data).then(<span class="function"><span class="keyword">function</span> (<span class="params">decodedAudioData</span>) </span>&#123;</span><br><span class="line">        mySoundBuffer = decodedAudioData</span><br><span class="line">        soundSource = audioContext.createBufferSource()</span><br><span class="line">        soundSource.buffer = mySoundBuffer</span><br><span class="line">        soundSource.connect(audioContext.destination)</span><br><span class="line">        <span class="comment">// soundSource.start()</span></span><br><span class="line">        <span class="built_in">console</span>.log(mySoundBuffer.length)</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">requestVideo</span>(<span class="params">resolve</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> xhr = <span class="keyword">new</span> XMLHttpRequest()</span><br><span class="line">  xhr.open(<span class="string">'GET'</span>, videoSrc, <span class="literal">true</span>)</span><br><span class="line">  xhr.responseType = <span class="string">'arraybuffer'</span> <span class="comment">// 'blob'</span></span><br><span class="line"></span><br><span class="line">  xhr.onload = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">var</span> binaryData = <span class="keyword">this</span>.response</span><br><span class="line">      <span class="comment">// console.log(binaryData)</span></span><br><span class="line">      resolve(binaryData)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  xhr.send()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -73,7 +74,7 @@
     <div id="footer-info">
       <div class="post-date-left">
         
-        Wed Jul 04 2018 23:38:39 GMT+0800
+          Wed Jul 04 2018 23:38:39 GMT+0800
         
       </div>
       <div class="site-title-area">
@@ -87,7 +88,7 @@
       </div>
       <div class="post-date-right">
         
-        Wed Jul 04 2018 23:38:39 GMT+0800
+          Wed Jul 04 2018 23:38:39 GMT+0800
         
       </div>
     </div>
@@ -105,11 +106,21 @@
             verify: 'false',
             avatar: 'mp',
             pageSize: '10',
-            placeholder: '请输入...'
+            placeholder: '请输入...',
+            visitor: 'true'
         })
     </script>
 
+      
+        <span id="/2018/07/04/用-JS-把-Video-转为-Audio/" class="leancloud-visitors view" data-flag-title>
+          <em class="post-meta-item-text">阅读量 </em>
+          <i class="leancloud-visitors-count">不知道 &gt;_&lt;</i>
+        </span>
+      
     
+    <!-- 不蒜子网站访问量统计 -->
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
   </div>
 </div>
 

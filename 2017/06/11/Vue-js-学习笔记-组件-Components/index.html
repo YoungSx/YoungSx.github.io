@@ -35,25 +35,26 @@
   <div id="content-inner">
     
 <article id="post">
-  <header class="post-header">
-    <div id="site-info">
-      <div class="post-date-left">
-        
+  <header class="page-header">
+  <div id="site-info">
+    <div class="post-date-left">
+      
         Sun Jun 11 2017 10:55:29 GMT+0800
-        
-      </div>
-      <div class="site-title-area">
-        <div class="site-title">不懂鸟语的人</div>
-        <div class="site-subtitle">我的个人学习笔记</div>
-      </div>
-      <div class="post-date-right">
-        
-        Sun Jun 11 2017 10:55:29 GMT+0800
-        
-      </div>
+      
     </div>
-    <h1>Vue.js 学习笔记 - 组件(Components)</h1>
-  </header>
+    <div class="site-title-area">
+      <div class="site-title">不懂鸟语的人</div>
+      <div class="site-subtitle">我的个人学习笔记</div>
+    </div>
+    <div class="post-date-right">
+      
+        Sun Jun 11 2017 10:55:29 GMT+0800
+      
+    </div>
+  </div>
+</header>
+  
+  <h1>Vue.js 学习笔记 - 组件(Components)</h1>
   <div class="post-body">
     <h1 id="Vue-组件"><a href="#Vue-组件" class="headerlink" title="Vue 组件"></a>Vue 组件</h1><h2 id="注册"><a href="#注册" class="headerlink" title="注册"></a>注册</h2><p>Components 要确保在初始化根实例 之前 注册了组件</p>
 <h3 id="全局注册："><a href="#全局注册：" class="headerlink" title="全局注册："></a>全局注册：</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(<span class="string">'my-component'</span>, &#123;</span><br><span class="line">  template: <span class="string">'&lt;div&gt;A custom component!&lt;/div&gt;'</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// 创建根实例</span></span><br><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="string">'#example'</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
@@ -84,7 +85,7 @@
     <div id="footer-info">
       <div class="post-date-left">
         
-        Sun Jun 11 2017 10:55:29 GMT+0800
+          Sun Jun 11 2017 10:55:29 GMT+0800
         
       </div>
       <div class="site-title-area">
@@ -98,7 +99,7 @@
       </div>
       <div class="post-date-right">
         
-        Sun Jun 11 2017 10:55:29 GMT+0800
+          Sun Jun 11 2017 10:55:29 GMT+0800
         
       </div>
     </div>
@@ -116,11 +117,21 @@
             verify: 'false',
             avatar: 'mp',
             pageSize: '10',
-            placeholder: '请输入...'
+            placeholder: '请输入...',
+            visitor: 'true'
         })
     </script>
 
+      
+        <span id="/2017/06/11/Vue-js-学习笔记-组件-Components/" class="leancloud-visitors view" data-flag-title>
+          <em class="post-meta-item-text">阅读量 </em>
+          <i class="leancloud-visitors-count">不知道 &gt;_&lt;</i>
+        </span>
+      
     
+    <!-- 不蒜子网站访问量统计 -->
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
   </div>
 </div>
 

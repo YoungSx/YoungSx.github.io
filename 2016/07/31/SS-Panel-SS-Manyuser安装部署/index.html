@@ -35,25 +35,26 @@
   <div id="content-inner">
     
 <article id="post">
-  <header class="post-header">
-    <div id="site-info">
-      <div class="post-date-left">
-        
+  <header class="page-header">
+  <div id="site-info">
+    <div class="post-date-left">
+      
         Sun Jul 31 2016 23:49:23 GMT+0800
-        
-      </div>
-      <div class="site-title-area">
-        <div class="site-title">不懂鸟语的人</div>
-        <div class="site-subtitle">我的个人学习笔记</div>
-      </div>
-      <div class="post-date-right">
-        
-        Sun Jul 31 2016 23:49:23 GMT+0800
-        
-      </div>
+      
     </div>
-    <h1>SS-Panel+SS-Manyuser安装部署</h1>
-  </header>
+    <div class="site-title-area">
+      <div class="site-title">不懂鸟语的人</div>
+      <div class="site-subtitle">我的个人学习笔记</div>
+    </div>
+    <div class="post-date-right">
+      
+        Sun Jul 31 2016 23:49:23 GMT+0800
+      
+    </div>
+  </div>
+</header>
+  
+  <h1>SS-Panel+SS-Manyuser安装部署</h1>
   <div class="post-body">
     <h3 id="安装相关程序环境"><a href="#安装相关程序环境" class="headerlink" title="安装相关程序环境"></a>安装相关程序环境</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install php5</span><br><span class="line">sudo apt-get install curl</span><br><span class="line">sudo apt-get install php5-curl</span><br><span class="line">sudo apt-get install apache2</span><br><span class="line">sudo apt-get install mysql-server</span><br><span class="line">sudo apt-get install mysql-client</span><br><span class="line">sudo apt-get install libmysqlclient-dev</span><br><span class="line">sudo apt-get install python</span><br><span class="line">sudo apt-get install python-pip git python-m2crypto</span><br><span class="line">pip install cymysql</span><br></pre></td></tr></table></figure>
 <h3 id="Clone位于GitHub上的manyuser项目的Repo"><a href="#Clone位于GitHub上的manyuser项目的Repo" class="headerlink" title="Clone位于GitHub上的manyuser项目的Repo"></a>Clone位于GitHub上的manyuser项目的Repo</h3><p>cd /home/shangxin<br>mkdir www<br>git clone <a href="https://github.com/YoungSx/shadowsocks-manyuser.git" target="_blank" rel="noopener">https://github.com/YoungSx/shadowsocks-manyuser.git</a> backen<br>在<a href="https://github.com/orvice/ss-panel/releases下载Latest" target="_blank" rel="noopener">https://github.com/orvice/ss-panel/releases下载Latest</a> release的包，解压到www</p>
@@ -107,7 +108,7 @@
     <div id="footer-info">
       <div class="post-date-left">
         
-        Sun Jul 31 2016 23:49:23 GMT+0800
+          Sun Jul 31 2016 23:49:23 GMT+0800
         
       </div>
       <div class="site-title-area">
@@ -121,7 +122,7 @@
       </div>
       <div class="post-date-right">
         
-        Sun Jul 31 2016 23:49:23 GMT+0800
+          Sun Jul 31 2016 23:49:23 GMT+0800
         
       </div>
     </div>
@@ -139,11 +140,21 @@
             verify: 'false',
             avatar: 'mp',
             pageSize: '10',
-            placeholder: '请输入...'
+            placeholder: '请输入...',
+            visitor: 'true'
         })
     </script>
 
+      
+        <span id="/2016/07/31/SS-Panel-SS-Manyuser安装部署/" class="leancloud-visitors view" data-flag-title>
+          <em class="post-meta-item-text">阅读量 </em>
+          <i class="leancloud-visitors-count">不知道 &gt;_&lt;</i>
+        </span>
+      
     
+    <!-- 不蒜子网站访问量统计 -->
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
   </div>
 </div>
 

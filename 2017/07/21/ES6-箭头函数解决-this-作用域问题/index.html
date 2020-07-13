@@ -35,25 +35,26 @@
   <div id="content-inner">
     
 <article id="post">
-  <header class="post-header">
-    <div id="site-info">
-      <div class="post-date-left">
-        
+  <header class="page-header">
+  <div id="site-info">
+    <div class="post-date-left">
+      
         Fri Jul 21 2017 16:37:30 GMT+0800
-        
-      </div>
-      <div class="site-title-area">
-        <div class="site-title">不懂鸟语的人</div>
-        <div class="site-subtitle">我的个人学习笔记</div>
-      </div>
-      <div class="post-date-right">
-        
-        Fri Jul 21 2017 16:37:30 GMT+0800
-        
-      </div>
+      
     </div>
-    <h1>ES6 箭头函数解决 this 作用域问题</h1>
-  </header>
+    <div class="site-title-area">
+      <div class="site-title">不懂鸟语的人</div>
+      <div class="site-subtitle">我的个人学习笔记</div>
+    </div>
+    <div class="post-date-right">
+      
+        Fri Jul 21 2017 16:37:30 GMT+0800
+      
+    </div>
+  </div>
+</header>
+  
+  <h1>ES6 箭头函数解决 this 作用域问题</h1>
   <div class="post-body">
     <p>在写 JS 时，尤其是在写回调函数的时候，经常会遇到一个很头疼的问题：this 的指向并非我所想要的（我想使用 this 调用外面大的函数，可实际上往往调用的是当前小的函数）。<br>直到我发现了 ES6 的箭头函数可以完美的避免这个问题。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">() =&gt; &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.infoHash) <span class="comment">// 此处 this 非当前箭头函数</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>对比<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.infoHash) <span class="comment">// 此处 this 为当前匿名函数</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
@@ -73,7 +74,7 @@
     <div id="footer-info">
       <div class="post-date-left">
         
-        Fri Jul 21 2017 16:37:30 GMT+0800
+          Fri Jul 21 2017 16:37:30 GMT+0800
         
       </div>
       <div class="site-title-area">
@@ -87,7 +88,7 @@
       </div>
       <div class="post-date-right">
         
-        Fri Jul 21 2017 16:37:30 GMT+0800
+          Fri Jul 21 2017 16:37:30 GMT+0800
         
       </div>
     </div>
@@ -105,11 +106,21 @@
             verify: 'false',
             avatar: 'mp',
             pageSize: '10',
-            placeholder: '请输入...'
+            placeholder: '请输入...',
+            visitor: 'true'
         })
     </script>
 
+      
+        <span id="/2017/07/21/ES6-箭头函数解决-this-作用域问题/" class="leancloud-visitors view" data-flag-title>
+          <em class="post-meta-item-text">阅读量 </em>
+          <i class="leancloud-visitors-count">不知道 &gt;_&lt;</i>
+        </span>
+      
     
+    <!-- 不蒜子网站访问量统计 -->
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
   </div>
 </div>
 
