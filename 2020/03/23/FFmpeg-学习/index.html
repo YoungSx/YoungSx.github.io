@@ -72,16 +72,21 @@
 <li>不同之处在于宽度写了 <code>-1</code>，代表根据宽度及宽高比自适应，猜测自适应那一方写负数就可以做到自适应<br>  <strong>但是此方法遇到明确的那一方无法除尽的时候会报错</strong></li>
 </ul>
 <h2 id="裁剪视频"><a href="#裁剪视频" class="headerlink" title="裁剪视频"></a>裁剪视频</h2><p>使用 -ss 和 -t 选项，从第0秒开始，向后截取31秒视频，并保存<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -ss 00:00:00 -i video.mp4 -vcodec copy -acodec copy -t 00:00:31 output1.mp4</span><br></pre></td></tr></table></figure></p>
-<h2 id="取帧"><a href="#取帧" class="headerlink" title="取帧"></a>取帧</h2><h3 id="拆所有帧"><a href="#拆所有帧" class="headerlink" title="拆所有帧"></a>拆所有帧</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i data/temp1080/2.mp4 <span class="_">-f</span> image2 -vframes 1441 -filter_complex <span class="string">'scale=1920:1080'</span> data/input/2.mp4/%07d.jpg</span><br></pre></td></tr></table></figure>
+<h2 id="取帧"><a href="#取帧" class="headerlink" title="取帧"></a>取帧</h2><h3 id="拆所有帧"><a href="#拆所有帧" class="headerlink" title="拆所有帧"></a>拆所有帧</h3><h4 id="指定总帧数"><a href="#指定总帧数" class="headerlink" title="指定总帧数"></a>指定总帧数</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i data/temp1080/2.mp4 <span class="_">-f</span> image2 -vframes 1441 -filter_complex <span class="string">'scale=1920:1080'</span> data/input/2.mp4/%07d.jpg</span><br></pre></td></tr></table></figure>
 <ul>
 <li><code>-vframes 1441</code> 总视频帧数为 1441</li>
 <li><code>-filter_complex &#39;scale=1920:1080&#39;</code> 指定输出的图片尺寸（scale 是一种滤镜），<strong>如果不指定此参数则按照原始分辨率</strong></li>
 </ul>
-<h3 id="按照帧率"><a href="#按照帧率" class="headerlink" title="按照帧率"></a>按照帧率</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i data/temp1080/2.mp4 -r 5 data/input/2.mp4/2.mp4%07d.jpg</span><br></pre></td></tr></table></figure>
+<h4 id="指定帧率"><a href="#指定帧率" class="headerlink" title="指定帧率"></a>指定帧率</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i data/temp1080/2.mp4 -r 5 data/input/2.mp4/2.mp4%07d.jpg</span><br></pre></td></tr></table></figure>
 <p>属于截图，和原视频帧率无关</p>
 <ul>
 <li><code>-i dirs</code> 输入文件路径</li>
 <li><code>-r 5</code> 帧率为 5</li>
+</ul>
+<h3 id="取指定时刻开始-n-帧"><a href="#取指定时刻开始-n-帧" class="headerlink" title="取指定时刻开始 n 帧"></a>取指定时刻开始 n 帧</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i LOL2_LR.mp4 -ss 1.0 -vframes 1 -vf scale=1920:1080 cover.jpg</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>-ss 1.0</code> 从第 1 秒开始</li>
+<li><code>-vframes 1</code> 取 1 帧</li>
 </ul>
 <h2 id="帧率"><a href="#帧率" class="headerlink" title="帧率"></a>帧率</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffprobe -v error -select_streams v -of default=noprint_wrappers=1:nokey=1 -show_entries stream=r_frame_rate src.mp4</span><br></pre></td></tr></table></figure>
 <h2 id="总帧数"><a href="#总帧数" class="headerlink" title="总帧数"></a>总帧数</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffprobe -v error -count_frames -select_streams v:0 -show_entries stream=nb_<span class="built_in">read</span>_frames -of default=nokey=1:noprint_wrappers=1 src.mp4</span><br></pre></td></tr></table></figure>
@@ -114,7 +119,7 @@
 <li>src 及 dst 文件可各添加一个 <code>-s WeightxHeight</code> 来指定分辨率</li>
 <li><code>-f</code> 是 <code>fmt (input / output)</code> 强制输入输出文件格式</li>
 </ul>
-<h3 id="SSIM"><a href="#SSIM" class="headerlink" title="SSIM"></a>SSIM</h3><p>结构相似性<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i src.mp4 -i dst.mp4 -lavfi <span class="_">-f</span> null -</span><br></pre></td></tr></table></figure></p>
+<h3 id="SSIM"><a href="#SSIM" class="headerlink" title="SSIM"></a>SSIM</h3><p>结构相似性<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i src.mp4 -i dst.mp4 -lavfi ssim=<span class="string">"stats_file=ssim.log"</span> <span class="_">-f</span> null -</span><br></pre></td></tr></table></figure></p>
 <h2 id="色彩空间"><a href="#色彩空间" class="headerlink" title="色彩空间"></a>色彩空间</h2><p><code>-pix_fmts</code></p>
 <h2 id="Log-控制"><a href="#Log-控制" class="headerlink" title="Log 控制"></a>Log 控制</h2><p><code>-loglevel</code> 参数控制 log 输出级别，包含以下值：</p>
 <ul>
