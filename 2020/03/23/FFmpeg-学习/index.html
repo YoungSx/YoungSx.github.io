@@ -90,6 +90,8 @@
 </ul>
 <h2 id="帧率"><a href="#帧率" class="headerlink" title="帧率"></a>帧率</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffprobe -v error -select_streams v -of default=noprint_wrappers=1:nokey=1 -show_entries stream=r_frame_rate src.mp4</span><br></pre></td></tr></table></figure>
 <h2 id="总帧数"><a href="#总帧数" class="headerlink" title="总帧数"></a>总帧数</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffprobe -v error -count_frames -select_streams v:0 -show_entries stream=nb_<span class="built_in">read</span>_frames -of default=nokey=1:noprint_wrappers=1 src.mp4</span><br></pre></td></tr></table></figure>
+<h2 id="计算-GOP-大小"><a href="#计算-GOP-大小" class="headerlink" title="计算 GOP 大小"></a>计算 GOP 大小</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffprobe -show_frames input.mp4 | grep pict_<span class="built_in">type</span></span><br></pre></td></tr></table></figure>
+<p>然后计算两个 I 帧 (pict_type=I) 之间的距离</p>
 <h2 id="图片集合成视频"><a href="#图片集合成视频" class="headerlink" title="图片集合成视频"></a>图片集合成视频</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -threads 6 -pattern_<span class="built_in">type</span> glob <span class="_">-f</span> image2 -r 30 -i <span class="string">'LOL2/*.bmp'</span> -c:v libx264 -b:v 30m out.mp4</span><br></pre></td></tr></table></figure>
 <ul>
 <li><code>-threads 6</code> 线程数 6</li>
