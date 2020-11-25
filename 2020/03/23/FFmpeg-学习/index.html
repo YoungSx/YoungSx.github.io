@@ -58,6 +58,21 @@
   <div class="post-body">
     <h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><h3 id="AVRational"><a href="#AVRational" class="headerlink" title="AVRational"></a>AVRational</h3><p>ffmpeg 为了保证数据的精度与完整性，有一个 AVRational 数据类型，就是一个有理数（分数）<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> AVRational&#123;</span><br><span class="line">    <span class="keyword">int</span> num; <span class="comment">// Numerator</span></span><br><span class="line">    <span class="keyword">int</span> den; <span class="comment">// Denominator</span></span><br><span class="line">&#125; AVRational;</span><br></pre></td></tr></table></figure></p>
 <p>常见 <code>num / den</code> 的形式</p>
+<h2 id="输入输出"><a href="#输入输出" class="headerlink" title="输入输出"></a>输入输出</h2><h3 id="简单"><a href="#简单" class="headerlink" title="简单"></a>简单</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i in.mp4 out.flv</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>-i</code> 是代表输入</li>
+<li><strong>此命令默认会按照其默认编码器参数重新编码，而不是仅仅转封装</strong></li>
+</ul>
+<h3 id="按照轨道（流）"><a href="#按照轨道（流）" class="headerlink" title="按照轨道（流）"></a>按照轨道（流）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i 1.mp4 -i 2.mp4 -map 0:v:0 -map 1:a:0 -c copy out.mp4</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>-map 0:v:0</code> 代表选取第 <code>0</code> 个输入文件的视频（<code>v</code> 是video，<code>a</code> 则是 audio）的第 <code>0</code> 个轨道</li>
+<li>ffmpeg 默认的选择：<ul>
+<li>视频：选择分辨率（品质）最高的</li>
+<li>音频：选择 Channel 最多的</li>
+<li>字幕：第一个找到的</li>
+</ul>
+</li>
+</ul>
 <h2 id="改变视频分辨率"><a href="#改变视频分辨率" class="headerlink" title="改变视频分辨率"></a>改变视频分辨率</h2><h3 id="指定分辨率"><a href="#指定分辨率" class="headerlink" title="指定分辨率"></a>指定分辨率</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i data/origin/2.mp4 -vf scale=1920:1080 -c:v libx264 -b:v 10m data/temp1080/2.mp4 -hide_banner</span><br></pre></td></tr></table></figure>
 <ul>
 <li><code>-i dirs</code> 输入文件路径</li>
@@ -72,17 +87,24 @@
 <li>不同之处在于宽度写了 <code>-1</code>，代表根据宽度及宽高比自适应，猜测自适应那一方写负数就可以做到自适应<br>  <strong>但是此方法遇到明确的那一方无法除尽的时候会报错</strong></li>
 </ul>
 <h2 id="裁剪视频"><a href="#裁剪视频" class="headerlink" title="裁剪视频"></a>裁剪视频</h2><p>使用 -ss 和 -t 选项，从第0秒开始，向后截取31秒视频，并保存<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -ss 00:00:00 -i video.mp4 -vcodec copy -acodec copy -t 00:00:31 output1.mp4</span><br></pre></td></tr></table></figure></p>
-<p><strong>注意：因为 ffmpeg 的 bug，如果视频第一帧不是从 0 开始，则起始截取位置可能会乱掉，如果想从头开始，则删掉 <code>-ss</code> 参数即可</strong></p>
-<h2 id="取帧"><a href="#取帧" class="headerlink" title="取帧"></a>取帧</h2><h3 id="拆所有帧"><a href="#拆所有帧" class="headerlink" title="拆所有帧"></a>拆所有帧</h3><h4 id="指定总帧数"><a href="#指定总帧数" class="headerlink" title="指定总帧数"></a>指定总帧数</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i data/temp1080/2.mp4 <span class="_">-f</span> image2 -vframes 1441 -filter_complex <span class="string">'scale=1920:1080'</span> data/input/2.mp4/%07d.jpg</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>-t</code> 是 Duration，换成<code>-to</code>的话是切到指定时刻<br><strong>注意：因为 ffmpeg 的 bug，如果视频第一帧不是从 0 开始，则起始截取位置可能会乱掉，如果想从头开始，则删掉 <code>-ss</code> 参数即可</strong></li>
+</ul>
+<h3 id="指定时长切片"><a href="#指定时长切片" class="headerlink" title="指定时长切片"></a>指定时长切片</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -y -nostdin -hide_banner -v error -analyzeduration 400000000 -i ./ori.mp4 -max_interleave_delta 0 -flags +global_header -max_muxing_queue_size 3000 -c copy <span class="_">-f</span> segment -segment_time 600 -reset_timestamps 1 -segment_list ./origin.ffconcat -metadata description=<span class="string">"Bilibili VXCode Swarm Transcoder v0.1.29"</span> ./S%03d.mp4</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>-segment_time 600</code> 每段时长 600s</li>
+<li><code>./S%03d.mp4</code> 分段格式化文件名，此处为 <em>S000.mp4</em> <em>S001.mp4</em></li>
+</ul>
+<h2 id="取帧"><a href="#取帧" class="headerlink" title="取帧"></a>取帧</h2><h3 id="拆所有帧"><a href="#拆所有帧" class="headerlink" title="拆所有帧"></a>拆所有帧</h3><h4 id="指定总帧数"><a href="#指定总帧数" class="headerlink" title="指定总帧数"></a>指定总帧数</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i data/temp1080/2.mp4 <span class="_">-f</span> image2 -vframes 1441 -filter_complex <span class="string">'scale=1920:1080'</span> data/input/2.mp4/2_%07d.bmp</span><br></pre></td></tr></table></figure>
 <ul>
 <li><code>-vframes 1441</code> 总视频帧数为 1441</li>
 <li><code>-filter_complex &#39;scale=1920:1080&#39;</code> 指定输出的图片尺寸（scale 是一种滤镜），<strong>如果不指定此参数则按照原始分辨率</strong></li>
 </ul>
-<h4 id="指定帧率"><a href="#指定帧率" class="headerlink" title="指定帧率"></a>指定帧率</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i data/temp1080/2.mp4 -r 5 data/input/2.mp4/2.mp4%07d.jpg</span><br></pre></td></tr></table></figure>
-<p>属于截图，和原视频帧率无关</p>
+<h4 id="指定帧率"><a href="#指定帧率" class="headerlink" title="指定帧率"></a>指定帧率</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i data/temp1080/2.mp4 -r 5 data/input/2.mp4/2_%07d.bmp</span><br></pre></td></tr></table></figure>
+<p>属于截图，和原视频帧率无关，或者说一秒截几张图</p>
 <ul>
 <li><code>-i dirs</code> 输入文件路径</li>
-<li><code>-r 5</code> 帧率为 5</li>
+<li><code>-r 5</code> 一秒截 5 张图</li>
 </ul>
 <h3 id="取指定时刻开始-n-帧"><a href="#取指定时刻开始-n-帧" class="headerlink" title="取指定时刻开始 n 帧"></a>取指定时刻开始 n 帧</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i LOL2_LR.mp4 -ss 1.0 -vframes 1 -vf scale=1920:1080 cover.jpg</span><br></pre></td></tr></table></figure>
 <ul>
@@ -109,6 +131,10 @@
 <h3 id="参数形式"><a href="#参数形式" class="headerlink" title="参数形式"></a>参数形式</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i <span class="string">"concat:input1.mp4|input2.mp4"</span> -c copy out.mp4</span><br></pre></td></tr></table></figure>
 <h3 id="外部-txt-形式"><a href="#外部-txt-形式" class="headerlink" title="外部 txt 形式"></a>外部 txt 形式</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg <span class="_">-f</span> concat -safe 0 -i files.txt -c copy output.mp4</span><br></pre></td></tr></table></figure>
 <p>txt 的文件的格式:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># this is a comment</span><br><span class="line">file &apos;/path/to/file1.wav&apos;</span><br><span class="line">file &apos;/path/to/file2.wav&apos;</span><br><span class="line">file &apos;/path/to/file3.wav&apos;</span><br></pre></td></tr></table></figure></p>
+<h2 id="循环播放"><a href="#循环播放" class="headerlink" title="循环播放"></a>循环播放</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -stream_loop 10 -i clip1.mp4 -c copy out.mp4</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>-stream_loop 10</code> 代表循环 10 次，如果写 <code>0</code> 是不循环，如果写 <code>-1</code> 则是无限循环（多用在直播推流）</li>
+</ul>
 <h2 id="画中画"><a href="#画中画" class="headerlink" title="画中画"></a>画中画</h2><p>这里画中画的实现方式是 overlay<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i src1.mp4 -i src2.mp4 -lavfi <span class="string">"[0:v]crop=x=960:y=540:w=960:h=540[a];[a]scale=1920:1080[b];[1:v][b]overlay=x=960:y=540[c]"</span> -map [c] -c:v libx264 dst.mp4 -y</span><br></pre></td></tr></table></figure></p>
 <ul>
 <li><code>-filter_complex</code> 同 <code>-lavfi</code><ol>
@@ -120,6 +146,10 @@
 </li>
 <li><code>-map [c]</code> 输出 c 视频流</li>
 <li><code>-y</code> 不提示直接覆盖已存在文件</li>
+</ul>
+<h2 id="直播推流"><a href="#直播推流" class="headerlink" title="直播推流"></a>直播推流</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i in.mp4 <span class="string">"rtmp://xxx"</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>仅需要将输出文件写成推流地址即可</li>
 </ul>
 <h2 id="分析评测"><a href="#分析评测" class="headerlink" title="分析评测"></a>分析评测</h2><p>在超分辨率工作中通常把 <strong>PSNR</strong> 和 <strong>SSIM</strong> 两个指标结合看，因为常常视频非常模糊但是 PSNR 得分很高，这时候 SSIM 不会很高</p>
 <h3 id="PSNR"><a href="#PSNR" class="headerlink" title="PSNR"></a>PSNR</h3><p>峰值信噪比<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i src.mp4 -i dst.mp4 -lavfi psnr <span class="_">-f</span> null -</span><br></pre></td></tr></table></figure></p>
