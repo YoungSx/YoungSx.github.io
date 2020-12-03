@@ -1,0 +1,180 @@
+
+
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+  <title>IMDN 解析与直播超分辨率 [ 不懂鸟语的人 ]</title>
+  
+    <!-- stylesheets list from _config.yml -->
+    
+      <link rel="stylesheet" href="/css/acanal.css">
+    
+      <link rel="stylesheet" href="/css/highlight.css">
+    
+  
+</head>
+<body>
+
+<div id="menu-outer">
+  <div id="menu-inner">
+    
+      <a href="/">Home</a>
+    
+      <a href="/about">About</a>
+    
+      <a href="/links">Links</a>
+    
+      <a href="/archives">Archives</a>
+    
+  </div>
+</div>
+
+<div id="content-outer">
+  <div id="content-inner">
+    
+<article id="post">
+  <header class="page-header">
+  <div id="site-info">
+    <div class="post-date-left">
+      
+        Sun Jun 28 2020 16:23:44 GMT+0800
+      
+    </div>
+    <div class="site-title-area">
+      <div class="site-title">不懂鸟语的人</div>
+      <div class="site-subtitle">我的个人学习笔记</div>
+    </div>
+    <div class="post-date-right">
+      
+        Sun Jun 28 2020 16:23:44 GMT+0800
+      
+    </div>
+  </div>
+</header>
+  
+  <h1>IMDN 解析与直播超分辨率</h1>
+  <div class="post-body">
+    <h2 id="1-相关工作"><a href="#1-相关工作" class="headerlink" title="1   相关工作"></a>1   相关工作</h2><h3 id="1-1-图像和视频超分辨率算法的种类"><a href="#1-1-图像和视频超分辨率算法的种类" class="headerlink" title="1.1   图像和视频超分辨率算法的种类"></a>1.1   图像和视频超分辨率算法的种类</h3><h4 id="1-1-1-基于单幅图像的超分辨率"><a href="#1-1-1-基于单幅图像的超分辨率" class="headerlink" title="1.1.1   基于单幅图像的超分辨率"></a>1.1.1   基于单幅图像的超分辨率</h4><p>基于单幅图像的超分辨率（Single Image Super-Resolution，SISR）是基于单幅图像的超分辨率，只参考当前图像，不存在时间序列的概念。</p>
+<p>Deep Learning 超分辨率鼻祖是SRCNN（Image Super-Resolution Using Deep Convolutional Networks）。</p>
+<p>EDSR修改了SRResNet，构造了更深的，更宽的残差网络，利用智能拓扑结构和大量参数，大大提高了超分辨率性能。</p>
+<p>RDN基于EDSR，在Residual Block中引入了参考DenseNet的Densely Connected Block。</p>
+<p>RCAN引入了Channel Attention（通道注意力）机制来凸显重要的特征通道。</p>
+<p>Liu探索了将非局部模块应用于图像重建的有效。同样，Zhang等人利用非局部注意力来更好地指导其主干分支中的特征提取，从而达到更好的性能。</p>
+<p>对于轻量级的超分辨率网络，出现了IDN，对Feature Map进行蒸馏分离（split）处理来更好地利用分层的特征。这里的蒸馏（distillation）貌似是作者自创的一个概念，指的是split而不是Deep Learning中常说的蒸馏概念。</p>
+<h4 id="1-1-2-基于多幅图像的超分辨率"><a href="#1-1-2-基于多幅图像的超分辨率" class="headerlink" title="1.1.2   基于多幅图像的超分辨率"></a>1.1.2   基于多幅图像的超分辨率</h4><p>基于多幅图像的超分辨率（Multiple Image Super-Resolution，MISR），会参考时间序列中相邻的多副图像以实现对当前图像高分辨率更好的预测推理。通常MISR的图像重建效果相比SISR会在画面表现上更好，但是考虑到我们是要用在直播，有较强的实时性要求，MISR参考了时间序列，产生更大的计算量，从而造成更大的推理时长，所以我们暂不考虑。</p>
+<h2 id="2-其他网络的尝试"><a href="#2-其他网络的尝试" class="headerlink" title="2   其他网络的尝试"></a>2   其他网络的尝试</h2><p>在工作中，我们尝试了很多种超分辨率算法及网络。它们有各自的一些特点，单也有各自的局限性。</p>
+<p>最先尝试的是SRCNN，几乎在所有的超分网络中都拿其当作Baseline。可是发现推理速度很慢，而且效果一般，只能达到32左右的PSNR。FSRCNN比SRCNN稍微好一些但是提升并不明显。</p>
+<p>接着试验了RCAN，是发表在ECCV2018的，在前两年效果一直处于比较领先的地位。可是尽管可以达到高达38左右的PNSR和0.96左右的SSIM，但速度比较慢遂放弃。</p>
+<p>之后尝试了ESRGAN，是CVPR2019的一篇基于GAN的超分论文。其特点是可以对画面中的细节较好地重建。尽管PSNR和SSIM得分不是很突出，在Set5数据集上仅有32和0.9左右，可是其人眼观看效果较为真实。可是GAN生成图片纹理不稳定，合成视频序列后无法得到稳定的画面。而且由于参数量巨大，在V100显卡下大约1500ms可将一张1080P的图片超分到4K。所以由于这两点原因放弃使用ESRGAN。</p>
+<p>最后用IMDN网络（Lightweight Image Super-Resolution with Information Multi-distillation Network）做了一下实验，这是ACM MM 2019的论文。由于其主打轻量级网络，速度在V100显卡上可以达到500ms将一张1080P的图片超分到4K，超分出的画面稳定且高质量，而且结构简单便于修改，所以决定选择IMDN，在其基础上进行精简优化。</p>
+<p>后续在参加Agora的实时超分比赛时，发现也是拿IMDN当作Baseline的，感觉所见略同hhh。</p>
+<h2 id="3-IMDN网络"><a href="#3-IMDN网络" class="headerlink" title="3   IMDN网络"></a>3   IMDN网络</h2><h3 id="3-1-网络结构"><a href="#3-1-网络结构" class="headerlink" title="3.1   网络结构"></a>3.1   网络结构</h3><p><img src="image1.png" alt="img"></p>
+<p>上图是IMDN的主要网络结构，LR（低分辨率图片）输入网络，先经过一层3×3的卷积层初步的对其浅层特征进行提取。卷基层输出的Feature Map到了此网络结构最为核心位置：几个连在一起的IMDB（information multi-distillation block）。IMDB会对输入进来的Feature Map进行一系列的特征提取，这里提取到的属于深层特征。经过IMDB处理后的一系列特征会被输入到一个1×1的卷积层做特征融合，这里在卷积后会经过Leaky ReLU激活函数的处理，再输入到一个3×3的卷积层。将此处3×3的卷积层的输出与最前面第一个3×3的卷积层的输出相加，此处运用了残差学习的思想。然后把相加后的特征输入到Upsampler模块中，得到最终超分后的图像。</p>
+<p><img src="formula1.png" alt="img"> </p>
+<p>上面的损失函数中，HIMDN代表IMDN网络。Θ代表网络的可更新参数，∥·∥1是L1规范，共N对成对的低分辨率（LR）和高分辨率（HR）训练集图片。</p>
+<p><img src="image2.png" alt="img"> </p>
+<p>上图是Upsampler模块的结构，第一层是一个3×3的卷积层，提取到的特征输出到Sub-pixel模块中，此模块又叫PixelShuffle，是一种用作上采样的方法，其思想来源于发表于CVPR2016的一个超分辨率网络Real-Time Single Image and Video Super-Resolution Using an Efficient Sub-Pixel Convolutional Neural Network（ESPCN），它的主要思想是将c×r2个Feature Map合并成c个原图×r倍的大Feature Map，在此处就是合并成了一副超分辨率后的高分辨率图片。其网络结构如图所示:</p>
+<p><img src="image3.png" alt="img"> </p>
+<p><img src="image4.png" alt="img"> </p>
+<p>上图是information multi-distillation block （IMDB）模块的结构，IMDB主要分为三个部分。第一部分是Progressive Refinement Module（PRM），此处运用了蒸馏的思想，模块的输入进入到第一个3×3的卷积层，卷积的输出进入一个Channel Split中进行了一次特征分化一部分特征被保留下来，另一部分被传到后面，经过数次卷积和特征分化，最后一层卷积直接只保留一部分特征，和前面每次保留下来的特征拼接在一起，传入IMDB的第二个模块CCA Layer。CCA层的输出传入一个1×1的卷积层，卷积的输出和此IMDB的输出（此处也用到了残差学习的思想）相加在一起作为此IMDB的输出。</p>
+<p>PRM的工作大体流程可表示为以下公式：</p>
+<p><img src="formula2.png" alt="img"> </p>
+<p>PRM最后的concat可表示为：</p>
+<p><img src="formula3.png" alt="img"> </p>
+<p><img src="image5.png" alt="img"> </p>
+<p>上图是对比度感知通道注意模块（Contrast-aware channel attention，CCA）的结构，作者用标准差与均值之和来代表每层的Feature Map全局信息，后经过两层1×1的卷积层和一个Sigmod激活函数，输出与CCA的输出做一个向量积作为CCA的输出。</p>
+<p>对比度信息的值可以由以下公式得出：</p>
+<p><img src="formula4.png" alt="img"> </p>
+<p>上图公式中的HGC()代表全局对比度信息的评估函数。有了这个，CCA模块可以使本文的IMDN网络做出稳定的单图像超分效果。</p>
+<h2 id="数据集制作"><a href="#数据集制作" class="headerlink" title="数据集制作"></a>数据集制作</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">st=&gt;start: Start</span><br><span class="line">i=&gt;inputoutput: 获取HR</span><br><span class="line">录屏</span><br><span class="line">o1=&gt;operation: 下采样</span><br><span class="line">根据特定需求参数</span><br><span class="line">o2=&gt;operation: 抽帧得到数据集</span><br><span class="line">o3=&gt;operation: [人工处理数据集]</span><br><span class="line">(可省略)</span><br><span class="line">out=&gt;inputoutput: 得到数据集</span><br><span class="line">HR(GT)+LR</span><br><span class="line">e=&gt;end: End</span><br><span class="line">st-&gt;i-&gt;o1-&gt;o2-&gt;o3-&gt;out-&gt;e</span><br></pre></td></tr></table></figure>
+<p>用OBS对游戏进行观战录屏，录制出的原始4KHR视频画面质量要达到尽可能高的程度。然后再根据业务实际LR视频编码参数，对HR视频进行下采样编码得到LR视频。<br>然后对视频进行抽帧截图采样，如60fps的视频，每秒抽出10张图来当作数据集。这里要注意每秒抽出的画面不能太少，因为技能释放得很快，抽帧太稀疏会导致数据集中的技能画面不够完整。如果最后画面数量太多，可以手工删除一些出现最多的简单跑图画面。<br>这里视频及截图的处理工具均采用的FFmpeg，在我的另一篇文章中有我做的学习笔记，是关于FFmpeg的常用命令的使用方法。</p>
+<h2 id="评测指标"><a href="#评测指标" class="headerlink" title="评测指标"></a>评测指标</h2><p>在超分辨率中对图像推理质量的评测，一般同时参考PSNR和SSIM两个指标：</p>
+<ul>
+<li>PSNR：峰值信噪比（Peak Signal to Noise Ratio），PSNR=10*log10((2^n-1)^2/MSE)</li>
+<li>SSIM：结构相似性（Structural SIMilarity）<br>其实PSNR是看的最多的，但是有时候PSNR高，但是人眼观感却不一定好；反而有些PSNR不高，SSIM非常高的，这时人眼观感比较好，如ESRGAN。</li>
+</ul>
+<p>对于视频来说，其实更多的视频质量评判标准来使用，比如Netflix制定的也是行业使用最多的VMAF。</p>
+<h2 id="工程化"><a href="#工程化" class="headerlink" title="工程化"></a>工程化</h2><p>在对模型进行精简优化之后，一共有几个关键点：</p>
+<ol>
+<li>TensorRT量化及推理部署</li>
+<li>CUDA上做编解码及数据前后处理</li>
+<li>多卡并行计算</li>
+</ol>
+<p>TensorRT量化之后的模型，肯定会导致比原始模型画面推理效果变差，但是速度提升却是很大的。经过我们针对业务场景的考量，这部分画面质量的损失在可以接受的范围内。<br>做好以上三个关键点，就可以满足延迟极低的实时超分辨率，可以用在直播上。</p>
+
+  </div>
+</article>
+
+<div id="paginator">
+  
+</div>
+
+  </div>
+</div>
+
+<div id="bottom-outer">
+  <div id="bottom-inner">
+    <div id="footer-info">
+      <div class="post-date-left">
+        
+          Sun Jun 28 2020 16:23:44 GMT+0800
+        
+      </div>
+      <div class="site-title-area">
+        <div class="site-title">
+          <a href="/">Home</a>
+        </div>
+        <div class="site-subtitle">
+          Site by Shangxin using
+          <a href="http://hexo.io">hexo blog framework</a>
+        </div>
+      </div>
+      <div class="post-date-right">
+        
+          Sun Jun 28 2020 16:23:44 GMT+0800
+        
+      </div>
+    </div>
+    
+      
+
+    <div class="vcomments" id="vcomments"></div>
+    <script src="https://unpkg.com/valine/dist/Valine.min.js"></script>
+    <script>
+        new Valine({
+            el: '#vcomments',
+            appId: 'b47PMHdzebB0ozGGdW68aQAN-gzGzoHsz',
+            appKey: 'pnCuygqUh5uDjQt8wNEKSd8K',
+            notify: 'false',
+            verify: 'false',
+            avatar: 'mp',
+            pageSize: '10',
+            placeholder: '请输入...',
+            visitor: 'true'
+        })
+    </script>
+
+      
+        <span id="/2020/06/28/IMDN-解析与直播超分辨率/" class="leancloud-visitors view" data-flag-title>
+          <em class="post-meta-item-text">阅读量 </em>
+          <i class="leancloud-visitors-count">不知道 &gt;_&lt;</i>
+        </span>
+      
+    
+    <!-- 不蒜子网站访问量统计 -->
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+  </div>
+</div>
+
+
+  <!-- scripts list from theme config.yml -->
+  
+    <script src="/js/acanal.js"></script>
+  
+
+
+</body>
+</html>
