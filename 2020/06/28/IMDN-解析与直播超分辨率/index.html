@@ -101,7 +101,9 @@
 <li>CUDA上做编解码及数据前后处理</li>
 <li>多卡并行计算</li>
 </ol>
-<p>TensorRT量化之后的模型，肯定会导致比原始模型画面推理效果变差，但是速度提升却是很大的。经过我们针对业务场景的考量，这部分画面质量的损失在可以接受的范围内。<br>做好以上三个关键点，就可以满足延迟极低的实时超分辨率，可以用在直播上。<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.7/raphael.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/flowchart/1.6.5/flowchart.min.js"></script><textarea id="flowchart-0-code" style="display: none">st=>start: Start
+<p>TensorRT量化之后的模型，肯定会导致比原始模型画面推理效果变差，但是速度提升却是很大的。经过我们针对业务场景的考量，这部分画面质量的损失在可以接受的范围内。<br>做好以上三个关键点，就可以满足延迟极低的实时超分辨率，可以用在直播上。</p>
+<h2 id="Referrences"><a href="#Referrences" class="headerlink" title="Referrences"></a>Referrences</h2><p>[1] Hui Z, Gao X, Yang Y, et al. Lightweight image super-resolution with information multi-distillation network[C]//Proceedings of the 27th ACM International Conference on Multimedia. 2019: 2024-2032.<br>[2] FFmpeg 学习.<a href="http://shangxin.me/2020/03/23/FFmpeg-%E5%AD%A6%E4%B9%A0/" target="_blank" rel="noopener">http://shangxin.me/2020/03/23/FFmpeg-%E5%AD%A6%E4%B9%A0/</a>, 2020<br>[3] 百度百科.PSNR.<a href="https://baike.baidu.com/item/psnr" target="_blank" rel="noopener">https://baike.baidu.com/item/psnr</a>, 2020<br>[4] 百度百科.SSIM.<a href="https://baike.baidu.com/item/SSIM" target="_blank" rel="noopener">https://baike.baidu.com/item/SSIM</a>, 2020</p>
+<p><script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.7/raphael.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/flowchart/1.6.5/flowchart.min.js"></script><textarea id="flowchart-0-code" style="display: none">st=>start: Start
 i=>inputoutput: 获取HR
 录屏
 o1=>operation: 下采样
