@@ -88,8 +88,7 @@
 <p>对比度信息的值可以由以下公式得出：</p>
 <p><img src="formula4.png" alt="img"> </p>
 <p>上图公式中的HGC()代表全局对比度信息的评估函数。有了这个，CCA模块可以使本文的IMDN网络做出稳定的单图像超分效果。</p>
-<h2 id="数据集制作"><a href="#数据集制作" class="headerlink" title="数据集制作"></a>数据集制作</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">st=&gt;start: Start</span><br><span class="line">i=&gt;inputoutput: 获取HR</span><br><span class="line">录屏</span><br><span class="line">o1=&gt;operation: 下采样</span><br><span class="line">根据特定需求参数</span><br><span class="line">o2=&gt;operation: 抽帧得到数据集</span><br><span class="line">o3=&gt;operation: [人工处理数据集]</span><br><span class="line">(可省略)</span><br><span class="line">out=&gt;inputoutput: 得到数据集</span><br><span class="line">HR(GT)+LR</span><br><span class="line">e=&gt;end: End</span><br><span class="line">st-&gt;i-&gt;o1-&gt;o2-&gt;o3-&gt;out-&gt;e</span><br></pre></td></tr></table></figure>
-<p>用OBS对游戏进行观战录屏，录制出的原始4KHR视频画面质量要达到尽可能高的程度。然后再根据业务实际LR视频编码参数，对HR视频进行下采样编码得到LR视频。<br>然后对视频进行抽帧截图采样，如60fps的视频，每秒抽出10张图来当作数据集。这里要注意每秒抽出的画面不能太少，因为技能释放得很快，抽帧太稀疏会导致数据集中的技能画面不够完整。如果最后画面数量太多，可以手工删除一些出现最多的简单跑图画面。<br>这里视频及截图的处理工具均采用的FFmpeg，在我的另一篇文章中有我做的学习笔记，是关于FFmpeg的常用命令的使用方法。</p>
+<h2 id="数据集制作"><a href="#数据集制作" class="headerlink" title="数据集制作"></a>数据集制作</h2><p><div id="flowchart-0" class="flow-chart"></div><br>用OBS对游戏进行观战录屏，录制出的原始4KHR视频画面质量要达到尽可能高的程度。然后再根据业务实际LR视频编码参数，对HR视频进行下采样编码得到LR视频。<br>然后对视频进行抽帧截图采样，如60fps的视频，每秒抽出10张图来当作数据集。这里要注意每秒抽出的画面不能太少，因为技能释放得很快，抽帧太稀疏会导致数据集中的技能画面不够完整。如果最后画面数量太多，可以手工删除一些出现最多的简单跑图画面。<br>这里视频及截图的处理工具均采用的FFmpeg，在我的另一篇文章中有我做的学习笔记，是关于FFmpeg的常用命令的使用方法。</p>
 <h2 id="评测指标"><a href="#评测指标" class="headerlink" title="评测指标"></a>评测指标</h2><p>在超分辨率中对图像推理质量的评测，一般同时参考PSNR和SSIM两个指标：</p>
 <ul>
 <li>PSNR：峰值信噪比（Peak Signal to Noise Ratio），PSNR=10*log10((2^n-1)^2/MSE)</li>
@@ -102,7 +101,18 @@
 <li>CUDA上做编解码及数据前后处理</li>
 <li>多卡并行计算</li>
 </ol>
-<p>TensorRT量化之后的模型，肯定会导致比原始模型画面推理效果变差，但是速度提升却是很大的。经过我们针对业务场景的考量，这部分画面质量的损失在可以接受的范围内。<br>做好以上三个关键点，就可以满足延迟极低的实时超分辨率，可以用在直播上。</p>
+<p>TensorRT量化之后的模型，肯定会导致比原始模型画面推理效果变差，但是速度提升却是很大的。经过我们针对业务场景的考量，这部分画面质量的损失在可以接受的范围内。<br>做好以上三个关键点，就可以满足延迟极低的实时超分辨率，可以用在直播上。<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.7/raphael.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/flowchart/1.6.5/flowchart.min.js"></script><textarea id="flowchart-0-code" style="display: none">st=>start: Start
+i=>inputoutput: 获取HR
+录屏
+o1=>operation: 下采样
+根据特定需求参数
+o2=>operation: 抽帧得到数据集
+o3=>operation: [人工处理数据集]
+(可省略)
+out=>inputoutput: 得到数据集
+HR(GT)+LR
+e=>end: End
+st->i->o1->o2->o3->out->e</textarea><textarea id="flowchart-0-options" style="display: none">{"scale":1,"line-width":2,"line-length":50,"text-margin":10,"font-size":12}</textarea><script>  var code = document.getElementById("flowchart-0-code").value;  var options = JSON.parse(decodeURIComponent(document.getElementById("flowchart-0-options").value));  var diagram = flowchart.parse(code);  diagram.drawSVG("flowchart-0", options);</script></p>
 
   </div>
 </article>
