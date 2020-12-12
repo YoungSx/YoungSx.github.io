@@ -111,10 +111,6 @@
 <li><code>-ss 1.0</code> 从第 1 秒开始</li>
 <li><code>-vframes 1</code> 取 1 帧</li>
 </ul>
-<h2 id="帧率"><a href="#帧率" class="headerlink" title="帧率"></a>帧率</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffprobe -v error -select_streams v -of default=noprint_wrappers=1:nokey=1 -show_entries stream=r_frame_rate src.mp4</span><br></pre></td></tr></table></figure>
-<h2 id="总帧数"><a href="#总帧数" class="headerlink" title="总帧数"></a>总帧数</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffprobe -v error -count_frames -select_streams v:0 -show_entries stream=nb_<span class="built_in">read</span>_frames -of default=nokey=1:noprint_wrappers=1 src.mp4</span><br></pre></td></tr></table></figure>
-<h2 id="计算-GOP-大小"><a href="#计算-GOP-大小" class="headerlink" title="计算 GOP 大小"></a>计算 GOP 大小</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffprobe -show_frames input.mp4 | grep pict_<span class="built_in">type</span></span><br></pre></td></tr></table></figure>
-<p>然后计算两个 I 帧 (pict_type=I) 之间的距离</p>
 <h2 id="图片集合成视频"><a href="#图片集合成视频" class="headerlink" title="图片集合成视频"></a>图片集合成视频</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -threads 6 -pattern_<span class="built_in">type</span> glob <span class="_">-f</span> image2 -r 30 -i <span class="string">'LOL2/*.bmp'</span> -c:v libx264 -b:v 30m -pix_fmt yuv420p out.mp4</span><br></pre></td></tr></table></figure>
 <ul>
 <li><code>-threads 6</code> 线程数 6</li>
@@ -151,8 +147,15 @@
 <ul>
 <li>仅需要将输出文件写成推流地址即可</li>
 </ul>
-<h2 id="分析评测"><a href="#分析评测" class="headerlink" title="分析评测"></a>分析评测</h2><p>在超分辨率工作中通常把 <strong>PSNR</strong> 和 <strong>SSIM</strong> 两个指标结合看，因为常常视频非常模糊但是 PSNR 得分很高，这时候 SSIM 不会很高</p>
-<h3 id="PSNR"><a href="#PSNR" class="headerlink" title="PSNR"></a>PSNR</h3><p>峰值信噪比<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i src.mp4 -i dst.mp4 -lavfi psnr <span class="_">-f</span> null -</span><br></pre></td></tr></table></figure></p>
+<h2 id="视频质量"><a href="#视频质量" class="headerlink" title="视频质量"></a>视频质量</h2><h3 id="编码质量控制"><a href="#编码质量控制" class="headerlink" title="编码质量控制"></a>编码质量控制</h3><h4 id="b"><a href="#b" class="headerlink" title="b"></a>b</h4><p><code>-b:v 2M</code> 是在编码的时候控制视频固定码率为2M，音频则为<code>-b:a 128K</code></p>
+<h4 id="crf-amp-qp"><a href="#crf-amp-qp" class="headerlink" title="crf &amp; qp"></a>crf &amp; qp</h4><p><code>-crf 18</code><br><code>-qp 18</code></p>
+<ul>
+<li><code>-crf</code> 恒定速率（constant rate factor）因子模式，是恒定质量的编码方式，与恒定码率(CBR)是相反的，crf 的范围在 0 - 51，0 是绝对无损，18 被认为是视觉无损</li>
+<li><code>-qp</code> 恒定量化（constant quantizer）器模式,定义了从一个像素宏块中丢掉多少信息</li>
+</ul>
+<p>CRF会用将每一帧的压缩不同的大小，为了让主观的质量感受差不多，会用不同的QP。他是通过把运动也考虑进来做到这一点的。在编码中，如果Qp=18,则每一帧都是QP=18，当然根据帧的类型不同会有一些微小的波动，忽略之。设置CRF=18的时候，对于运动比较大的场景，会把QP设得更高一些，对于运动比较比较不剧烈的帧，会降低QP。这会导致比特率的分配随时间变化不同<a href="#References"><sup>5</sup></a></p>
+<h3 id="指标分析"><a href="#指标分析" class="headerlink" title="指标分析"></a>指标分析</h3><p>在超分辨率工作中通常把 <strong>PSNR</strong> 和 <strong>SSIM</strong> 两个指标结合看，因为常常视频非常模糊但是 PSNR 得分很高，这时候 SSIM 不会很高</p>
+<h4 id="PSNR"><a href="#PSNR" class="headerlink" title="PSNR"></a>PSNR</h4><p>峰值信噪比<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i src.mp4 -i dst.mp4 -lavfi psnr <span class="_">-f</span> null -</span><br></pre></td></tr></table></figure></p>
 <p>此命令会打印出每一对对比帧的Y、U、V分量的 MSE 和 PSNR 及各自平均值</p>
 <ul>
 <li><code>-lavfi</code> 选项等同于 <code>-filter_complex</code> 所以以上命令等同于 <code>-filter_complex psnr=&quot;stats_file=psnr.log&quot;</code></li>
@@ -160,7 +163,21 @@
 <li>src 及 dst 文件可各添加一个 <code>-s WeightxHeight</code> 来指定分辨率</li>
 <li><code>-f</code> 是 <code>fmt (input / output)</code> 强制输入输出文件格式</li>
 </ul>
-<h3 id="SSIM"><a href="#SSIM" class="headerlink" title="SSIM"></a>SSIM</h3><p>结构相似性<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i src.mp4 -i dst.mp4 -lavfi ssim=<span class="string">"stats_file=ssim.log"</span> <span class="_">-f</span> null -</span><br></pre></td></tr></table></figure></p>
+<h4 id="SSIM"><a href="#SSIM" class="headerlink" title="SSIM"></a>SSIM</h4><p>结构相似性<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i src.mp4 -i dst.mp4 -lavfi ssim=<span class="string">"stats_file=ssim.log"</span> <span class="_">-f</span> null -</span><br></pre></td></tr></table></figure></p>
+<h4 id="VMAF"><a href="#VMAF" class="headerlink" title="VMAF"></a>VMAF</h4><p>VMAF 是 Netflix 开发的感知视频质量评估算法<a href="#References"><sup>4</sup></a>，ffmpeg 的 libvmaf 中已经集成</p>
+<h2 id="分析文件信息-Probe"><a href="#分析文件信息-Probe" class="headerlink" title="分析文件信息 (Probe)"></a>分析文件信息 (Probe)</h2><h3 id="帧率"><a href="#帧率" class="headerlink" title="帧率"></a>帧率</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffprobe -v error -select_streams v -of default=noprint_wrappers=1:nokey=1 -show_entries stream=r_frame_rate src.mp4</span><br></pre></td></tr></table></figure>
+<h3 id="总帧数"><a href="#总帧数" class="headerlink" title="总帧数"></a>总帧数</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffprobe -v error -count_frames -select_streams v:0 -show_entries stream=nb_<span class="built_in">read</span>_frames -of default=nokey=1:noprint_wrappers=1 src.mp4</span><br></pre></td></tr></table></figure>
+<h3 id="计算-GOP-大小"><a href="#计算-GOP-大小" class="headerlink" title="计算 GOP 大小"></a>计算 GOP 大小</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffprobe -show_frames input.mp4 | grep pict_<span class="built_in">type</span></span><br></pre></td></tr></table></figure>
+<p>然后计算两个 I 帧 (pict_type=I) 之间的距离</p>
+<h3 id="查看编码器名称"><a href="#查看编码器名称" class="headerlink" title="查看编码器名称"></a>查看编码器名称</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffprobe -select_streams v:0 -show_entries stream=codec_name -of default=nk=1:nw=1 input.mp4</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>-select_streams v:0</code> 代表选择此文件中的第一条视频流，<code>v:1</code> 则是第二条视频流，<code>a:0</code> 则是第一条音频流</li>
+<li><code>-of default=nk=1:nw=1</code><ul>
+<li><code>-of</code> 是 <code>-print_format</code> 的简写</li>
+<li>设置输出格式为 <code>default</code>；<code>default=nk=1</code>：只输出值和换行；<code>default=nw=1</code>：去掉[]和[/]两行字符<a href="#References"><sup>3</sup></a></li>
+</ul>
+</li>
+</ul>
 <h2 id="色彩空间"><a href="#色彩空间" class="headerlink" title="色彩空间"></a>色彩空间</h2><p><code>-pix_fmts</code></p>
 <h2 id="Log-控制"><a href="#Log-控制" class="headerlink" title="Log 控制"></a>Log 控制</h2><p><code>-loglevel</code> 参数控制 log 输出级别，包含以下值：</p>
 <ul>
@@ -173,6 +190,13 @@
 <li>verbose</li>
 <li>debug</li>
 <li>trace</li>
+</ul>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
+<li>[1] <a href="https://ffmpeg.org/ffmpeg.html" target="_blank" rel="noopener">https://ffmpeg.org/ffmpeg.html</a></li>
+<li>[2] <a href="https://ffmpeg.org/ffprobe.html" target="_blank" rel="noopener">https://ffmpeg.org/ffprobe.html</a></li>
+<li>[3] <a href="https://github.com/iAvoe/FFprobe-Tutorial-Standalone/blob/master/%E6%95%99%E7%A8%8B.md#%E5%B8%B8%E7%94%A8%E5%8F%82%E6%95%B0" target="_blank" rel="noopener">https://github.com/iAvoe/FFprobe-Tutorial-Standalone/blob/master/%E6%95%99%E7%A8%8B.md#%E5%B8%B8%E7%94%A8%E5%8F%82%E6%95%B0</a></li>
+<li>[4] <a href="https://github.com/Netflix/vmaf" target="_blank" rel="noopener">https://github.com/Netflix/vmaf</a></li>
+<li>[5] <a href="https://www.cnblogs.com/sunny-li/p/9979796.html" target="_blank" rel="noopener">https://www.cnblogs.com/sunny-li/p/9979796.html</a></li>
 </ul>
 
   </div>
