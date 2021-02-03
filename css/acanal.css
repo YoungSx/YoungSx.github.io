@@ -35,15 +35,9 @@ body {
 
 #menu-outer {
   padding: 10px 40px 40px 40px;
-  animation: float-up;
-  animation-duration: 1.5s;
-  -webkit-animation: float-up 1.5s;
 }
 
 #content-outer, #bottom-outer, #fake-bottom-outer {
-  animation: fade-in;
-  animation-duration: 1.5s;
-  -webkit-animation:fade-in 1.5s;
 }
 
 #menu-outer, #content-outer, #bottom-outer, #fake-bottom-outer {
