@@ -34,6 +34,7 @@
 <div id="content-outer">
   <div id="content-inner">
     
+
 <article id="post">
   <header class="page-header">
   <div id="site-info">
@@ -59,9 +60,9 @@
     <p>环境变量<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export PATH=&quot;$PATH:$HOME/.config/composer/vendor/bin&quot;</span><br></pre></td></tr></table></figure></p>
 <p>报错<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/root/.config/composer/vendor/bin/laravel: 17: /root/.config/composer/vendor/bin/laravel: /root/.config/composer/vendor/laravel/installer/laravel: Permission denied</span><br></pre></td></tr></table></figure></p>
 <p>解决方案<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod 777 /root/.config/composer/vendor/laravel/installer/laravel</span><br></pre></td></tr></table></figure></p>
-<pre><code>[Symfony\Component\Process\Exception\RuntimeException]                       
-The Process class relies on proc_open, which is not available on your PHP i  
-nstallation.
+<pre><code>  [Symfony\Component\Process\Exception\RuntimeException]                       
+  The Process class relies on proc_open, which is not available on your PHP i  
+  nstallation.
 </code></pre><p>这是因为proc_open函数有风险，默认被禁用了。<br>解决方案<br>vim /usr/local/php/etc/php.ini<br>搜索disable_functions<br>删除proc_open</p>
 
   </div>

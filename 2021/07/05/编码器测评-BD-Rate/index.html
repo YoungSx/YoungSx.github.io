@@ -34,6 +34,37 @@
 <div id="content-outer">
   <div id="content-inner">
     
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+          tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+            processEscapes: true
+          }
+        });
+      </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+            tex2jax: {
+              skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+            }
+          });
+      </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+              var all = MathJax.Hub.getAllJax(), i;
+              for(i=0; i < all.length; i += 1) {
+                  all[i].SourceElement().parentNode.className += ' has-jax';
+              }
+          });
+      </script>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
 <article id="post">
   <header class="page-header">
   <div id="site-info">
@@ -77,15 +108,29 @@
 </ul>
 <h3 id="Lagrange"><a href="#Lagrange" class="headerlink" title="Lagrange"></a>Lagrange</h3><ul>
 <li>非常平滑</li>
-<li>严重过拟合<br>$$<br>P(x) = \sum_{i=0}^{n-1}a_ix^i=a_0+a<em>1x+… a</em>{n-1}x^{n-1}<br>$$</li>
+<li>严重过拟合<script type="math/tex; mode=display">
+P(x) = \sum_{i=0}^{n-1}a_ix^i=a_0+a_1x+... a_{n-1}x^{n-1}</script></li>
 </ul>
 <h3 id="CHIP"><a href="#CHIP" class="headerlink" title="CHIP"></a>CHIP</h3><p>三次 Hermite 插值多项式 （Cubic Hermite Interpolation Polynomial, <strong>CHIP</strong>），一阶导数存在</p>
-<p>设已知两点$(x_0, x_1)$和$(x_1, y_1)$，$x_0&lt;x_1$，假设其一阶导数存在$d_0, d_1$<br>$$<br>P(x) = a_0+a_1x+a_2x^2+a_3x^3, x\epsilon[x_0, x_1].<br>$$<br>则<br>$$<br>P(x_0) = a_0+a_1x_0+a_2{x_0}^2+a_3{x_0}^3=y_0<br>$$</p>
-<p>$$<br>P(x_1) = a_0+a_1x_1+a_2{x_1}^2+a_3{x_1}^3=y_1<br>$$</p>
-<p>$$<br>P’(x_0) = a_1+2a_2x_0+3a_3{x_0}^2=d_0<br>$$</p>
-<p>$$<br>P’(x_1) = a_1+2a_2x_1+3a_3{x_1}^2=d_1<br>$$</p>
-<p>令<br>$$<br>h=x_1-x_0, \<br>s=x-x_0,\<br>\delta=\frac{y_1-y_0}{x_1-x_0}<br>$$<br>可得<br>$$<br>\begin{align}<br>P(x) &amp;= H_1(x)y_0+H_2(x)y_1+H_3(x)d_0+H_4(x)d_1 \<br>&amp;=\frac{h^3-3hs^2+2s^3}{h^3}y_0+\frac{3hs^2-2s^3}{h^3}y_1+\frac{s(s-h)^2}{h^2}d_0+\frac{s^2(s-h)}{h^2}d_1 \<br>&amp;=y_0+sd_0+s^2\frac{3\delta-2d_0-d_1}{h}+s^3\frac{d_0-2\delta+d_1}{h^2} \<br>&amp;=y_0+sd_0+s^2c_0+s^3b_0<br>\end{align}<br>$$</p>
-<h3 id="PCHIP"><a href="#PCHIP" class="headerlink" title="PCHIP"></a>PCHIP</h3><p>分段三次 Hermite 插值多项式 （Piecewise Cubic Hermite Interpolation Polynomial, <strong>PCHIP</strong>）</p>
+<p>设已知两点$(x_0, x_1)$和$(x_1, y_1)$，$x_0&lt;x_1$，假设其一阶导数存在$d_0, d_1$</p>
+<script type="math/tex; mode=display">
+P(x) = a_0+a_1x+a_2x^2+a_3x^3, x\epsilon[x_0, x_1].</script><p>则</p>
+<script type="math/tex; mode=display">
+P(x_0) = a_0+a_1x_0+a_2{x_0}^2+a_3{x_0}^3=y_0</script><script type="math/tex; mode=display">
+P(x_1) = a_0+a_1x_1+a_2{x_1}^2+a_3{x_1}^3=y_1</script><script type="math/tex; mode=display">
+P'(x_0) = a_1+2a_2x_0+3a_3{x_0}^2=d_0</script><script type="math/tex; mode=display">
+P'(x_1) = a_1+2a_2x_1+3a_3{x_1}^2=d_1</script><p>令</p>
+<script type="math/tex; mode=display">
+h=x_1-x_0, \\
+s=x-x_0,\\
+\delta=\frac{y_1-y_0}{x_1-x_0}</script><p>可得</p>
+<script type="math/tex; mode=display">
+\begin{align}
+P(x) &= H_1(x)y_0+H_2(x)y_1+H_3(x)d_0+H_4(x)d_1 \\
+&=\frac{h^3-3hs^2+2s^3}{h^3}y_0+\frac{3hs^2-2s^3}{h^3}y_1+\frac{s(s-h)^2}{h^2}d_0+\frac{s^2(s-h)}{h^2}d_1 \\
+&=y_0+sd_0+s^2\frac{3\delta-2d_0-d_1}{h}+s^3\frac{d_0-2\delta+d_1}{h^2} \\
+&=y_0+sd_0+s^2c_0+s^3b_0
+\end{align}</script><h3 id="PCHIP"><a href="#PCHIP" class="headerlink" title="PCHIP"></a>PCHIP</h3><p>分段三次 Hermite 插值多项式 （Piecewise Cubic Hermite Interpolation Polynomial, <strong>PCHIP</strong>）</p>
 <h3 id="SPPCHIP"><a href="#SPPCHIP" class="headerlink" title="SPPCHIP"></a>SPPCHIP</h3><p>形状保持的分段三次 Hermite 插值多项式（Shape-Preserving Piecewise Cubic Hermite Interpolation Polynomial, <strong>SPPCHIP</strong>），是在保持<strong>区间单调性</strong>的同时，使得样点处的一阶导数连续，从而使得插值后的曲线更加平滑。</p>
 <h3 id="Spline"><a href="#Spline" class="headerlink" title="Spline"></a>Spline</h3><p>分段三次样条插值</p>
 <ul>
