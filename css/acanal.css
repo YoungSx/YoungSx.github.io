@@ -1,3 +1,9 @@
+html, body {
+  margin: 0;
+  width: auto;
+  min-width: 300px;
+}
+
 body {
   margin: 0 50px;
   background-color: #E6E6E6;
