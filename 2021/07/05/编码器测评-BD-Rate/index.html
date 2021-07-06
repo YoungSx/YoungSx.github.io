@@ -11,6 +11,8 @@
     
       <link rel="stylesheet" href="/css/acanal.css">
     
+      <link rel="stylesheet" href="/css/responsive.css">
+    
       <link rel="stylesheet" href="/css/highlight.css">
     
   
@@ -117,7 +119,7 @@ P(x) = \sum_{i=0}^{n-1}a_ix^i=a_0+a_1x+... a_{n-1}x^{n-1}</script></li>
 P^{(j)}(x_k) = y_k^{(j)}, \\
 k=1,2,...,n, \\
 j=0,1,...,p.
-\end{aligned}</script><h4 id="CHIP"><a href="#CHIP" class="headerlink" title="CHIP"></a>CHIP</h4><p>三次 Hermite 插值多项式 （Cubic Hermite Interpolation Polynomial, <strong>CHIP</strong>），一阶导数存在</p>
+\end{aligned}</script><h4 id="CHIP"><a href="#CHIP" class="headerlink" title="CHIP"></a>CHIP</h4><h5 id="形式"><a href="#形式" class="headerlink" title="形式"></a>形式</h5><p>三次 Hermite 插值多项式 （Cubic Hermite Interpolation Polynomial, <strong>CHIP</strong>），一阶导数存在</p>
 <p>n = 2, p = 1 的 Hermite</p>
 <p>设已知两点 $(x_0, x_1)$ 和 $(x_1, y_1)$，$x_0&lt;x_1$，假设其一阶导数存在 $d_0, d_1$</p>
 <script type="math/tex; mode=display">
@@ -145,7 +147,34 @@ P(x) &= H_1(x)y_0+H_2(x)y_1+H_3(x)d_0+H_4(x)d_1 \\
 P'(x) = d_0+2sc_0+3s^2b_0, \\
 P''(x) = 2c_0+6sb_0, \\
 \int_m^nP(x)dx = (sy_0+\frac{1}{2}s^2d_0+\frac{1}{3}s^3c_0+\frac{1}{4}s^4b_0+C)|_{m-x_0}^{n-x_0}
-\end{aligned}</script><h4 id="PCHIP"><a href="#PCHIP" class="headerlink" title="PCHIP"></a>PCHIP</h4><p>分段三次 Hermite 插值多项式 （Piecewise Cubic Hermite Interpolation Polynomial, <strong>PCHIP</strong>）</p>
+\end{aligned}</script><h5 id="单调性"><a href="#单调性" class="headerlink" title="单调性"></a>单调性</h5><p>需要保证 $[x_0, x_1]$ 两点间的函数图像单调</p>
+<p>$d_0, d_1$ 是两端点处的导数</p>
+<p>=&gt; 单调必要条件： $d0, d1, \delta$ 同号</p>
+<p><strong>如果 $\delta=0$</strong>, 单调充要条件 $d_0=d_1=0, P(x)$ 是常数</p>
+<p><strong>如果 $\delta\neq0$</strong>, </p>
+<script type="math/tex; mode=display">
+P'(x) = d_0+2s\frac{3\delta-2d_0-d_1}{h}+3s^2\frac{d_0-2\delta+d_1}{h^2}</script><ol>
+<li><p>如果 $d_0-2\delta+d_1=0$ </p>
+<ul>
+<li><p>P(x) 为二次或线性函数</p>
+</li>
+<li><p>P‘(x) 为线性函数或常数 =&gt; 导数（d）单调</p>
+<p>=&gt; $min{d_0, d_1}\leq P’(x)\leq max{d_0, d_1}$</p>
+<p><em>然后看不懂了…d0 d1 同号不是已知条件啊</em></p>
+</li>
+</ul>
+</li>
+<li><p>如果 $d_0-2\delta+d_1\neq0$</p>
+<ul>
+<li><p>P’(x) 为二次函数</p>
+<p>当 $\delta&gt;0$ 且 $d_0+d_1-2\delta&lt;0$ 时，$\because$ P’(x) 开口向下，且 $0\leq min{d_0, d_1}\leq P’(x) \therefore$ P(x) 单增</p>
+<p>当 $\delta<0$ 且 $d_0+d_1-2\delta>0$ 时，$\because$ P’(x) 开口向上，且 $P’(x)\leq max{d_0, d_1}\leq 0 \therefore$ P(x) 单减</0$></p>
+<p> <em>？？？？为什么能直接用 d0 d1 同号这个条件</em></p>
+</li>
+</ul>
+</li>
+</ol>
+<h4 id="PCHIP"><a href="#PCHIP" class="headerlink" title="PCHIP"></a>PCHIP</h4><p>分段三次 Hermite 插值多项式 （Piecewise Cubic Hermite Interpolation Polynomial, <strong>PCHIP</strong>）</p>
 <ul>
 <li>样点一阶导数存在</li>
 </ul>
