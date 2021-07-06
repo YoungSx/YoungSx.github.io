@@ -13,6 +13,10 @@
 }
 
 @media (max-width:980px) {
+	body {
+		margin: 0 20px;
+	}
+
     #menu-inner a {
         font-size: 2rem;
     }
