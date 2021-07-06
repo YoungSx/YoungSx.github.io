@@ -121,16 +121,18 @@ P(x_1) = a_0+a_1x_1+a_2{x_1}^2+a_3{x_1}^3=y_1</script><script type="math/tex; mo
 P'(x_0) = a_1+2a_2x_0+3a_3{x_0}^2=d_0</script><script type="math/tex; mode=display">
 P'(x_1) = a_1+2a_2x_1+3a_3{x_1}^2=d_1</script><p>令</p>
 <script type="math/tex; mode=display">
+\begin{aligned}
 h=x_1-x_0, \\
 s=x-x_0,\\
-\delta=\frac{y_1-y_0}{x_1-x_0}</script><p>可得</p>
+\delta=\frac{y_1-y_0}{x_1-x_0}
+\end{aligned}</script><p>可得</p>
 <script type="math/tex; mode=display">
-\begin{align}
+\begin{aligned}
 P(x) &= H_1(x)y_0+H_2(x)y_1+H_3(x)d_0+H_4(x)d_1 \\
 &=\frac{h^3-3hs^2+2s^3}{h^3}y_0+\frac{3hs^2-2s^3}{h^3}y_1+\frac{s(s-h)^2}{h^2}d_0+\frac{s^2(s-h)}{h^2}d_1 \\
 &=y_0+sd_0+s^2\frac{3\delta-2d_0-d_1}{h}+s^3\frac{d_0-2\delta+d_1}{h^2} \\
 &=y_0+sd_0+s^2c_0+s^3b_0
-\end{align}</script><h3 id="PCHIP"><a href="#PCHIP" class="headerlink" title="PCHIP"></a>PCHIP</h3><p>分段三次 Hermite 插值多项式 （Piecewise Cubic Hermite Interpolation Polynomial, <strong>PCHIP</strong>）</p>
+\end{aligned}</script><h3 id="PCHIP"><a href="#PCHIP" class="headerlink" title="PCHIP"></a>PCHIP</h3><p>分段三次 Hermite 插值多项式 （Piecewise Cubic Hermite Interpolation Polynomial, <strong>PCHIP</strong>）</p>
 <h3 id="SPPCHIP"><a href="#SPPCHIP" class="headerlink" title="SPPCHIP"></a>SPPCHIP</h3><p>形状保持的分段三次 Hermite 插值多项式（Shape-Preserving Piecewise Cubic Hermite Interpolation Polynomial, <strong>SPPCHIP</strong>），是在保持<strong>区间单调性</strong>的同时，使得样点处的一阶导数连续，从而使得插值后的曲线更加平滑。</p>
 <h3 id="Spline"><a href="#Spline" class="headerlink" title="Spline"></a>Spline</h3><p>分段三次样条插值</p>
 <ul>
