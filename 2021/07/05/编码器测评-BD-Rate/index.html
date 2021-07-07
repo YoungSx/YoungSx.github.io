@@ -90,13 +90,13 @@
   
   <h1>编码器测评 - BD-Rate</h1>
   <div class="post-body">
-    <h1 id="BD-Rate"><a href="#BD-Rate" class="headerlink" title="BD-Rate"></a>BD-Rate</h1><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>全称 Bjøntegaard-Delta rate，用于评价不同的视频编码器RD（率-Rate，失真-Distortion）性能<br>是 Gisle Bjøntegaard 等人在 H.264 标准开发过程中提出的</p>
-<h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><p>通常分为：</p>
+    <h2 id="BD-Rate"><a href="#BD-Rate" class="headerlink" title="BD-Rate"></a>BD-Rate</h2><h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>全称 Bjøntegaard-Delta rate，用于评价不同的视频编码器RD（率-Rate，失真-Distortion）性能<br>是 Gisle Bjøntegaard 等人在 H.264 标准开发过程中提出的</p>
+<h3 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h3><p>通常分为：</p>
 <ol>
 <li>BD-PSNR<br> 反映相同码率下平均 PSNR(dB) 差值</li>
 <li>BD-BR（BD-BitRate）<br> 反映相同 PSNR 下平均的码率变化比例（%）</li>
 </ol>
-<h2 id="测试点的选取"><a href="#测试点的选取" class="headerlink" title="测试点的选取"></a>测试点的选取</h2><p>由于测试的工作量比较大，通常只选用4个典型的 <strong>QP</strong> 值，H.26X 中常采用的是：</p>
+<h3 id="测试点的选取"><a href="#测试点的选取" class="headerlink" title="测试点的选取"></a>测试点的选取</h3><p>由于测试的工作量比较大，通常只选用4个典型的 <strong>QP</strong> 值，H.26X 中常采用的是：</p>
 <ul>
 <li>22</li>
 <li>27</li>
@@ -104,23 +104,23 @@
 <li>37</li>
 </ul>
 <p>其他编码算法由于量化方法的不同会选择不同的 QP 值，但为了方便比较通常要求器码率画着 PSNR 变化范围相近。</p>
-<h2 id="多项式插值（函数图像拟合）"><a href="#多项式插值（函数图像拟合）" class="headerlink" title="多项式插值（函数图像拟合）"></a>多项式插值（函数图像拟合）</h2><p>Lagrange 插值容易严重 overshoot，目前的版本中通常采用形状保持的分段三次 Hermite 插值法（<strong>SPPCHIP</strong>）。</p>
-<h3 id="Linear"><a href="#Linear" class="headerlink" title="Linear"></a>Linear</h3><ul>
+<h3 id="多项式插值（函数图像拟合）"><a href="#多项式插值（函数图像拟合）" class="headerlink" title="多项式插值（函数图像拟合）"></a>多项式插值（函数图像拟合）</h3><p>Lagrange 插值容易严重 overshoot，目前的版本中通常采用形状保持的分段三次 Hermite 插值法（<strong>SPPCHIP</strong>）。</p>
+<h4 id="Linear"><a href="#Linear" class="headerlink" title="Linear"></a>Linear</h4><ul>
 <li>完美区间单调性</li>
 <li>不平滑</li>
 </ul>
-<h3 id="Lagrange"><a href="#Lagrange" class="headerlink" title="Lagrange"></a>Lagrange</h3><p>相当于 p = 0 的 Hermite</p>
+<h4 id="Lagrange"><a href="#Lagrange" class="headerlink" title="Lagrange"></a>Lagrange</h4><p>相当于 p = 0 的 Hermite</p>
 <ul>
 <li>非常平滑</li>
 <li>严重 overshoot<script type="math/tex; mode=display">
 P(x) = \sum_{i=0}^{n-1}a_ix^i=a_0+a_1x+... a_{n-1}x^{n-1}</script></li>
 </ul>
-<h3 id="Hermite"><a href="#Hermite" class="headerlink" title="Hermite"></a>Hermite</h3><script type="math/tex; mode=display">
+<h4 id="Hermite"><a href="#Hermite" class="headerlink" title="Hermite"></a>Hermite</h4><script type="math/tex; mode=display">
 \begin{aligned}
 P^{(j)}(x_k) = y_k^{(j)}, \\
 k=1,2,...,n, \\
 j=0,1,...,p.
-\end{aligned}</script><h4 id="CHIP"><a href="#CHIP" class="headerlink" title="CHIP"></a>CHIP</h4><h5 id="形式"><a href="#形式" class="headerlink" title="形式"></a>形式</h5><p>三次 Hermite 插值多项式 （Cubic Hermite Interpolation Polynomial, <strong>CHIP</strong>），一阶导数存在</p>
+\end{aligned}</script><h5 id="CHIP"><a href="#CHIP" class="headerlink" title="CHIP"></a>CHIP</h5><h6 id="形式"><a href="#形式" class="headerlink" title="形式"></a>形式</h6><p>三次 Hermite 插值多项式 （Cubic Hermite Interpolation Polynomial, <strong>CHIP</strong>），一阶导数存在</p>
 <p>n = 2, p = 1 的 Hermite</p>
 <p>设已知两点 $(x_0, x_1)$ 和 $(x_1, y_1)$，$x_0&lt;x_1$，假设其一阶导数存在 $d_0, d_1$</p>
 <script type="math/tex; mode=display">
@@ -148,7 +148,7 @@ P(x) &= H_1(x)y_0+H_2(x)y_1+H_3(x)d_0+H_4(x)d_1 \\
 P'(x) = d_0+2sc_0+3s^2b_0, \\
 P''(x) = 2c_0+6sb_0, \\
 \int_m^nP(x)dx = (sy_0+\frac{1}{2}s^2d_0+\frac{1}{3}s^3c_0+\frac{1}{4}s^4b_0+C)|_{m-x_0}^{n-x_0}
-\end{aligned}</script><h5 id="单调性"><a href="#单调性" class="headerlink" title="单调性"></a>单调性</h5><p>需要保证 $[x_0, x_1]$ 两点间的函数图像单调</p>
+\end{aligned}</script><h6 id="单调性"><a href="#单调性" class="headerlink" title="单调性"></a>单调性</h6><p>需要保证 $[x_0, x_1]$ 两点间的函数图像单调</p>
 <p>$d_0, d_1$ 是两端点处的导数</p>
 <p>=&gt; 单调必要条件： $d0, d1, \delta$ 同号</p>
 <p><strong>如果 $\delta=0$</strong>, 单调充要条件 $d_0=d_1=0, P(x)$ 是常数</p>
@@ -178,11 +178,11 @@ P'(x) = d_0+2s\frac{3\delta-2d_0-d_1}{h}+3s^2\frac{d_0-2\delta+d_1}{h^2}</script
 </li>
 </ol>
 </blockquote>
-<h4 id="PCHIP"><a href="#PCHIP" class="headerlink" title="PCHIP"></a>PCHIP</h4><p>分段三次 Hermite 插值多项式 （Piecewise Cubic Hermite Interpolation Polynomial, <strong>PCHIP</strong>）</p>
+<h5 id="PCHIP"><a href="#PCHIP" class="headerlink" title="PCHIP"></a>PCHIP</h5><p>分段三次 Hermite 插值多项式 （Piecewise Cubic Hermite Interpolation Polynomial, <strong>PCHIP</strong>）</p>
 <ul>
 <li>样点一阶导数存在</li>
 </ul>
-<h4 id="SPPCHIP"><a href="#SPPCHIP" class="headerlink" title="SPPCHIP"></a>SPPCHIP</h4><p>形状保持的分段三次 Hermite 插值多项式（Shape-Preserving Piecewise Cubic Hermite Interpolation Polynomial, <strong>SPPCHIP</strong>），是在保持<strong>区间单调性</strong>的同时，使得样点处的一阶导数连续，从而使得插值后的曲线更加平滑。</p>
+<h5 id="SPPCHIP"><a href="#SPPCHIP" class="headerlink" title="SPPCHIP"></a>SPPCHIP</h5><p>形状保持的分段三次 Hermite 插值多项式（Shape-Preserving Piecewise Cubic Hermite Interpolation Polynomial, <strong>SPPCHIP</strong>），是在保持<strong>区间单调性</strong>的同时，使得样点处的一阶导数连续，从而使得插值后的曲线更加平滑。</p>
 <p>样点斜率是于左右相邻点的两个斜率加权调和平均值，且保证单调。</p>
 <p>令</p>
 <script type="math/tex; mode=display">
@@ -207,12 +207,12 @@ w_2=h_k+2h_{k-1}
 d_k=\frac{(2h_p+h_q)\delta_p-h_p\delta_q}{h_p+h_q}, \\
 if d_k \delta_p 异号 => d_k=0; \\
 else if \delta_p \delta_q 异号 且 |d_k|>|3\delta_p| => d_k=2\delta_p</script><p>​    $d_1 的 p q 取前两个, d_n 的 p q 取最后两个$</p>
-<h3 id="Spline"><a href="#Spline" class="headerlink" title="Spline"></a>Spline</h3><p>分段三次样条插值</p>
+<h4 id="Spline"><a href="#Spline" class="headerlink" title="Spline"></a>Spline</h4><p>分段三次样条插值</p>
 <ul>
 <li>比 SPPCHIP 更加平滑，又不会像 Lagrange 严重 overshoot</li>
 <li>但是区间不一定单调</li>
 </ul>
-<h2 id="Calc-Steps"><a href="#Calc-Steps" class="headerlink" title="Calc Steps"></a>Calc Steps</h2><h3 id="BD-PSNR"><a href="#BD-PSNR" class="headerlink" title="BD-PSNR"></a>BD-PSNR</h3><ol>
+<h3 id="Calc-Steps"><a href="#Calc-Steps" class="headerlink" title="Calc Steps"></a>Calc Steps</h3><h4 id="BD-PSNR"><a href="#BD-PSNR" class="headerlink" title="BD-PSNR"></a>BD-PSNR</h4><ol>
 <li>取积分区间: (minBitRate, maxBitRate)<ol>
 <li>minBitRate: max(min(anchor), min(testCase))</li>
 <li>maxBitRate: min(max(anchor), max(testCase))</li>
@@ -225,7 +225,7 @@ else if \delta_p \delta_q 异号 且 |d_k|>|3\delta_p| => d_k=2\delta_p</script>
 <li>对数反变换（将「5’」的平均值作为 10 的幂），得到testCase（被测编码器）相对于基准编码器（anchor）的倍数</li>
 <li>「6’」减 1 得到变化率</li>
 </ol>
-<h3 id="BD-BR-BD-BitRate"><a href="#BD-BR-BD-BitRate" class="headerlink" title="BD-BR (BD-BitRate)"></a>BD-BR (BD-BitRate)</h3><ol>
+<h4 id="BD-BR-BD-BitRate"><a href="#BD-BR-BD-BitRate" class="headerlink" title="BD-BR (BD-BitRate)"></a>BD-BR (BD-BitRate)</h4><ol>
 <li>取积分区间: (minPSNR, maxPSNR)<ol>
 <li>minBitRate: max(min(anchor), min(testCase))</li>
 <li>maxBitRate: min(max(anchor), max(testCase))</li>
@@ -238,17 +238,17 @@ else if \delta_p \delta_q 异号 且 |d_k|>|3\delta_p| => d_k=2\delta_p</script>
 <li>对数反变换（将「5’」的平均值作为 10 的幂），得到testCase（被测编码器）相对于基准编码器（anchor）的倍数</li>
 <li>「6’」减 1 得到变化率</li>
 </ol>
-<h1 id="Expand"><a href="#Expand" class="headerlink" title="Expand"></a>Expand</h1><h2 id="ROC-Receiver-Operating-Characteristic"><a href="#ROC-Receiver-Operating-Characteristic" class="headerlink" title="ROC (Receiver Operating Characteristic)"></a>ROC (Receiver Operating Characteristic)</h2><p>用来比较不同分类器的相关性能</p>
+<h2 id="Expand"><a href="#Expand" class="headerlink" title="Expand"></a>Expand</h2><h3 id="ROC-Receiver-Operating-Characteristic"><a href="#ROC-Receiver-Operating-Characteristic" class="headerlink" title="ROC (Receiver Operating Characteristic)"></a>ROC (Receiver Operating Characteristic)</h3><p>用来比较不同分类器的相关性能</p>
 <p>横坐标 FPR (costs)，纵坐标 TPR (benefits)</p>
 <p>ROC Curve 越接近左上角，分类器性能越好，意味着分类器在假阳率很低的同时获得了很高的真阳率</p>
-<h2 id="AUC-Area-Under-the-Curve-of-ROC"><a href="#AUC-Area-Under-the-Curve-of-ROC" class="headerlink" title="AUC (Area Under the Curve of ROC)"></a>AUC (Area Under the Curve of ROC)</h2><ul>
+<h3 id="AUC-Area-Under-the-Curve-of-ROC"><a href="#AUC-Area-Under-the-Curve-of-ROC" class="headerlink" title="AUC (Area Under the Curve of ROC)"></a>AUC (Area Under the Curve of ROC)</h3><ul>
 <li><p>ROC 曲线下的面积</p>
 </li>
 <li><p>BD-Rate 相当于 AUC</p>
 </li>
 </ul>
-<h3 id="物理意义"><a href="#物理意义" class="headerlink" title="物理意义"></a>物理意义</h3><p>任取一对（正、负）样本，正样本的 score 大于负样本的 score 的概率。</p>
-<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><ul>
+<h4 id="物理意义"><a href="#物理意义" class="headerlink" title="物理意义"></a>物理意义</h4><p>任取一对（正、负）样本，正样本的 score 大于负样本的 score 的概率。</p>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
 <li>BD-rate <a href="https://xjsxjtu.github.io/2017-04-17/RD-rate/#%E7%AE%97%E6%B3%95" target="_blank" rel="noopener">https://xjsxjtu.github.io/2017-04-17/RD-rate/#%E7%AE%97%E6%B3%95</a></li>
 <li>【机器学习笔记】：一文让你彻底理解准确率，精准率，召回率，真正率，假正率，ROC/AUC <a href="https://zhuanlan.zhihu.com/p/46714763" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/46714763</a></li>
 <li>机器学习算法常用指标总结 <a href="https://tianchi.aliyun.com/forum/postDetail?postId=79707" target="_blank" rel="noopener">https://tianchi.aliyun.com/forum/postDetail?postId=79707</a></li>
