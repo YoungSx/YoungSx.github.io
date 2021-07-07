@@ -190,7 +190,24 @@ P'(x) = d_0+2s\frac{3\delta-2d_0-d_1}{h}+3s^2\frac{d_0-2\delta+d_1}{h^2}</script
 h_k = x_{+1}-x_k, \\
 s_k = x-x_k, \\
 \delta_k = \frac{y_{k+1}-y_k}{x_{k+1}-x_k}
-\end{aligned}</script><h3 id="Spline"><a href="#Spline" class="headerlink" title="Spline"></a>Spline</h3><p>分段三次样条插值</p>
+\end{aligned}</script><p>非边界点 $d_k, k=2,3,…,n-1$ 一阶导数</p>
+<ol>
+<li><p>$\delta_{k-1}\times\delta_k\leq0$ 时，$d_k=0$ 是局部极值点</p>
+</li>
+<li><p>$\delta_{k-1}\times\delta_k&gt;0$ 时，$d_k$ 为这俩的加权调和平均</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\frac{w_1+w_2}{d_k}=\frac{w_1}{\delta_{k-1}}+\frac{w_2}{\delta_{k}}, \\
+w_1=2h_k+h_{k-1}, \\
+w_2=h_k+2h_{k-1}
+\end{aligned}</script></li>
+</ol>
+<p>边界点 $d_1, d_n$ 的一阶导数</p>
+<script type="math/tex; mode=display">
+d_k=\frac{(2h_p+h_q)\delta_p-h_p\delta_q}{h_p+h_q}, \\
+if d_k \delta_p 异号 => d_k=0; \\
+else if \delta_p \delta_q 异号 且 |d_k|>|3\delta_p| => d_k=2\delta_p</script><p>​    $d_1 的 p q 取前两个, d_n 的 p q 取最后两个$</p>
+<h3 id="Spline"><a href="#Spline" class="headerlink" title="Spline"></a>Spline</h3><p>分段三次样条插值</p>
 <ul>
 <li>比 SPPCHIP 更加平滑，又不会像 Lagrange 严重 overshoot</li>
 <li>但是区间不一定单调</li>
