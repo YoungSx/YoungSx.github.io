@@ -93,6 +93,11 @@ body {
   max-width: 100%;
 }
 
+.MathJax_Display {
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+
 h1 {
   font-size: 2em;
   text-align: center;
