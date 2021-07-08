@@ -104,6 +104,32 @@
 <li>37</li>
 </ul>
 <p>其他编码算法由于量化方法的不同会选择不同的 QP 值，但为了方便比较通常要求器码率画着 PSNR 变化范围相近。</p>
+<h3 id="Calc-Steps"><a href="#Calc-Steps" class="headerlink" title="Calc Steps"></a>Calc Steps</h3><h4 id="BD-PSNR"><a href="#BD-PSNR" class="headerlink" title="BD-PSNR"></a>BD-PSNR</h4><ol>
+<li>取积分区间: (minBitRate, maxBitRate)<ol>
+<li>minBitRate: max(min(anchor), min(testCase))</li>
+<li>maxBitRate: min(max(anchor), max(testCase))</li>
+</ol>
+</li>
+<li><strong>码率</strong>以 10 为底取对数（取对数后，码率之间的倍数关系会变成相减）</li>
+<li><em>三次</em>函数曲线拟合（拟合方法见“函数曲线拟合”小节）</li>
+<li>将「3’」的函数在「1’」区间上<strong>积分</strong></li>
+<li>积分差值除以积分区间，以取平均</li>
+<li>对数反变换（将「5’」的平均值作为 10 的幂），得到testCase（被测编码器）相对于基准编码器（anchor）的倍数</li>
+<li>「6’」减 1 得到变化率</li>
+</ol>
+<h4 id="BD-BR-BD-BitRate"><a href="#BD-BR-BD-BitRate" class="headerlink" title="BD-BR (BD-BitRate)"></a>BD-BR (BD-BitRate)</h4><ol>
+<li>取积分区间: (minPSNR, maxPSNR)<ol>
+<li>minBitRate: max(min(anchor), min(testCase))</li>
+<li>maxBitRate: min(max(anchor), max(testCase))</li>
+</ol>
+</li>
+<li><strong>码率</strong>以 10 为底取对数（取对数后，码率之间的倍数关系会变成相减）</li>
+<li><em>三次</em>函数曲线拟合（拟合方法见“函数曲线拟合”小节）</li>
+<li>将「3’」的函数在「1’」区间上<strong>积分</strong></li>
+<li>积分差值除以积分区间，以取平均</li>
+<li>对数反变换（将「5’」的平均值作为 10 的幂），得到testCase（被测编码器）相对于基准编码器（anchor）的倍数</li>
+<li>「6’」减 1 得到变化率</li>
+</ol>
 <h3 id="多项式插值（函数图像拟合）"><a href="#多项式插值（函数图像拟合）" class="headerlink" title="多项式插值（函数图像拟合）"></a>多项式插值（函数图像拟合）</h3><p>Lagrange 插值容易严重 overshoot，目前的版本中通常采用形状保持的分段三次 Hermite 插值法（<strong>SPPCHIP</strong>）。</p>
 <h4 id="Linear"><a href="#Linear" class="headerlink" title="Linear"></a>Linear</h4><ul>
 <li>完美区间单调性</li>
@@ -120,7 +146,7 @@ P(x) = \sum_{i=0}^{n-1}a_ix^i=a_0+a_1x+... a_{n-1}x^{n-1}</script></li>
 P^{(j)}(x_k) = y_k^{(j)}, \\
 k=1,2,...,n, \\
 j=0,1,...,p.
-\end{aligned}</script><h5 id="CHIP"><a href="#CHIP" class="headerlink" title="CHIP"></a>CHIP</h5><h6 id="形式"><a href="#形式" class="headerlink" title="形式"></a>形式</h6><p>三次 Hermite 插值多项式 （Cubic Hermite Interpolation Polynomial, <strong>CHIP</strong>），一阶导数存在</p>
+\end{aligned}</script><h5 id="CHIP"><a href="#CHIP" class="headerlink" title="CHIP"></a>CHIP</h5><h6 id="形式"><a href="#形式" class="headerlink" title="形式"></a>形式</h6><p>三次 Hermite 插值多项式 （Cubic Hermite Interpolation Polynomial, <strong>CHIP</strong>），一阶可导</p>
 <p>n = 2, p = 1 的 Hermite</p>
 <p>设已知两点 $(x_0, x_1)$ 和 $(x_1, y_1)$，$x_0&lt;x_1$，假设其一阶导数存在 $d_0, d_1$</p>
 <script type="math/tex; mode=display">
@@ -178,7 +204,7 @@ P'(x) = d_0+2s\frac{3\delta-2d_0-d_1}{h}+3s^2\frac{d_0-2\delta+d_1}{h^2}</script
 </li>
 </ol>
 </blockquote>
-<h5 id="PCHIP"><a href="#PCHIP" class="headerlink" title="PCHIP"></a>PCHIP</h5><p>分段三次 Hermite 插值多项式 （Piecewise Cubic Hermite Interpolation Polynomial, <strong>PCHIP</strong>）</p>
+<h5 id="PCHIP"><a href="#PCHIP" class="headerlink" title="PCHIP"></a>PCHIP</h5><p>分段三次 Hermite 插值多项式 （Piecewise Cubic Hermite Interpolation Polynomial, <strong>PCHIP</strong>），一阶可导，不一定二阶可导</p>
 <ul>
 <li>样点一阶导数存在</li>
 </ul>
@@ -212,32 +238,13 @@ else if \delta_p \delta_q 异号 且 |d_k|>|3\delta_p| => d_k=2\delta_p</script>
 <li>比 SPPCHIP 更加平滑，又不会像 Lagrange 严重 overshoot</li>
 <li>但是区间不一定单调</li>
 </ul>
-<h3 id="Calc-Steps"><a href="#Calc-Steps" class="headerlink" title="Calc Steps"></a>Calc Steps</h3><h4 id="BD-PSNR"><a href="#BD-PSNR" class="headerlink" title="BD-PSNR"></a>BD-PSNR</h4><ol>
-<li>取积分区间: (minBitRate, maxBitRate)<ol>
-<li>minBitRate: max(min(anchor), min(testCase))</li>
-<li>maxBitRate: min(max(anchor), max(testCase))</li>
-</ol>
-</li>
-<li><strong>码率</strong>以 10 为底取对数（取对数后，码率之间的倍数关系会变成相减）</li>
-<li><em>三次</em>函数曲线拟合（拟合方法见“函数曲线拟合”小节）</li>
-<li>将「3’」的函数在「1’」区间上<strong>积分</strong></li>
-<li>积分差值除以积分区间，以取平均</li>
-<li>对数反变换（将「5’」的平均值作为 10 的幂），得到testCase（被测编码器）相对于基准编码器（anchor）的倍数</li>
-<li>「6’」减 1 得到变化率</li>
-</ol>
-<h4 id="BD-BR-BD-BitRate"><a href="#BD-BR-BD-BitRate" class="headerlink" title="BD-BR (BD-BitRate)"></a>BD-BR (BD-BitRate)</h4><ol>
-<li>取积分区间: (minPSNR, maxPSNR)<ol>
-<li>minBitRate: max(min(anchor), min(testCase))</li>
-<li>maxBitRate: min(max(anchor), max(testCase))</li>
-</ol>
-</li>
-<li><strong>码率</strong>以 10 为底取对数（取对数后，码率之间的倍数关系会变成相减）</li>
-<li><em>三次</em>函数曲线拟合（拟合方法见“函数曲线拟合”小节）</li>
-<li>将「3’」的函数在「1’」区间上<strong>积分</strong></li>
-<li>积分差值除以积分区间，以取平均</li>
-<li>对数反变换（将「5’」的平均值作为 10 的幂），得到testCase（被测编码器）相对于基准编码器（anchor）的倍数</li>
-<li>「6’」减 1 得到变化率</li>
-</ol>
+<p>Spline 与 PCHIP 区别</p>
+<ul>
+<li>Spline 更平滑，二阶导数连续</li>
+<li>如果数据的函数足够平滑，Spline 更精确</li>
+<li>如果数据不平滑，PCHIP 不会 overshoot 且更少出现震荡</li>
+<li>PCHIP 使用成本更低</li>
+</ul>
 <h2 id="Expand"><a href="#Expand" class="headerlink" title="Expand"></a>Expand</h2><h3 id="ROC-Receiver-Operating-Characteristic"><a href="#ROC-Receiver-Operating-Characteristic" class="headerlink" title="ROC (Receiver Operating Characteristic)"></a>ROC (Receiver Operating Characteristic)</h3><p>用来比较不同分类器的相关性能</p>
 <p>横坐标 FPR (costs)，纵坐标 TPR (benefits)</p>
 <p>ROC Curve 越接近左上角，分类器性能越好，意味着分类器在假阳率很低的同时获得了很高的真阳率</p>
@@ -255,6 +262,7 @@ else if \delta_p \delta_q 异号 且 |d_k|>|3\delta_p| => d_k=2\delta_p</script>
 <li>BD-rate计算原理 <a href="https://blog.csdn.net/weixin_42348033/article/details/104892903" target="_blank" rel="noopener">https://blog.csdn.net/weixin_42348033/article/details/104892903</a></li>
 <li>多项式插值之Lagrange、PCHIP与Spline以及BD-Rate和BD-PSNR的计算 <a href="https://blog.csdn.net/qq_33552519/article/details/102742715" target="_blank" rel="noopener">https://blog.csdn.net/qq_33552519/article/details/102742715</a></li>
 <li>ROC及AUC计算方法及原理 <a href="https://blog.csdn.net/yinyu19950811/article/details/81288287" target="_blank" rel="noopener">https://blog.csdn.net/yinyu19950811/article/details/81288287</a></li>
+<li>客观编码效率指标 <a href="https://wangwei1237.gitbook.io/digital_video_concepts/shi-pin-zhi-liang-du-liang/4_2_0_videoqualityevaluationmethodsandmetrics/4_2_2_0_objectivevideoqualityevaluationmethodsandmetrics/4_2_2_9_objectivecodingefficiencymetrics" target="_blank" rel="noopener">https://wangwei1237.gitbook.io/digital_video_concepts/shi-pin-zhi-liang-du-liang/4_2_0_videoqualityevaluationmethodsandmetrics/4_2_2_0_objectivevideoqualityevaluationmethodsandmetrics/4_2_2_9_objectivecodingefficiencymetrics</a></li>
 </ul>
 
   </div>
