@@ -111,11 +111,9 @@
 </ol>
 </li>
 <li><strong>码率</strong>以 10 为底取对数（取对数后，码率之间的倍数关系会变成相减）</li>
-<li><em>三次</em>函数曲线拟合（拟合方法见“函数曲线拟合”小节）</li>
+<li><em>三次</em>函数曲线拟合（拟合方法见“多项式插值”小节）</li>
 <li>将「3’」的函数在「1’」区间上<strong>积分</strong></li>
-<li>积分差值除以积分区间，以取平均</li>
-<li>对数反变换（将「5’」的平均值作为 10 的幂），得到testCase（被测编码器）相对于基准编码器（anchor）的倍数</li>
-<li>「6’」减 1 得到变化率</li>
+<li>积分差值除以积分区间，以取平均，得到 BD-PSNR</li>
 </ol>
 <h4 id="BD-BR-BD-BitRate"><a href="#BD-BR-BD-BitRate" class="headerlink" title="BD-BR (BD-BitRate)"></a>BD-BR (BD-BitRate)</h4><ol>
 <li>取积分区间: (minPSNR, maxPSNR)<ol>
@@ -124,7 +122,7 @@
 </ol>
 </li>
 <li><strong>码率</strong>以 10 为底取对数（取对数后，码率之间的倍数关系会变成相减）</li>
-<li><em>三次</em>函数曲线拟合（拟合方法见“函数曲线拟合”小节）</li>
+<li><em>三次</em>函数曲线拟合（拟合方法见“多项式插值”小节）</li>
 <li>将「3’」的函数在「1’」区间上<strong>积分</strong></li>
 <li>积分差值除以积分区间，以取平均</li>
 <li>对数反变换（将「5’」的平均值作为 10 的幂），得到testCase（被测编码器）相对于基准编码器（anchor）的倍数</li>
@@ -263,6 +261,9 @@ else if \delta_p \delta_q 异号 且 |d_k|>|3\delta_p| => d_k=2\delta_p</script>
 <li>多项式插值之Lagrange、PCHIP与Spline以及BD-Rate和BD-PSNR的计算 <a href="https://blog.csdn.net/qq_33552519/article/details/102742715" target="_blank" rel="noopener">https://blog.csdn.net/qq_33552519/article/details/102742715</a></li>
 <li>ROC及AUC计算方法及原理 <a href="https://blog.csdn.net/yinyu19950811/article/details/81288287" target="_blank" rel="noopener">https://blog.csdn.net/yinyu19950811/article/details/81288287</a></li>
 <li>客观编码效率指标 <a href="https://wangwei1237.gitbook.io/digital_video_concepts/shi-pin-zhi-liang-du-liang/4_2_0_videoqualityevaluationmethodsandmetrics/4_2_2_0_objectivevideoqualityevaluationmethodsandmetrics/4_2_2_9_objectivecodingefficiencymetrics" target="_blank" rel="noopener">https://wangwei1237.gitbook.io/digital_video_concepts/shi-pin-zhi-liang-du-liang/4_2_0_videoqualityevaluationmethodsandmetrics/4_2_2_0_objectivevideoqualityevaluationmethodsandmetrics/4_2_2_9_objectivecodingefficiencymetrics</a></li>
+</ul>
+<h2 id="Changelog"><a href="#Changelog" class="headerlink" title="Changelog"></a>Changelog</h2><ul>
+<li>20210722: BD-PSNR 计算步骤有误，之前多出了类似 BD-BR 的后续步骤，现已修改</li>
 </ul>
 
   </div>
