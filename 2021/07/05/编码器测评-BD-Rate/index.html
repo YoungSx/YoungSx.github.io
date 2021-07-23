@@ -104,13 +104,16 @@
 <li>37</li>
 </ul>
 <p>其他编码算法由于量化方法的不同会选择不同的 QP 值，但为了方便比较通常要求器码率画着 PSNR 变化范围相近。</p>
-<h3 id="Calc-Steps"><a href="#Calc-Steps" class="headerlink" title="Calc Steps"></a>Calc Steps</h3><h4 id="BD-PSNR"><a href="#BD-PSNR" class="headerlink" title="BD-PSNR"></a>BD-PSNR</h4><ol>
+<h3 id="Calc-Steps"><a href="#Calc-Steps" class="headerlink" title="Calc Steps"></a>Calc Steps</h3><ul>
+<li>过程中的 log 变换的原因涉及统计学知识，增加数据的线性关系</li>
+</ul>
+<h4 id="BD-PSNR"><a href="#BD-PSNR" class="headerlink" title="BD-PSNR"></a>BD-PSNR</h4><ol>
 <li>取积分区间: (minBitRate, maxBitRate)<ol>
 <li>minBitRate: max(min(anchor), min(testCase))</li>
 <li>maxBitRate: min(max(anchor), max(testCase))</li>
 </ol>
 </li>
-<li><strong>码率</strong>以 10 为底取对数（取对数后，码率之间的倍数关系会变成相减）</li>
+<li><strong>码率</strong>以 10 为底取对数，以做 log 变换</li>
 <li><em>三次</em>函数曲线拟合（拟合方法见“多项式插值”小节）</li>
 <li>将「3’」的函数在「1’」区间上<strong>积分</strong></li>
 <li>积分差值除以积分区间，以取平均，得到 BD-PSNR</li>
@@ -121,7 +124,7 @@
 <li>maxBitRate: min(max(anchor), max(testCase))</li>
 </ol>
 </li>
-<li><strong>码率</strong>以 10 为底取对数（取对数后，码率之间的倍数关系会变成相减）</li>
+<li><strong>码率</strong>以 10 为底取对数，以做 log 变换</li>
 <li><em>三次</em>函数曲线拟合（拟合方法见“多项式插值”小节）</li>
 <li>将「3’」的函数在「1’」区间上<strong>积分</strong></li>
 <li>积分差值除以积分区间，以取平均</li>
@@ -230,7 +233,7 @@ w_2=h_k+2h_{k-1}
 <script type="math/tex; mode=display">
 d_k=\frac{(2h_p+h_q)\delta_p-h_p\delta_q}{h_p+h_q}, \\
 if d_k \delta_p 异号 => d_k=0; \\
-else if \delta_p \delta_q 异号 且 |d_k|>|3\delta_p| => d_k=2\delta_p</script><p>​    $d_1 的 p q 取前两个, d_n 的 p q 取最后两个$</p>
+else if \delta_p \delta_q 异号 且 |d_k|>|3\delta_p| => d_k=2\delta_p</script><p>$d_1 的 p q 取前两个, d_n 的 p q 取最后两个$​</p>
 <h4 id="Spline"><a href="#Spline" class="headerlink" title="Spline"></a>Spline</h4><p>分段三次样条插值</p>
 <ul>
 <li>比 SPPCHIP 更加平滑，又不会像 Lagrange 严重 overshoot</li>
@@ -261,6 +264,7 @@ else if \delta_p \delta_q 异号 且 |d_k|>|3\delta_p| => d_k=2\delta_p</script>
 <li>多项式插值之Lagrange、PCHIP与Spline以及BD-Rate和BD-PSNR的计算 <a href="https://blog.csdn.net/qq_33552519/article/details/102742715" target="_blank" rel="noopener">https://blog.csdn.net/qq_33552519/article/details/102742715</a></li>
 <li>ROC及AUC计算方法及原理 <a href="https://blog.csdn.net/yinyu19950811/article/details/81288287" target="_blank" rel="noopener">https://blog.csdn.net/yinyu19950811/article/details/81288287</a></li>
 <li>客观编码效率指标 <a href="https://wangwei1237.gitbook.io/digital_video_concepts/shi-pin-zhi-liang-du-liang/4_2_0_videoqualityevaluationmethodsandmetrics/4_2_2_0_objectivevideoqualityevaluationmethodsandmetrics/4_2_2_9_objectivecodingefficiencymetrics" target="_blank" rel="noopener">https://wangwei1237.gitbook.io/digital_video_concepts/shi-pin-zhi-liang-du-liang/4_2_0_videoqualityevaluationmethodsandmetrics/4_2_2_0_objectivevideoqualityevaluationmethodsandmetrics/4_2_2_9_objectivecodingefficiencymetrics</a></li>
+<li>在统计学中为什么要对变量取对数？ <a href="https://www.zhihu.com/question/22012482/answer/21357107" target="_blank" rel="noopener">https://www.zhihu.com/question/22012482/answer/21357107</a></li>
 </ul>
 <h2 id="Changelog"><a href="#Changelog" class="headerlink" title="Changelog"></a>Changelog</h2><ul>
 <li>20210722: BD-PSNR 计算步骤有误，之前多出了类似 BD-BR 的后续步骤，现已修改</li>
