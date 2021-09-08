@@ -1,0 +1,169 @@
+
+
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="initial-scale=1, width=device-width">
+  <title>音视频学习 - 编解码器 (Codec) [ 不会跳舞的鸟 ]</title>
+  
+    <!-- stylesheets list from _config.yml -->
+    
+      <link rel="stylesheet" href="/css/acanal.css">
+    
+      <link rel="stylesheet" href="/css/responsive.css">
+    
+      <link rel="stylesheet" href="/css/highlight.css">
+    
+  
+</head>
+<body>
+
+<div id="menu-outer">
+  <div id="menu-inner">
+    
+      <a href="/">Home</a>
+    
+      <a href="/about">About</a>
+    
+      <a href="/links">Links</a>
+    
+      <a href="/archives">Archives</a>
+    
+  </div>
+</div>
+
+<div id="content-outer">
+  <div id="content-inner">
+    
+
+<article id="post">
+  <header class="page-header">
+  <div id="site-info">
+    <div class="post-date-left">
+      
+        Create: Wed Sep 08 2021 20:57:12 GMT+0800
+      
+    </div>
+    <div class="site-title-area">
+      <div class="site-title">不会跳舞的鸟</div>
+      <div class="site-subtitle">学习笔记、日记</div>
+    </div>
+    <div class="post-date-right">
+      
+        Update: Wed Sep 08 2021 17:27:07 GMT+0800
+      
+    </div>
+  </div>
+</header>
+  
+  <h1>音视频学习 - 编解码器 (Codec)</h1>
+  <div class="post-body">
+    <h2 id="视频编解码器-Video-Codec"><a href="#视频编解码器-Video-Codec" class="headerlink" title="视频编解码器 (Video Codec)"></a>视频编解码器 (Video Codec)</h2><h3 id="常用的编解码器"><a href="#常用的编解码器" class="headerlink" title="常用的编解码器"></a>常用的编解码器</h3><ul>
+<li>libx264: H.264(AVC) 的实现</li>
+<li>libx265: H.265(HEVC) 的实现，Chromium 不支持硬解</li>
+<li>libvpx-vp9: Google 家的</li>
+<li>libaom-av1: AOMedia 出的开源免费 AV1 编码器，主要 Google 维护</li>
+<li>libdav1d: VideoLAN、VLC、FFmpeg 联合开发，AOMedia 资助</li>
+</ul>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>以 libx264 在 FFmpeg 命令行使用为例<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i input.mp4 -c:v libx264 -x264-params threads=1:br:1000:maxrate=1000:minrate=1000:bufsize=1000 out.mp4</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><code>-x264-params</code> 编码器私有参数要通过类似这样的字段传入，每个编码器的不同</li>
+</ul>
+<h3 id="libx264"><a href="#libx264" class="headerlink" title="libx264"></a>libx264</h3><ul>
+<li>x264-params</li>
+</ul>
+<h3 id="libx265"><a href="#libx265" class="headerlink" title="libx265"></a>libx265</h3><ul>
+<li>x265-params</li>
+</ul>
+<h3 id="libaom-av1"><a href="#libaom-av1" class="headerlink" title="libaom-av1"></a>libaom-av1</h3><ul>
+<li>aom-params</li>
+</ul>
+<h3 id="杂谈"><a href="#杂谈" class="headerlink" title="杂谈"></a>杂谈</h3><h4 id="相同参数转码结果不一定相同"><a href="#相同参数转码结果不一定相同" class="headerlink" title="相同参数转码结果不一定相同"></a>相同参数转码结果不一定相同</h4><p>编码器在编码时，开启多线程会导致编码效果不稳定，常常出现相同参数两次编码结果，PSNR 可能会相差 1dB。<br>请教过编码器专家，给出的原因是：</p>
+<ol>
+<li>多线程编码时，可能会产生编码顺序的竞争关系，导致区块面积不同</li>
+<li>多帧多线程编码时，vbv 码控的每帧编码速度不同，导致码控点看到编码状态有差异，做出不同的编码策略</li>
+</ol>
+<p>所以在做测评的时候，要保证单线程转码</p>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
+<li>[1] FFmpeg Codecs Documentation <a href="https://ffmpeg.org/ffmpeg-codecs.html" target="_blank" rel="noopener">https://ffmpeg.org/ffmpeg-codecs.html</a></li>
+<li>[2] libaom AV1 Encoding Guide <a href="https://trac.ffmpeg.org/wiki/Encode/AV1" target="_blank" rel="noopener">https://trac.ffmpeg.org/wiki/Encode/AV1</a></li>
+</ul>
+
+  </div>
+</article>
+
+<div id="paginator">
+  
+</div>
+
+  </div>
+</div>
+
+<div id="bottom-outer">
+  <div id="bottom-inner">
+    <div id="footer-info">
+      <div class="post-date-left">
+        
+          Create: Wed Sep 08 2021 20:57:12 GMT+0800
+        
+      </div>
+      <div class="site-title-area">
+        <div class="site-title">
+          
+            我们生来就是孤独，我们生来就是孤单。
+          
+        </div>
+        <div class="site-subtitle">
+          Site by Shangxin using
+          <a href="http://hexo.io">hexo blog framework</a>
+        </div>
+      </div>
+      <div class="post-date-right">
+        
+          Update: Wed Sep 08 2021 17:27:07 GMT+0800
+        
+      </div>
+    </div>
+    
+      
+
+    <div class="vcomments" id="vcomments"></div>
+    <script src="https://lib.baomitu.com/valine/latest/Valine.min.js"></script>
+    <script>
+        new Valine({
+            el: '#vcomments',
+            appId: 'b47PMHdzebB0ozGGdW68aQAN-gzGzoHsz',
+            appKey: 'pnCuygqUh5uDjQt8wNEKSd8K',
+            notify: 'false',
+            verify: 'false',
+            avatar: 'mp',
+            pageSize: '10',
+            placeholder: '请输入...',
+            visitor: 'true'
+        })
+    </script>
+
+      
+        <span id="/2021/09/08/音视频学习-编解码器-Codec/" class="leancloud-visitors view" data-flag-title>
+          <em class="post-meta-item-text">阅读量 </em>
+          <i class="leancloud-visitors-count">不知道 &gt;_&lt;</i>
+        </span>
+      
+    
+    <!-- 不蒜子网站访问量统计 -->
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+  </div>
+</div>
+
+
+  <!-- scripts list from theme config.yml -->
+  
+    <script src="/js/acanal.js"></script>
+  
+
+
+</body>
+</html>
