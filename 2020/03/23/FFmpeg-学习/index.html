@@ -52,7 +52,7 @@
     </div>
     <div class="post-date-right">
       
-        Update: Thu Aug 05 2021 20:33:27 GMT+0800
+        Update: Wed Sep 08 2021 16:56:25 GMT+0800
       
     </div>
   </div>
@@ -158,6 +158,11 @@
 <li><code>-qp</code> 恒定量化（constant quantizer）器模式,定义了从一个像素宏块中丢掉多少信息</li>
 </ul>
 <p>CRF会用将每一帧的压缩不同的大小，为了让主观的质量感受差不多，会用不同的QP。他是通过把运动也考虑进来做到这一点的。在编码中，如果Qp=18,则每一帧都是QP=18，当然根据帧的类型不同会有一些微小的波动，忽略之。设置CRF=18的时候，对于运动比较大的场景，会把QP设得更高一些，对于运动比较比较不剧烈的帧，会降低QP。这会导致比特率的分配随时间变化不同<a href="#References"><sup>5</sup></a></p>
+<h4 id="2Pass"><a href="#2Pass" class="headerlink" title="2Pass"></a>2Pass</h4><p>通过转码两次，在恒定码率的模式下，可以使编码更高效<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i input.mp4 -c:v libaom-av1 -b:v 2M -pass 1 -an <span class="_">-f</span> null /dev/null &amp;&amp; \</span><br><span class="line">ffmpeg -i input.mp4 -c:v libaom-av1 -b:v 2M -pass 2 -c:a libopus output.mkv</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><code>-pass 1</code> 第一次转码，输出到空文件描述符 <code>/dev/null</code></li>
+<li><code>-an</code> 第一次转码可以排除音频</li>
+</ul>
 <h3 id="指标分析"><a href="#指标分析" class="headerlink" title="指标分析"></a>指标分析</h3><p>在超分辨率工作中通常把 <strong>PSNR</strong> 和 <strong>SSIM</strong> 两个指标结合看，因为常常视频非常模糊但是 PSNR 得分很高，这时候 SSIM 不会很高</p>
 <h4 id="PSNR"><a href="#PSNR" class="headerlink" title="PSNR"></a>PSNR</h4><p>峰值信噪比<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i src.mp4 -i dst.mp4 -lavfi psnr <span class="_">-f</span> null -</span><br></pre></td></tr></table></figure></p>
 <p>此命令会打印出每一对对比帧的Y、U、V分量的 MSE 和 PSNR 及各自平均值</p>
@@ -205,6 +210,7 @@
 <li>[3] <a href="https://github.com/iAvoe/FFprobe-Tutorial-Standalone/blob/master/%E6%95%99%E7%A8%8B.md#%E5%B8%B8%E7%94%A8%E5%8F%82%E6%95%B0" target="_blank" rel="noopener">https://github.com/iAvoe/FFprobe-Tutorial-Standalone/blob/master/%E6%95%99%E7%A8%8B.md#%E5%B8%B8%E7%94%A8%E5%8F%82%E6%95%B0</a></li>
 <li>[4] <a href="https://github.com/Netflix/vmaf" target="_blank" rel="noopener">https://github.com/Netflix/vmaf</a></li>
 <li>[5] <a href="https://www.cnblogs.com/sunny-li/p/9979796.html" target="_blank" rel="noopener">https://www.cnblogs.com/sunny-li/p/9979796.html</a></li>
+<li>[6] <a href="https://trac.ffmpeg.org/wiki/Encode/AV1" target="_blank" rel="noopener">https://trac.ffmpeg.org/wiki/Encode/AV1</a></li>
 </ul>
 
   </div>
@@ -238,7 +244,7 @@
       </div>
       <div class="post-date-right">
         
-          Update: Thu Aug 05 2021 20:33:27 GMT+0800
+          Update: Wed Sep 08 2021 16:56:25 GMT+0800
         
       </div>
     </div>
