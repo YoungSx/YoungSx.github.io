@@ -1,0 +1,156 @@
+
+
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="initial-scale=1, width=device-width">
+  <title>VSCode Remote 疑难杂症报错解决 [ 不会跳舞的鸟 ]</title>
+  
+    <!-- stylesheets list from _config.yml -->
+    
+      <link rel="stylesheet" href="/css/acanal.css">
+    
+      <link rel="stylesheet" href="/css/responsive.css">
+    
+      <link rel="stylesheet" href="/css/highlight.css">
+    
+  
+</head>
+<body>
+
+<div id="menu-outer">
+  <div id="menu-inner">
+    
+      <a href="/">Home</a>
+    
+      <a href="/about">About</a>
+    
+      <a href="/links">Links</a>
+    
+      <a href="/archives">Archives</a>
+    
+  </div>
+</div>
+
+<div id="content-outer">
+  <div id="content-inner">
+    
+
+<article id="post">
+  <header class="page-header">
+  <div id="site-info">
+    <div class="post-date-left">
+      
+        Create: Wed Oct 20 2021 20:05:46 GMT+0800
+      
+    </div>
+    <div class="site-title-area">
+      <div class="site-title">不会跳舞的鸟</div>
+      <div class="site-subtitle">学习笔记、日记</div>
+    </div>
+    <div class="post-date-right">
+      
+        Update: Wed Oct 20 2021 20:07:23 GMT+0800
+      
+    </div>
+  </div>
+</header>
+  
+  <h1>VSCode Remote 疑难杂症报错解决</h1>
+  <div class="post-body">
+    <h2 id="workbench-downloadResource"><a href="#workbench-downloadResource" class="headerlink" title="_workbench.downloadResource"></a>_workbench.downloadResource</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Resolver error: Error: Running the contributed command: &apos;_workbench.downloadResource&apos; failed.</span><br></pre></td></tr></table></figure>
+<p>情况是远端服务器因为众所周知的问题无法下载 VSCode Remote 需要的插件服务端。</p>
+<p>出现的原因：我遇到的场景是在本地 VSCode 更新重启后就连不上了，所以推测是远端插件需要来适配本地的 VSCode 版本。</p>
+<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p>他要是体面,你就让他体面,他要是不体面,那你就帮他体面。——让子弹飞</p>
+<h4 id="方法-1"><a href="#方法-1" class="headerlink" title="方法 1"></a>方法 1</h4><p>给远端服务器挂梯子</p>
+<h4 id="方法-2"><a href="#方法-2" class="headerlink" title="方法 2"></a>方法 2</h4><ol>
+<li><p>找出报错日志中的 <figure class="highlight plain"><figcaption><span>```c13f1abb110fc756f9b3a6f16670df9cd9d4cf63```，后续步骤中 ```COMMIT_ID``` 字段均替换为此段 Hash 字符串</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2. 手动下载 ```https://update.code.visualstudio.com/commit:COMMIT_ID/server-linux-x64/stable``` 得到文件 ```vscode-server-linux-x64.tar.gz</span><br></pre></td></tr></table></figure></p>
+</li>
+<li><p>清空插件目录 <figure class="highlight plain"><figcaption><span>~/.vscode-server/bin/COMMIT_ID/*```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">4. 将手动下载的插件解压进去 ```tar -xvf vscode-server-linux-x64.tar.gz --strip-components 1 -C ~/.vscode-server/bin/COMMIT_ID/</span><br></pre></td></tr></table></figure></p>
+</li>
+<li><p>VSCode 重新连接一下就 OK 了</p>
+</li>
+</ol>
+<h2 id="…"><a href="#…" class="headerlink" title="…"></a>…</h2><p>待续</p>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
+<li><a href="https://www.cnblogs.com/mingfan/p/15024188.html" target="_blank" rel="noopener">vscode配置远程开发环境失败_workbench.downloadResource - 明矾</a></li>
+</ul>
+
+  </div>
+</article>
+
+<div id="paginator">
+  
+</div>
+
+  </div>
+</div>
+
+<div id="bottom-outer">
+  <div id="bottom-inner">
+    <div id="footer-info">
+      <div class="post-date-left">
+        
+          Create: Wed Oct 20 2021 20:05:46 GMT+0800
+        
+      </div>
+      <div class="site-title-area">
+        <div class="site-title">
+          
+            我们生来就是孤独，我们生来就是孤单。
+          
+        </div>
+        <div class="site-subtitle">
+          Site by Shangxin using
+          <a href="http://hexo.io">hexo blog framework</a>
+        </div>
+      </div>
+      <div class="post-date-right">
+        
+          Update: Wed Oct 20 2021 20:07:23 GMT+0800
+        
+      </div>
+    </div>
+    
+      
+
+    <div class="vcomments" id="vcomments"></div>
+    <script src="https://lib.baomitu.com/valine/latest/Valine.min.js"></script>
+    <script>
+        new Valine({
+            el: '#vcomments',
+            appId: 'b47PMHdzebB0ozGGdW68aQAN-gzGzoHsz',
+            appKey: 'pnCuygqUh5uDjQt8wNEKSd8K',
+            notify: 'false',
+            verify: 'false',
+            avatar: 'mp',
+            pageSize: '10',
+            placeholder: '请输入...',
+            visitor: 'true'
+        })
+    </script>
+
+      
+        <span id="/2021/10/20/VSCode-Remote-疑难杂症报错解决/" class="leancloud-visitors view" data-flag-title>
+          <em class="post-meta-item-text">阅读量 </em>
+          <i class="leancloud-visitors-count">不知道 &gt;_&lt;</i>
+        </span>
+      
+    
+    <!-- 不蒜子网站访问量统计 -->
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+  </div>
+</div>
+
+
+  <!-- scripts list from theme config.yml -->
+  
+    <script src="/js/acanal.js"></script>
+  
+
+
+</body>
+</html>
