@@ -52,7 +52,7 @@
     </div>
     <div class="post-date-right">
       
-        Update: Wed Oct 20 2021 20:07:23 GMT+0800
+        Update: Thu Oct 21 2021 14:30:26 GMT+0800
       
     </div>
   </div>
@@ -66,12 +66,11 @@
 <h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p>他要是体面,你就让他体面,他要是不体面,那你就帮他体面。——让子弹飞</p>
 <h4 id="方法-1"><a href="#方法-1" class="headerlink" title="方法 1"></a>方法 1</h4><p>给远端服务器挂梯子</p>
 <h4 id="方法-2"><a href="#方法-2" class="headerlink" title="方法 2"></a>方法 2</h4><ol>
-<li><p>找出报错日志中的 <figure class="highlight plain"><figcaption><span>```c13f1abb110fc756f9b3a6f16670df9cd9d4cf63```，后续步骤中 ```COMMIT_ID``` 字段均替换为此段 Hash 字符串</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2. 手动下载 ```https://update.code.visualstudio.com/commit:COMMIT_ID/server-linux-x64/stable``` 得到文件 ```vscode-server-linux-x64.tar.gz</span><br></pre></td></tr></table></figure></p>
-</li>
-<li><p>清空插件目录 <figure class="highlight plain"><figcaption><span>~/.vscode-server/bin/COMMIT_ID/*```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">4. 将手动下载的插件解压进去 ```tar -xvf vscode-server-linux-x64.tar.gz --strip-components 1 -C ~/.vscode-server/bin/COMMIT_ID/</span><br></pre></td></tr></table></figure></p>
-</li>
-<li><p>VSCode 重新连接一下就 OK 了</p>
-</li>
+<li>找出报错日志中的 <code>COMMIT_ID</code>，我这里是 <code>c13f1abb110fc756f9b3a6f16670df9cd9d4cf63</code>，后续步骤中 <code>COMMIT_ID</code> 字段均替换为此段 Hash 字符串</li>
+<li>手动下载 <code>https://update.code.visualstudio.com/commit:COMMIT_ID/server-linux-x64/stable</code> 得到文件 <code>vscode-server-linux-x64.tar.gz</code></li>
+<li>清空插件目录 <code>rm ~/.vscode-server/bin/COMMIT_ID/*</code></li>
+<li>将手动下载的插件解压进去 <code>tar -xvf vscode-server-linux-x64.tar.gz --strip-components 1 -C ~/.vscode-server/bin/COMMIT_ID/</code></li>
+<li>VSCode 重新连接一下就 OK 了</li>
 </ol>
 <h2 id="…"><a href="#…" class="headerlink" title="…"></a>…</h2><p>待续</p>
 <h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
@@ -109,7 +108,7 @@
       </div>
       <div class="post-date-right">
         
-          Update: Wed Oct 20 2021 20:07:23 GMT+0800
+          Update: Thu Oct 21 2021 14:30:26 GMT+0800
         
       </div>
     </div>
