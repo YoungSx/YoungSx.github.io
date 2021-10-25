@@ -52,7 +52,7 @@
     </div>
     <div class="post-date-right">
       
-        Update: Thu Oct 21 2021 14:30:26 GMT+0800
+        Update: Mon Oct 25 2021 17:56:50 GMT+0800
       
     </div>
   </div>
@@ -151,8 +151,8 @@
 <ul>
 <li>仅需要将输出文件写成推流地址即可</li>
 </ul>
-<h2 id="视频质量"><a href="#视频质量" class="headerlink" title="视频质量"></a>视频质量</h2><h3 id="编码质量控制"><a href="#编码质量控制" class="headerlink" title="编码质量控制"></a>编码质量控制</h3><h4 id="b"><a href="#b" class="headerlink" title="b"></a>b</h4><p><code>-b:v 2M</code> 是在编码的时候控制视频固定码率为2M，音频则为<code>-b:a 128K</code></p>
-<h4 id="crf-amp-qp"><a href="#crf-amp-qp" class="headerlink" title="crf &amp; qp"></a>crf &amp; qp</h4><p><code>-crf 18</code><br><code>-qp 18</code></p>
+<h2 id="视频质量"><a href="#视频质量" class="headerlink" title="视频质量"></a>视频质量</h2><h3 id="码率控制"><a href="#码率控制" class="headerlink" title="码率控制"></a>码率控制</h3><h4 id="指定码率"><a href="#指定码率" class="headerlink" title="指定码率"></a>指定码率</h4><p><code>-b:v 2M</code> 是在编码的时候控制视频固定码率为2M，音频则为<code>-b:a 128K</code></p>
+<h4 id="恒定质量"><a href="#恒定质量" class="headerlink" title="恒定质量"></a>恒定质量</h4><p><code>-crf 18</code><br><code>-qp 18</code></p>
 <ul>
 <li><code>-crf</code> 恒定速率（constant rate factor）因子模式，是恒定质量的编码方式，与恒定码率(CBR)是相反的，crf 的范围在 0 - 51，0 是绝对无损，18 被认为是视觉无损</li>
 <li><code>-qp</code> 恒定量化（constant quantizer）器模式,定义了从一个像素宏块中丢掉多少信息</li>
@@ -244,7 +244,7 @@
       </div>
       <div class="post-date-right">
         
-          Update: Thu Oct 21 2021 14:30:26 GMT+0800
+          Update: Mon Oct 25 2021 17:56:50 GMT+0800
         
       </div>
     </div>
