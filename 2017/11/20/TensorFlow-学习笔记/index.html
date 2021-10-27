@@ -53,7 +53,7 @@
     </div>
     <div class="post-date-right">
       
-        Update: Mon Oct 25 2021 21:02:21 GMT+0800
+        Update: Wed Oct 27 2021 20:02:50 GMT+0800
       
     </div>
   </div>
@@ -125,7 +125,7 @@
       </div>
       <div class="post-date-right">
         
-          Update: Mon Oct 25 2021 21:02:21 GMT+0800
+          Update: Wed Oct 27 2021 20:02:50 GMT+0800
         
       </div>
     </div>
@@ -166,6 +166,16 @@
   
     <script src="/js/acanal.js"></script>
   
+
+
+
+  <aside id="post-toc" role="navigator">
+    <div id="post-toc-inner">
+        <strong class="post-toc-title">Catalog</strong>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#TensorFlow-学习笔记"><span class="toc-number">1.</span> <span class="toc-text">TensorFlow 学习笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#定义公式"><span class="toc-number">1.1.</span> <span class="toc-text">定义公式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#流程"><span class="toc-number">1.2.</span> <span class="toc-text">流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tf-nn-relu"><span class="toc-number">1.3.</span> <span class="toc-text">tf.nn.relu</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tf-nn-tanh"><span class="toc-number">1.4.</span> <span class="toc-text">tf.nn.tanh</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tf-nn-moment"><span class="toc-number">1.5.</span> <span class="toc-text">tf.nn.moment</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tf-nn-softmax-cross-entropy-with-logits"><span class="toc-number">1.6.</span> <span class="toc-text">tf.nn.softmax_cross_entropy_with_logits()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tf-stack"><span class="toc-number">1.7.</span> <span class="toc-text">tf.stack()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tf-nn-dropout"><span class="toc-number">1.8.</span> <span class="toc-text">tf.nn.dropout()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tf-truncated-normal"><span class="toc-number">1.9.</span> <span class="toc-text">tf.truncated_normal()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tf-reshape"><span class="toc-number">1.10.</span> <span class="toc-text">tf.reshape()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tf-reduce-mean"><span class="toc-number">1.11.</span> <span class="toc-text">tf.reduce_mean()</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Others"><span class="toc-number">2.</span> <span class="toc-text">Others</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#tf-name-scope"><span class="toc-number">2.1.</span> <span class="toc-text">tf.name_scope()</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#scope-reuse-variables"><span class="toc-number">2.1.1.</span> <span class="toc-text">scope.reuse_variables()</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tf-equal"><span class="toc-number">2.2.</span> <span class="toc-text">tf.equal()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tf-cast"><span class="toc-number">2.3.</span> <span class="toc-text">tf.cast()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tf-placeholder"><span class="toc-number">2.4.</span> <span class="toc-text">tf.placeholder()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tf-argmax"><span class="toc-number">2.5.</span> <span class="toc-text">tf.argmax</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tf-train"><span class="toc-number">2.6.</span> <span class="toc-text">tf.train</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#tf-train-Saver"><span class="toc-number">2.6.1.</span> <span class="toc-text">tf.train.Saver()</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tf-nn-rnn-cell"><span class="toc-number">2.7.</span> <span class="toc-text">tf.nn.rnn_cell</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#tf-train-GradientDescentOptimizer"><span class="toc-number">2.7.1.</span> <span class="toc-text">tf.train.GradientDescentOptimizer()</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tf-summary-FileWriter"><span class="toc-number">2.8.</span> <span class="toc-text">tf.summary.FileWriter</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tf-global-variables-initializer"><span class="toc-number">2.9.</span> <span class="toc-text">tf.global_variables_initializer()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tf-matmul"><span class="toc-number">2.10.</span> <span class="toc-text">tf.matmul()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#tf-square"><span class="toc-number">2.11.</span> <span class="toc-text">tf.square()</span></a></li></ol></li></ol>
+    </div>  
+</aside>
+
 
 
 </body>
