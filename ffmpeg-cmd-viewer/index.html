@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FFmpeg CMD Viewer Demo</title>
+    <style>
+        html, body {
+            width: 100%;
+            height: 100%;
+            margin: 0px;
+        }
+
+        h1, h2, #cmd-input, #run-button, #cmd-view-area {
+            margin: 5px;
+        }
+
+        #cmd-input {
+            width: 800px;
+            height: 100px;
+        }
+
+        #run-button {
+            width: 100px;
+            height: 30px;
+        }
+    </style>
+</head>
+<body>
+    <h1>FFmpeg CMD Viewer</h1>
+    <script type="module">
+        import fcv from './src/index.js'
+        window.fcv = fcv
+    </script>
+    <script>
+        const setFormatedText = (text) => {
+            document.querySelector("#cmd-view").innerHTML = text
+        }
+
+        const run = () => {
+            setFormatedText("")
+            draw("")
+            const inputText = document.querySelector("#cmd-input").value
+            setFormatedText(window.fcv.format(inputText))
+            draw(inputText)
+        }
+    </script>
+    <textarea id="cmd-input"></textarea>
+    <br />
+    <button id="run-button" onClick="run()">do</button>
+    <div id="cmd-view-area">
+        <pre id="cmd-view">
+        </pre>
+    </div>
+    <h2>Filter Complex Graph</h2>
+    <svg id="svg-ele" width="100%"></svg>
+    <script>
+        let svgEle = document.querySelector("#svg-ele")
+        svgEle.width = "2000"
+    </script>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://dagrejs.github.io/project/dagre-d3/latest/dagre-d3.min.js"></script>
+    
+    <script>
+        const draw = (cmd) => {
+            const t = window.fcv.filterComplexGraphD3Data(window.fcv.parser(cmd))
+            const n = t["nodes"]
+            const e = t["edges"]
+
+            let dataset = {
+                nodes: n,
+                edges: e
+            }
+            let g = new dagreD3.graphlib.Graph()
+            g.setGraph({
+                rankdir: 'LR',
+                align: 'UL',
+                nodesep: 50,
+                edgesep: 10,
+                ranksep: 50,
+            })
+            dataset.nodes.forEach(item => {
+                g.setNode(item.id, {
+                    label: item.label,
+                    shape: item.shape,
+                    style: "fill:#ECECFF;stroke:#9370DB",
+                    labelStyle: "fill:#000"
+                })
+            })
+            dataset.edges.forEach(item => {
+                g.setEdge(item.source, item.target, {
+                    label: item.label,
+                    style: "fill:transparent;stroke:#000;stroke-width:1.5px",
+                    labelStyle: "fill:#1890ff",
+                    arrowhead: "vee",
+                    arrowheadStyle: "fill:#000"
+                })
+            })
+            let render = new dagreD3.render()
+
+            let svg = d3.select('svg')
+            let svgGroup = svg.append('g')
+
+            render(svgGroup, g)
+
+            // Center the graph
+            var xCenterOffset = (svg.attr('width') - g.graph().width) / 2
+            svg.attr('height', g.graph().height + 40)
+            svg.attr('width', g.graph().width)
+        }
+    </script>
+</body>
+
+</html>
