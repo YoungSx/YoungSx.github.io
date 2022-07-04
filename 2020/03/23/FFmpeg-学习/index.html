@@ -66,7 +66,7 @@
     </div>
     <div class="post-date-right">
       
-        Update: Mon Jul 04 2022 12:55:18 GMT+0800
+        Update: Mon Jul 04 2022 20:49:24 GMT+0800
       
     </div>
   </div>
@@ -106,7 +106,8 @@
 </ul>
 <h2 id="裁剪视频"><a href="#裁剪视频" class="headerlink" title="裁剪视频"></a>裁剪视频</h2><p>使用 -ss 和 -t 选项，从第0秒开始，向后截取31秒视频，并保存<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -ss 00:00:00 -i video.mp4 -vcodec copy -acodec copy -t 00:00:31 output1.mp4</span><br></pre></td></tr></table></figure></p>
 <ul>
-<li><code>-t</code> 是 Duration，换成<code>-to</code>的话是切到指定时刻<br><strong>注意：因为 ffmpeg 的 bug，如果视频第一帧不是从 0 开始，则起始截取位置可能会乱掉，如果想从头开始，则删掉 <code>-ss</code> 参数即可</strong></li>
+<li><code>-t</code> 是 Duration，换成<code>-to</code>的话是切到指定时刻</li>
+<li><code>-ss</code> 如果在 <code>-i</code> 前，是直接 seek 到指定时刻（前的关键帧上），再进行切割；如果 <code>-ss</code> 在 <code>-i</code> 后，则是从头开始 decode，直到遇到指定时刻开始切割，会比较慢，后者比较精准。<br><strong>注意：因为 ffmpeg 的 bug，如果视频第一帧不是从 0 开始，则起始截取位置可能会乱掉，如果想从头开始，则删掉 <code>-ss</code> 参数即可</strong></li>
 </ul>
 <h3 id="指定时长切片"><a href="#指定时长切片" class="headerlink" title="指定时长切片"></a>指定时长切片</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -y -nostdin -hide_banner -v error -analyzeduration 400000000 -i ./ori.mp4 -max_interleave_delta 0 -flags +global_header -max_muxing_queue_size 3000 -c copy <span class="_">-f</span> segment -segment_time 600 -reset_timestamps 1 -segment_list ./origin.ffconcat -metadata description=<span class="string">"Bilibili VXCode Swarm Transcoder v0.1.29"</span> ./S%03d.mp4</span><br></pre></td></tr></table></figure>
 <ul>
@@ -258,7 +259,7 @@
         </div>
         <div class="post-date-right">
           
-            Update: Mon Jul 04 2022 12:55:18 GMT+0800
+            Update: Mon Jul 04 2022 20:49:24 GMT+0800
           
         </div>
       </div>

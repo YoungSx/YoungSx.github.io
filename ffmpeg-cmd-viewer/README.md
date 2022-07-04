@@ -4,11 +4,12 @@
 [Demo](http://shangxin.me/ffmpeg-cmd-viewer/)
 
 # TODO
-## feature
+## Feature
 * filter complex graph 绘制输入音视频流
 * filter complex graph 标明 pads 输入输出顺序
 
 ## Bug
 * formatted string 输出丢失
+* filter complex 两个节点间无法同时存在两条边
 * 替换转义符
 * 负数被误解析成命令
