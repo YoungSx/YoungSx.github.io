@@ -1,0 +1,200 @@
+
+
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="initial-scale=1, width=device-width">
+  <title>视频编码器评测-客观评价指标 [ 不会跳舞的鸟 ]</title>
+  
+    <!-- stylesheets list from _config.yml -->
+    
+      <link rel="stylesheet" href="/css/acanal.css">
+    
+      <link rel="stylesheet" href="/css/responsive.css">
+    
+      <link rel="stylesheet" href="/css/highlight.css">
+    
+  
+  <script src="//instant.page/5.1.0" type="module" integrity="sha384-by67kQnR+pyfy8yWP4kPO12fHKRLHZPfEsiSXR8u2IKcTdxD805MGUXBzVPnkLHw"></script>
+</head>
+<body>
+
+
+  <aside id="post-toc" role="navigator">
+    <div id="post-toc-inner">
+        <strong class="post-toc-title">Catalog</strong>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#客观评价指标"><span class="toc-number">1.</span> <span class="toc-text">客观评价指标</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#PSNR"><span class="toc-number">1.1.</span> <span class="toc-text">PSNR</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SSIM"><span class="toc-number">1.2.</span> <span class="toc-text">SSIM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#VMAF"><span class="toc-number">1.3.</span> <span class="toc-text">VMAF</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Example"><span class="toc-number">1.3.1.</span> <span class="toc-text">Example</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#References"><span class="toc-number">2.</span> <span class="toc-text">References</span></a></li></ol>
+    </div>  
+</aside>
+
+
+
+<div id="main">
+  <div id="menu-outer">
+    <div id="menu-inner">
+      
+        <a href="/">Home</a>
+      
+        <a href="/about">About</a>
+      
+        <a href="/links">Links</a>
+      
+        <a href="/archives">Archives</a>
+      
+        <a href="/ffmpeg-cmd-viewer">FCV</a>
+      
+    </div>
+  </div>
+
+  <div id="content-outer">
+    <div id="content-inner">
+      
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+          tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+            processEscapes: true
+          }
+        });
+      </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+            tex2jax: {
+              skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+            }
+          });
+      </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+              var all = MathJax.Hub.getAllJax(), i;
+              for(i=0; i < all.length; i += 1) {
+                  all[i].SourceElement().parentNode.className += ' has-jax';
+              }
+          });
+      </script>
+
+    <script type="text/javascript" src="https://lib.baomitu.com/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+<article id="post">
+  <header class="page-header">
+  <div id="site-info">
+    <div class="post-date-left">
+      
+        Create: Mon Jul 04 2022 20:49:59 GMT+0800
+      
+    </div>
+    <div class="site-title-area">
+      <div class="site-title">不会跳舞的鸟</div>
+      <div class="site-subtitle">学习笔记、日记</div>
+    </div>
+    <div class="post-date-right">
+      
+        Update: Mon Jul 04 2022 21:08:56 GMT+0800
+      
+    </div>
+  </div>
+</header>
+  
+  <h1>视频编码器评测-客观评价指标</h1>
+  <div class="post-body">
+    <h2 id="客观评价指标"><a href="#客观评价指标" class="headerlink" title="客观评价指标"></a>客观评价指标</h2><p>常见的客观评价指标有：</p>
+<ul>
+<li>PSNR(Peak signal-to-noise ratio)</li>
+<li>SSIM(Structural Similarity)</li>
+<li>VMAF(Video Multi-Method Assessment Fusion)</li>
+</ul>
+<h3 id="PSNR"><a href="#PSNR" class="headerlink" title="PSNR"></a>PSNR</h3><p>待续…</p>
+<h3 id="SSIM"><a href="#SSIM" class="headerlink" title="SSIM"></a>SSIM</h3><p>待续…</p>
+<h3 id="VMAF"><a href="#VMAF" class="headerlink" title="VMAF"></a>VMAF</h3><h4 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i main.mpg -i ref.mkv -lavfi <span class="string">"[0:v]settb=AVTB,setpts=PTS-STARTPTS[main];[1:v]settb=AVTB,setpts=PTS-STARTPTS[ref];[main][ref]libvmaf=psnr=1:log_fmt=json"</span> <span class="_">-f</span> null -</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>ref</code> 为参考（reference）视频，即 Ground Truth</li>
+<li><code>main</code> 为需要评价的视频</li>
+<li>需要注意的是 <code>[main]</code> <code>[ref]</code> 顺序不能反过来</li>
+</ul>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
+<li>ffmpeg Documentation <a href="http://underpop.online.fr/f/ffmpeg/ffmpeg-all.html.gz" target="_blank" rel="noopener">http://underpop.online.fr/f/ffmpeg/ffmpeg-all.html.gz</a></li>
+</ul>
+
+  </div>
+</article>
+
+<div id="paginator">
+  
+</div>
+
+    </div>
+  </div>
+
+  <div id="bottom-outer">
+    <div id="bottom-inner">
+      <div id="footer-info">
+        <div class="post-date-left">
+          
+            Create: Mon Jul 04 2022 20:49:59 GMT+0800
+          
+        </div>
+        <div class="site-title-area">
+          <div class="site-title">
+            
+              我们生来就是孤独，我们生来就是孤单。
+            
+          </div>
+          <div class="site-subtitle">
+            Site by Shangxin using
+            <a href="http://hexo.io">hexo blog framework</a>
+          </div>
+        </div>
+        <div class="post-date-right">
+          
+            Update: Mon Jul 04 2022 21:08:56 GMT+0800
+          
+        </div>
+      </div>
+      
+        
+
+    <div class="vcomments" id="vcomments"></div>
+    <script src="https://lib.baomitu.com/valine/latest/Valine.min.js"></script>
+    <script>
+        new Valine({
+            el: '#vcomments',
+            appId: 'b47PMHdzebB0ozGGdW68aQAN-gzGzoHsz',
+            appKey: 'pnCuygqUh5uDjQt8wNEKSd8K',
+            notify: 'false',
+            verify: 'false',
+            avatar: 'mp',
+            pageSize: '10',
+            placeholder: '请输入...',
+            visitor: 'true'
+        })
+    </script>
+
+        
+          <span id="/2022/07/04/视频编码器评测-客观评价指标/" class="leancloud-visitors view" data-flag-title>
+            <em class="post-meta-item-text">阅读量 </em>
+            <i class="leancloud-visitors-count">不知道 &gt;_&lt;</i>
+          </span>
+        
+      
+      <!-- 不蒜子网站访问量统计 -->
+      <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+      <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+    </div>
+  </div>
+</div>
+
+  <!-- scripts list from theme config.yml -->
+  
+    <script src="/js/acanal.js"></script>
+  
+
+
+</body>
+</html>
