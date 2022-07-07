@@ -1,6 +1,6 @@
 class FFmpegCmdViewer {
     _removeEscapeChar (str) {
-        return str.replace(/[\'\"\\\/\b\f\n\r\t]/g, '')
+        return str.replace(/[\\]/g, '')
     }
 
     haveCodecParams (str) {
