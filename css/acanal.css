@@ -316,11 +316,3 @@ aside a {
   color: black;
   text-decoration: none;
 }
-
-.post-body>.highlight {
-  width: calc(100% - 800px);
-}
-
-figure.highlight .line, .codeblock .line {
-  width: calc(100% - 800px);
-}
