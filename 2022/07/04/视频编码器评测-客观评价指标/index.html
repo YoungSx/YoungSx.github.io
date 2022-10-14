@@ -96,7 +96,7 @@
     </div>
     <div class="post-date-right">
       
-        Update: Fri Oct 14 2022 19:37:51 GMT+0800
+        Update: Fri Oct 14 2022 19:39:20 GMT+0800
       
     </div>
   </div>
@@ -137,7 +137,7 @@ SSIM = l(\mathbf{x}, \mathbf{y}) \times c(\mathbf{x}, \mathbf{y}) \times s(\math
 \end{aligned}</script><h3 id="VMAF"><a href="#VMAF" class="headerlink" title="VMAF"></a>VMAF</h3><p>Netflix 与几个大学实验室合作推出的多方法融合的客观评估指标，使用了 Machine Learning。目前业内已经用的很多，缺点算力消耗较大。</p>
 <h4 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i main.mpg -i ref.mkv -lavfi <span class="string">"[0:v]settb=AVTB,setpts=PTS-STARTPTS[main];[1:v]settb=AVTB,setpts=PTS-STARTPTS[ref];[main][ref]libvmaf=psnr=1:log_fmt=json"</span> <span class="_">-f</span> null -</span><br></pre></td></tr></table></figure>
 <ul>
-<li><code>ref</code> 为参考（reference）视频，即 Ground Truth</li>
+<li><code>ref</code> 为参考（reference）视频，即 Ground-truth</li>
 <li><code>main</code> 为需要评价的视频</li>
 <li>需要注意的是 <code>[main]</code> <code>[ref]</code> 顺序不能反过来</li>
 </ul>
@@ -179,7 +179,7 @@ SSIM = l(\mathbf{x}, \mathbf{y}) \times c(\mathbf{x}, \mathbf{y}) \times s(\math
         </div>
         <div class="post-date-right">
           
-            Update: Fri Oct 14 2022 19:37:51 GMT+0800
+            Update: Fri Oct 14 2022 19:39:20 GMT+0800
           
         </div>
       </div>
