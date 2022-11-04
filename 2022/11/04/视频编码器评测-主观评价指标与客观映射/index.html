@@ -1,0 +1,234 @@
+
+
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="initial-scale=1, width=device-width">
+  <title>视频编码器评测 - 主观评价指标与客观映射 [ 不会跳舞的鸟 ]</title>
+  
+    <!-- stylesheets list from _config.yml -->
+    
+      <link rel="stylesheet" href="/css/acanal.css">
+    
+      <link rel="stylesheet" href="/css/responsive.css">
+    
+      <link rel="stylesheet" href="/css/highlight.css">
+    
+  
+  <script src="//instant.page/5.1.0" type="module" integrity="sha384-by67kQnR+pyfy8yWP4kPO12fHKRLHZPfEsiSXR8u2IKcTdxD805MGUXBzVPnkLHw"></script>
+</head>
+<body>
+
+
+  <aside id="post-toc" role="navigator">
+    <div id="post-toc-inner">
+        <strong class="post-toc-title">Catalog</strong>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#主观评价指标"><span class="toc-number">1.</span> <span class="toc-text">主观评价指标</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#主观评价指标-1"><span class="toc-number">1.1.</span> <span class="toc-text">主观评价指标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#测试方法"><span class="toc-number">1.2.</span> <span class="toc-text">测试方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#主客观映射"><span class="toc-number">2.</span> <span class="toc-text">主客观映射</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#References"><span class="toc-number">3.</span> <span class="toc-text">References</span></a></li></ol>
+    </div>  
+</aside>
+
+
+
+<div id="main">
+  <div id="menu-outer">
+    <div id="menu-inner">
+      
+        <a href="/">Home</a>
+      
+        <a href="/about">About</a>
+      
+        <a href="/links">Links</a>
+      
+        <a href="/archives">Archives</a>
+      
+        <a href="/ffmpeg-cmd-viewer">FCV</a>
+      
+    </div>
+  </div>
+
+  <div id="content-outer">
+    <div id="content-inner">
+      
+
+<article id="post">
+  <header class="page-header">
+  <div id="site-info">
+    <div class="post-date-left">
+      
+        Create: Fri Nov 04 2022 19:30:42 GMT+0800
+      
+    </div>
+    <div class="site-title-area">
+      <div class="site-title">不会跳舞的鸟</div>
+      <div class="site-subtitle">学习笔记、日记</div>
+    </div>
+    <div class="post-date-right">
+      
+        Update: Fri Nov 04 2022 17:14:46 GMT+0800
+      
+    </div>
+  </div>
+</header>
+  
+  <h1>视频编码器评测 - 主观评价指标与客观映射</h1>
+  <div class="post-body">
+    <h2 id="主观评价指标"><a href="#主观评价指标" class="headerlink" title="主观评价指标"></a>主观评价指标</h2><h3 id="主观评价指标-1"><a href="#主观评价指标-1" class="headerlink" title="主观评价指标"></a>主观评价指标</h3><p>常见的两个主观评价指标：</p>
+<ul>
+<li>MOS (Mean Opinion Score)：表示为一个归一化后的单一有理数，范围为1-5，其中1是最低的感知质量，5是最高的感知质量。<ul>
+<li>MOS↑ 图像质量↑。</li>
+</ul>
+</li>
+<li>DMOS (Differential Mean Quality Score)：是全参考测试中”无失真”和”有失真”两者之间MOS的差异。<ul>
+<li>DMOS↓ 图像质量↑。</li>
+</ul>
+</li>
+</ul>
+<p>待续…</p>
+<h3 id="测试方法"><a href="#测试方法" class="headerlink" title="测试方法"></a>测试方法</h3><ol>
+<li>ACR (Absolute Category Rating)</li>
+<li>ACR-HR (Absolute Category Rating with Hidden Reference)</li>
+<li>DCR (Degradation Category Rating)</li>
+<li>PC (Pair Comparison)</li>
+</ol>
+<h2 id="主客观映射"><a href="#主客观映射" class="headerlink" title="主客观映射"></a>主客观映射</h2><p>严格来说，主客观指标之间并不能映射，下表映射关系仅为经验总结，供参考。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>PSNR</th>
+<th>SSIM</th>
+<th>VMAF</th>
+<th>MOS</th>
+<th>Quality</th>
+<th>Describe</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>37+</td>
+<td>0.93+</td>
+<td>80-100</td>
+<td>5</td>
+<td>Excellent</td>
+<td>极好</td>
+</tr>
+<tr>
+<td>31-37</td>
+<td>0.85-0.93</td>
+<td>60-80</td>
+<td>4</td>
+<td>Good</td>
+<td>好</td>
+</tr>
+<tr>
+<td>25-31</td>
+<td>0.75-0.85</td>
+<td>40-60</td>
+<td>3</td>
+<td>Fair</td>
+<td>一般</td>
+</tr>
+<tr>
+<td>20-25</td>
+<td>0.55-0.75</td>
+<td>20-40</td>
+<td>2</td>
+<td>Poor</td>
+<td>差</td>
+</tr>
+<tr>
+<td>0-20</td>
+<td>0-0.55</td>
+<td>0-20</td>
+<td>1</td>
+<td>Bad</td>
+<td>极差</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
+<li>T-REC-P.910 : Subjective video quality assessment methods for multimedia applications <a href="https://www.itu.int/rec/T-REC-P.910-202207-I/en" target="_blank" rel="noopener">https://www.itu.int/rec/T-REC-P.910-202207-I/en</a></li>
+<li>Mohamed, Samir, and Gerardo Rubino. “On the Accuracy of PSNR and PSQA Video Quality Measures.” <em>IEEE TRANSACTIONS ON CIRCUITS AND SYSTEMS FOR VIDEO TECHNOLOGY</em>, n.d., 17.</li>
+<li>Botia, Diego, Natalia Gaviria, J.Menedez, and David Jimenez Bermejo. <em>An Approach to Correlation of QoE Metrics Applied to VoD Service on IPTV Using a Diffserv Network</em>, 2012.</li>
+<li>VMAF:未毕之旅 - 腾讯云开发者社区-腾讯云 <a href="https://cloud.tencent.com/developer/article/1525375" target="_blank" rel="noopener">https://cloud.tencent.com/developer/article/1525375</a></li>
+</ul>
+
+  </div>
+</article>
+
+<div id="paginator">
+  
+</div>
+
+    </div>
+  </div>
+
+  <div id="bottom-outer">
+    <div id="bottom-inner">
+      <div id="footer-info">
+        <div class="post-date-left">
+          
+            Create: Fri Nov 04 2022 19:30:42 GMT+0800
+          
+        </div>
+        <div class="site-title-area">
+          <div class="site-title">
+            
+              我们生来就是孤独，我们生来就是孤单。
+            
+          </div>
+          <div class="site-subtitle">
+            Site by Shangxin using
+            <a href="http://hexo.io">hexo blog framework</a>
+          </div>
+        </div>
+        <div class="post-date-right">
+          
+            Update: Fri Nov 04 2022 17:14:46 GMT+0800
+          
+        </div>
+      </div>
+      
+        
+
+    <div class="vcomments" id="vcomments"></div>
+    <script src="https://unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <script>
+        new Valine({
+            el: '#vcomments',
+            appId: 'b47PMHdzebB0ozGGdW68aQAN-gzGzoHsz',
+            appKey: 'pnCuygqUh5uDjQt8wNEKSd8K',
+            notify: 'false',
+            verify: 'false',
+            avatar: 'mp',
+            pageSize: '10',
+            placeholder: '请输入...',
+            visitor: 'true'
+        })
+    </script>
+
+        
+          <span id="/2022/11/04/视频编码器评测-主观评价指标与客观映射/" class="leancloud-visitors view" data-flag-title>
+            <em class="post-meta-item-text">阅读量 </em>
+            <i class="leancloud-visitors-count">不知道 &gt;_&lt;</i>
+          </span>
+        
+      
+      <!-- 不蒜子网站访问量统计 -->
+      <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+      <span id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
+    </div>
+  </div>
+</div>
+
+  <!-- scripts list from theme config.yml -->
+  
+    <script src="/js/acanal.js"></script>
+  
+
+
+</body>
+</html>

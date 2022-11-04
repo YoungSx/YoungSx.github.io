@@ -96,7 +96,7 @@
     </div>
     <div class="post-date-right">
       
-        Update: Fri Oct 28 2022 19:54:00 GMT+0800
+        Update: Fri Nov 04 2022 17:14:46 GMT+0800
       
     </div>
   </div>
@@ -104,19 +104,31 @@
   
   <h1>视频编码器评测 - 客观评价指标</h1>
   <div class="post-body">
-    <h2 id="客观评价指标"><a href="#客观评价指标" class="headerlink" title="客观评价指标"></a>客观评价指标</h2><p>常见的客观评价指标有：</p>
+    <h2 id="客观评价指标"><a href="#客观评价指标" class="headerlink" title="客观评价指标"></a>客观评价指标</h2><p>客观质量评价主要分三个方向：</p>
+<ol>
+<li>全参考 (Full-Reference)：属于有源评价。</li>
+<li>部分参考 (Reduced-Reference)：属于有源评价。</li>
+<li>无参考 (No-Reference)：属于无源评价，学术界的研究重点，主要分为传统的特征提取和机器学习。</li>
+</ol>
+<p><strong>常见的全参考客观评价指标有：</strong></p>
 <ul>
-<li>PSNR(Peak Signal-to-Noise Ratio)</li>
-<li>SSIM(Structural Similarity Index Measure)</li>
-<li>VMAF(Video Multi-Method Assessment Fusion)</li>
+<li>PSNR (Peak Signal-to-Noise Ratio)</li>
+<li>SSIM (Structural Similarity Index Measure)</li>
+<li>VMAF (Video Multi-Method Assessment Fusion)</li>
 </ul>
-<h3 id="PSNR"><a href="#PSNR" class="headerlink" title="PSNR"></a>PSNR</h3><p>峰值信噪比（PSNR）表示信号最大功率与影响精度的噪声功率的比值，单位为分贝（dB）。一般用的最多，缺点有时候分数与人眼观感差距较大。</p>
+<p>其他不常用的全参考客观评价指标举例：</p>
+<ul>
+<li>MSE (Mean Square Error)</li>
+<li>MS-SSIM (Multi Scale Structural Similarity Index)</li>
+<li>JND (Just Noticeable Difference)</li>
+</ul>
+<h3 id="PSNR"><a href="#PSNR" class="headerlink" title="PSNR"></a>PSNR</h3><p>峰值信噪比 (PSNR) 表示信号最大功率与影响精度的噪声功率的比值，单位为分贝 (dB) 。一般用的最多，缺点有时候分数与人眼观感差距较大，因为 PSNR 没有考虑亮度、结构等信息对于视频质量的影响，故后续也出现了 HDR-PSNR 等方法。</p>
 <script type="math/tex; mode=display">
 \begin{aligned}
 PSNR&=10 \cdot \log _{10}\left(\frac{MAX_{I}^{2}}{MSE}\right) \\
     &=20 \cdot \log _{10}\left(\frac{MAX_{I}}{\sqrt{MSE}}\right) \\
     &=20 \cdot \log _{10}\left(\frac{MAX_{I}}{\sqrt{\frac{1}{m n} \sum_{i=0}^{m-1} \sum_{j=0}^{n-1}[I(i, j)-K(i, j)]^{2}}}\right) \\
-\end{aligned}</script><p>PSNR 通过均方误差（MSE）计算而来，MAX 为图像所有像素点颜色数值的最大值。其中MSE公式如下：</p>
+\end{aligned}</script><p>PSNR 通过均方误差 (MSE) 计算而来，MAX 为图像所有像素点颜色数值的最大值。其中MSE公式如下：</p>
 <script type="math/tex; mode=display">
 \begin{aligned}
 MSE=\frac{1}{m n} \sum_{i=0}^{m-1} \sum_{j=0}^{n-1}[I(i, j)-K(i, j)]^{2}
@@ -124,7 +136,7 @@ MSE=\frac{1}{m n} \sum_{i=0}^{m-1} \sum_{j=0}^{n-1}[I(i, j)-K(i, j)]^{2}
 <script type="math/tex; mode=display">
 \begin{aligned}
 PSNR=10 \cdot \log _{10}\left(\frac{MAX_{I}^{2}}{\frac{1}{3 m n} \sum_{R, G, B} \sum_{i=0}^{m-1} \sum_{j=0}^{n-1}\left[I_{\text {color }}(i, j)-K_{\text {color }}(i, j)\right]^{2}}\right)
-\end{aligned}</script><h3 id="SSIM"><a href="#SSIM" class="headerlink" title="SSIM"></a>SSIM</h3><p>结构相似性度量（SSIM），更加接近人眼感知，常常与 PSNR 结合参考使用。<br>其包含三个分量：</p>
+\end{aligned}</script><h3 id="SSIM"><a href="#SSIM" class="headerlink" title="SSIM"></a>SSIM</h3><p>结构相似性度量 (SSIM)，更加接近人眼感知，常常与 PSNR 结合参考使用。<br>其包含三个分量：</p>
 <script type="math/tex; mode=display">
 \begin{aligned}
 l(\mathbf{x}, \mathbf{y})=\frac{2 \mu_{x} \mu_{y}+C_{1}}{\mu_{x}^{2}+\mu_{y}^{2}+C_{1}} \\
@@ -134,10 +146,20 @@ s(\mathbf{x}, \mathbf{y})=\frac{\sigma_{x y}+C_{3}}{\sigma_{x} \sigma_{y}+C_{3}}
 <script type="math/tex; mode=display">
 \begin{aligned}
 SSIM = l(\mathbf{x}, \mathbf{y}) \times c(\mathbf{x}, \mathbf{y}) \times s(\mathbf{x}, \mathbf{y})
-\end{aligned}</script><h3 id="VMAF"><a href="#VMAF" class="headerlink" title="VMAF"></a>VMAF</h3><p>Netflix 与几个大学实验室合作推出的多方法融合的客观评估指标，使用了 Machine Learning。目前业内已经用的很多，缺点算力消耗较大。</p>
-<h4 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i main.mpg -i ref.mkv -lavfi <span class="string">"[0:v]settb=AVTB,setpts=PTS-STARTPTS[main];[1:v]settb=AVTB,setpts=PTS-STARTPTS[ref];[main][ref]libvmaf=psnr=1:log_fmt=json"</span> <span class="_">-f</span> null -</span><br></pre></td></tr></table></figure>
+\end{aligned}</script><h3 id="VMAF"><a href="#VMAF" class="headerlink" title="VMAF"></a>VMAF</h3><p>Netflix 与几个大学实验室合作推出的多方法融合的客观评估指标，基于 Machine Learning。目前业内已经用的很多，算力消耗较大。</p>
+<p>VMAF 的计算主要使⽤了3种指标，特征之间融合计算出总分的过程使⽤了训练好的 SVM (Support Vector Machine) 来预测：</p>
+<ol>
+<li><p>Visual Quality Fidelity (VIF)：视觉信息保真度，为空域特征。</p>
+</li>
+<li><p>Detail Loss Measure (DLM)：细节损失指标，可以衡量内容可⻅性的细节丢失，针对⼀些特殊情况就不再适⽤，⽐如⿊框；⽐如过度的锐化也会导致计算结果与⼈眼不相符。</p>
+</li>
+<li><p>Temporal Information (TI)：相邻帧的运动向量，简单的使⽤亮度分量的平均绝对像素差来计算得到。</p>
+</li>
+</ol>
+<h4 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h4><p>以下是利用 FFmpeg 工具调用 libvmaf 库来计算 vmaf 的命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i main.mpg -i ref.mkv -lavfi <span class="string">"[0:v]settb=AVTB,setpts=PTS-STARTPTS[main];[1:v]settb=AVTB,setpts=PTS-STARTPTS[ref];[main][ref]libvmaf=psnr=1:log_fmt=json"</span> <span class="_">-f</span> null -</span><br></pre></td></tr></table></figure>
 <ul>
-<li><code>ref</code> 为参考（reference）视频，即 Ground-truth</li>
+<li><code>ref</code> 为参考 (reference) 视频，即 Ground-truth</li>
 <li><code>main</code> 为需要评价的视频</li>
 <li>需要注意的是 <code>[main]</code> <code>[ref]</code> 顺序不能反过来</li>
 </ul>
@@ -146,6 +168,8 @@ SSIM = l(\mathbf{x}, \mathbf{y}) \times c(\mathbf{x}, \mathbf{y}) \times s(\math
 <li>峰值信噪比 - 维基百科，自由的百科全书 <a href="https://zh.wikipedia.org/zh/%E5%B3%B0%E5%80%BC%E4%BF%A1%E5%99%AA%E6%AF%94" target="_blank" rel="noopener">https://zh.wikipedia.org/zh/%E5%B3%B0%E5%80%BC%E4%BF%A1%E5%99%AA%E6%AF%94</a></li>
 <li>结构相似性 - 维基百科，自由的百科全书 <a href="https://zh.wikipedia.org/wiki/%E7%B5%90%E6%A7%8B%E7%9B%B8%E4%BC%BC%E6%80%A7" target="_blank" rel="noopener">https://zh.wikipedia.org/wiki/%E7%B5%90%E6%A7%8B%E7%9B%B8%E4%BC%BC%E6%80%A7</a></li>
 <li>视频多方法评估融合 - 维基百科，自由的百科全书 <a href="https://zh.wikipedia.org/zh-cn/%E8%A7%86%E9%A2%91%E5%A4%9A%E6%96%B9%E6%B3%95%E8%AF%84%E4%BC%B0%E8%9E%8D%E5%90%88" target="_blank" rel="noopener">https://zh.wikipedia.org/zh-cn/%E8%A7%86%E9%A2%91%E5%A4%9A%E6%96%B9%E6%B3%95%E8%AF%84%E4%BC%B0%E8%9E%8D%E5%90%88</a></li>
+<li>浅谈视频中的“清晰度”概念 - 知乎 <a href="https://zhuanlan.zhihu.com/p/476780601" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/476780601</a></li>
+<li>视频/图像质量评价综述(一) - 知乎 <a href="https://zhuanlan.zhihu.com/p/54539091" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/54539091</a></li>
 </ul>
 
   </div>
@@ -179,7 +203,7 @@ SSIM = l(\mathbf{x}, \mathbf{y}) \times c(\mathbf{x}, \mathbf{y}) \times s(\math
         </div>
         <div class="post-date-right">
           
-            Update: Fri Oct 28 2022 19:54:00 GMT+0800
+            Update: Fri Nov 04 2022 17:14:46 GMT+0800
           
         </div>
       </div>
